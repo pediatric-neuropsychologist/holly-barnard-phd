@@ -1,0 +1,54 @@
+<nav
+  x-data="initNavbar()"
+  class="navbar is-fresh is-transparent no-shadow"
+  role="navigation"
+  aria-label="main navigation"
+>
+  <div class="container">
+    <div class="navbar-brand">
+      <a class="navbar-item" href="https://cssninja.io">
+        Holly Barnard Ph.D., ABPP-CN
+        <br />
+        <small>Pediatric & Developmental Neuropsychology</small>
+      </a>
+
+      <div class="navbar-burger" @click="openMobileMenu()">
+        <span class="menu-toggle">
+          <span
+            class="icon-box-toggle"
+            :class="{
+                            'active': mobileOpen,
+                            '': !mobileOpen
+                        }"
+          >
+            <span class="rotate">
+              <i class="icon-line-top"></i>
+              <i class="icon-line-center"></i>
+              <i class="icon-line-bottom"></i>
+            </span>
+          </span>
+        </span>
+      </div>
+    </div>
+    <div
+      id="navbar-menu"
+      class="navbar-menu is-static"
+      :class="{
+                'is-active': mobileOpen,
+                '': !mobileOpen
+            }"
+    >
+      <div class="navbar-end">
+        <a href="#" class="navbar-item is-secondary"> About</a>
+        <a href="#" class="navbar-item is-secondary"> The Testing Process</a>
+        <a href="#" class="navbar-item is-secondary"> Packages & Fees</a>
+        <a href="#" class="navbar-item is-secondary"> FAQs</a>
+        <a class="navbar-item">
+          <span class="button signup-button secondary-btn raised">
+            Contact
+          </span>
+        </a>
+      </div>
+    </div>
+  </div>
+</nav>

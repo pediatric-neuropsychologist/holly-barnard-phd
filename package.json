@@ -1,0 +1,44 @@
+{
+  "name": "fresh",
+  "version": "5.2.0",
+  "description": "Fresh - Bulma + Alpine JS landing page",
+  "type": "module",
+  "private": true,
+  "engines": {
+    "node": ">=18",
+    "pnpm": ">=8"
+  },
+  "scripts": {
+    "dev": "astro dev",
+    "start": "astro dev",
+    "build": "run-s build:*",
+    "build:astro": "astro build",
+    "preview": "astro preview",
+    "astro": "astro"
+  },
+  "dependencies": {
+    "@alpinejs/collapse": "3.13.0",
+    "@alpinejs/intersect": "3.13.0",
+    "@alpinejs/persist": "3.13.0",
+    "@iconify/iconify": "3.1.1",
+    "alpinejs": "3.13.0",
+    "astro": "3.1.0",
+    "bulma": "0.9.4",
+    "bulma-css-vars": "0.8.0",
+    "fuse.js": "6.6.2",
+    "js-datepicker": "5.18.2",
+    "lozad": "1.16.0",
+    "moment": "2.29.4",
+    "notyf": "3.10.0",
+    "plyr": "3.7.8",
+    "sass": "1.67.0",
+    "simplebar": "6.2.5"
+  },
+  "devDependencies": {
+    "@fontsource-variable/nunito": "^5.0.9",
+    "@fontsource-variable/roboto-flex": "^5.0.8",
+    "@fontsource/material-icons": "^5.0.7",
+    "autoprefixer": "10.4.15",
+    "npm-run-all": "4.1.5"
+  }
+}
