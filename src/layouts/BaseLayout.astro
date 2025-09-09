@@ -1,0 +1,33 @@
+---
+import '../styles/global.css';
+---
+
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <slot name="head">
+      <title>Holly Barnard Ph.D., ABPP-CN</title>
+    </slot>
+  </head>
+  <body class="body-font">
+    <header class="border-b bg-white/50">
+      <nav class="max-w-4xl mx-auto px-4 py-4 flex items-center justify-between">
+        <a class="flex items-center gap-3" href="/">
+          <img src="/img/holly-barnard-phd-pediatric-developmental-psychologist-pllc.svg" alt="Logo" width="48" />
+          <span class="text-lg font-medium">Holly Barnard <small class="block text-sm">Ph.D., ABPP-CN</small></span>
+        </a>
+        <ul class="flex gap-4">
+          <li><a href="/packages-and-fees" class="text-sm">Packages & Fees</a></li>
+        </ul>
+      </nav>
+    </header>
+
+    <slot />
+
+    <footer class="max-w-4xl mx-auto px-4 py-8 text-center text-sm">
+      <p>Contact: <a href="mailto:contact@hollybarnardphd.com">contact@hollybarnardphd.com</a> | <a href="tel:12142718018">214-271-8018</a></p>
+    </footer>
+  </body>
+</html>

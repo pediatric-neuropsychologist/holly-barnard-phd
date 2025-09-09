@@ -1,0 +1,55 @@
+@import url('https://fonts.googleapis.com/css2?family=Flamenco:wght@300;400&family=Jura:wght@300..700&family=La+Belle+Aurore&family=Playfair+Display:ital,wght@0,400..900;1,400..900&display=swap');
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* Minimal port of the original site styles */
+
+h1 {
+  font-family: "La Belle Aurore", cursive;
+  font-weight: 400;
+}
+
+h2, h3, h4, h5 {
+  font-family: "Flamenco", system-ui;
+  font-weight: 400;
+}
+
+.body-font {
+  font-family: "Playfair Display", serif;
+}
+
+a {
+  color: #9d4ba2;
+  text-decoration: none;
+}
+
+a:hover {
+  color: #9d4ba2;
+  text-decoration: underline;
+}
+
+blockquote {
+  font-size: 1.125rem;
+  margin: 0.25em 0;
+  padding: 0.35em 2.5rem;
+  line-height: 1.45;
+  position: relative;
+  color: #383838;
+}
+
+blockquote:before {
+  content: "\201C";
+  font-size: 4rem;
+  position: absolute;
+  left: -0.75rem;
+  top: -0.5rem;
+  color: #7a7a7a;
+}
+
+/* Background gradient similar to the original */
+body {
+  @apply bg-gradient-to-br from-white via-pink-50 to-blue-50;
+  color: #111827;
+}
