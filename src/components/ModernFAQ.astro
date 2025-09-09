@@ -179,7 +179,9 @@ const { faqs, showSearch = true, categories } = Astro.props;
     const content = document.getElementById(
       `faq-content-${faqId}`
     ) as HTMLElement;
-    const button = document.querySelector(`[data-faq-id="${faqId}"]`) as HTMLElement;
+    const button = document.querySelector(
+      `[data-faq-id="${faqId}"]`
+    ) as HTMLElement;
     const icon = button?.querySelector(".faq-icon") as HTMLElement;
 
     if (!content || !button || !icon) return;
@@ -213,11 +215,11 @@ const { faqs, showSearch = true, categories } = Astro.props;
   }
 
   // Initialize FAQ event listeners
-  document.addEventListener('DOMContentLoaded', function() {
-    const faqButtons = document.querySelectorAll('.faq-toggle-btn');
-    faqButtons.forEach(button => {
-      button.addEventListener('click', function() {
-        const faqId = this.getAttribute('data-faq-id');
+  document.addEventListener("DOMContentLoaded", function () {
+    const faqButtons = document.querySelectorAll(".faq-toggle-btn");
+    faqButtons.forEach((button) => {
+      button.addEventListener("click", function () {
+        const faqId = this.getAttribute("data-faq-id");
         if (faqId) {
           toggleFAQ(faqId);
         }
@@ -225,16 +227,16 @@ const { faqs, showSearch = true, categories } = Astro.props;
     });
 
     // Show all FAQs button
-    const showAllBtn = document.querySelector('.show-all-faqs-btn');
+    const showAllBtn = document.querySelector(".show-all-faqs-btn");
     if (showAllBtn) {
-      showAllBtn.addEventListener('click', function() {
-        document.querySelectorAll('.faq-item').forEach(item => {
+      showAllBtn.addEventListener("click", function () {
+        document.querySelectorAll(".faq-item").forEach((item) => {
           const element = item as HTMLElement;
-          element.style.display = 'block';
+          element.style.display = "block";
         });
-        const noResults = document.getElementById('no-results');
+        const noResults = document.getElementById("no-results");
         if (noResults) {
-          noResults.classList.add('hidden');
+          noResults.classList.add("hidden");
         }
       });
     }
@@ -323,7 +325,10 @@ const { faqs, showSearch = true, categories } = Astro.props;
   document.addEventListener("keydown", function (e) {
     if (e.key === "Enter" || e.key === " ") {
       const focusedElement = document.activeElement as HTMLElement;
-      if (focusedElement && focusedElement.classList.contains("faq-toggle-btn")) {
+      if (
+        focusedElement &&
+        focusedElement.classList.contains("faq-toggle-btn")
+      ) {
         e.preventDefault();
         const faqId = focusedElement.getAttribute("data-faq-id");
         if (faqId) toggleFAQ(faqId);
