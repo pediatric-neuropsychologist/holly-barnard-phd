@@ -1,0 +1,77 @@
+---
+export interface FAQ {
+  question: string;
+  answer: string;
+}
+
+export interface Props {
+  faqs: FAQ[];
+}
+
+const { faqs } = Astro.props;
+---
+
+<section class="mb-16">
+  <h2 class="text-3xl font-bold text-gray-900 text-center mb-12">
+    Evaluation FAQs
+  </h2>
+
+  <div class="max-w-3xl mx-auto space-y-4">
+    {
+      faqs.map((faq, index) => (
+        <div class="bg-white rounded-lg shadow-md border border-gray-200 overflow-hidden">
+          <button
+            class="faq-button w-full px-6 py-4 text-left flex items-center justify-between hover:bg-gray-50 transition-colors duration-200"
+            data-target={`faq-${index}`}
+          >
+            <h3 class="text-lg font-semibold text-gray-900 pr-4">
+              {faq.question}
+            </h3>
+            <svg
+              class="faq-icon w-5 h-5 text-gray-500 flex-shrink-0 transition-transform duration-200"
+              fill="none"
+              stroke="currentColor"
+              viewBox="0 0 24 24"
+            >
+              <path
+                stroke-linecap="round"
+                stroke-linejoin="round"
+                stroke-width="2"
+                d="M19 9l-7 7-7-7"
+              />
+            </svg>
+          </button>
+          <div class={`faq-content px-6 pb-4 hidden`} id={`faq-${index}`}>
+            <p class="text-gray-700 leading-relaxed">{faq.answer}</p>
+          </div>
+        </div>
+      ))
+    }
+  </div>
+</section>
+
+<script>
+  document.addEventListener("DOMContentLoaded", function () {
+    const faqButtons = document.querySelectorAll(".faq-button");
+
+    faqButtons.forEach((button) => {
+      button.addEventListener("click", function () {
+        const targetId = this.getAttribute("data-target");
+        const content = document.getElementById(targetId);
+        const icon = this.querySelector(".faq-icon");
+
+        if (!content) {
+          return;
+        }
+
+        if (content.classList.contains("hidden")) {
+          content.classList.remove("hidden");
+          icon.style.transform = "rotate(180deg)";
+        } else {
+          content.classList.add("hidden");
+          icon.style.transform = "rotate(0deg)";
+        }
+      });
+    });
+  });
+</script>

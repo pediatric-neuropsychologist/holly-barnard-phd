@@ -1,0 +1,56 @@
+---
+// Consistent Call-to-Action Button Component
+export interface Props {
+  href: string;
+  text: string;
+  variant?: "primary" | "secondary" | "outline";
+  size?: "sm" | "md" | "lg";
+  icon?: string;
+}
+
+const { href, text, variant = "primary", size = "md", icon } = Astro.props;
+
+// Size classes
+const sizeClasses = {
+  sm: "px-4 py-2 text-sm",
+  md: "px-6 py-3 text-base",
+  lg: "px-8 py-4 text-lg",
+};
+
+// Variant classes with proper contrast ratios
+const variantClasses = {
+  primary:
+    "bg-purple-600 text-white hover:bg-purple-700 border border-purple-600 !text-white",
+  secondary:
+    "bg-white text-purple-700 hover:bg-purple-50 border border-purple-300",
+  outline:
+    "bg-transparent text-purple-700 hover:bg-purple-50 border-2 border-purple-600",
+};
+
+const baseClasses =
+  "inline-flex items-center font-semibold rounded-lg transition-all duration-200 shadow-md hover:shadow-lg transform hover:-translate-y-0.5 focus:outline-none focus:ring-2 focus:ring-purple-500 focus:ring-offset-2";
+---
+
+<a
+  href={href}
+  class={`${baseClasses} ${sizeClasses[size]} ${variantClasses[variant]}`}
+>
+  {
+    icon && (
+      <svg
+        class="w-5 h-5 mr-2 flex-shrink-0"
+        fill="none"
+        stroke="currentColor"
+        viewBox="0 0 24 24"
+      >
+        <path
+          stroke-linecap="round"
+          stroke-linejoin="round"
+          stroke-width="2"
+          d={icon}
+        />
+      </svg>
+    )
+  }
+  {text}
+</a>

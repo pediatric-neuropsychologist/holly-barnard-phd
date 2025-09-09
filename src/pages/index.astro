@@ -1,61 +1,176 @@
 ---
-import BaseLayout from '../layouts/BaseLayout.astro';
+import BaseLayout from "../layouts/BaseLayout.astro";
+import PageHeader from "../components/PageHeader.astro";
+import HeroSection from "../components/HeroSection.astro";
+import FeatureList from "../components/FeatureList.astro";
+import ContactCTA from "../components/ContactCTA.astro";
 ---
 
 <BaseLayout>
-  <main class="max-w-4xl mx-auto px-4 py-8">
-    <section class="grid grid-cols-1 md:grid-cols-3 gap-6 items-center mb-8">
-      <div class="text-center">
-        <img class="mx-auto rounded" src="/img/holly-barnard-phd-pediatric-developmental-neuropsychologist.png" alt="Dr Barnard" />
-        <h1 class="mt-4">Dr. Barnard <span class="block text-sm">Ph.D., ABPP-CN</span></h1>
-      </div>
-      <div class="md:col-span-2">
-        <h2 class="text-2xl font-semibold">Pediatric & Developmental Neuropsychology</h2>
-        <figure>
-          <blockquote>
-            <p>
-              I became a neuropsychologist because, like many others out there, I had a loved one who experienced developmental delays and suffered a traumatic brain injury due to medical complications. After watching my family members struggle endlessly to find a person who could bring it all together and help us find a path forward, I decided to become that person.
-            </p>
-          </blockquote>
-        </figure>
+  <main
+    class="max-w-6xl mx-auto px-8 py-16 bg-gradient-to-br from-gray-50 via-white to-blue-50 min-h-screen"
+  >
+    <PageHeader
+      title="Pediatric & Developmental Neuropsychology"
+      subtitle="Dr. Holly Barnard, Ph.D., ABPP-CN"
+      image="/img/holly-barnard-phd-pediatric-developmental-neuropsychologist.png"
+      imageAlt="Profile of Holly Barnard Ph.D., ABPP-CN Pediatric & Developmental Neuropsychology"
+    />
+
+    <section class="mb-16">
+      <div
+        class="bg-gradient-to-br from-blue-50 to-indigo-100 rounded-2xl p-8 shadow-lg"
+      >
+        <div class="text-center">
+          <h2 class="text-3xl font-bold text-indigo-900 mb-6">
+            About Dr. Barnard
+          </h2>
+          <figure class="relative">
+            <div
+              class="absolute -top-4 -left-4 text-6xl text-indigo-200 opacity-50"
+            >
+              "
+            </div>
+            <blockquote
+              class="blockquote text-xl text-gray-800 max-w-4xl mx-auto italic leading-relaxed"
+            >
+              <p class="mb-4">
+                I became a neuropsychologist because, like many others, I had a
+                loved one who suffered a brain injury due to medical
+                complications and later experienced developmental delays.
+              </p>
+              <p>
+                After watching my family members struggle to find a single
+                person who could bring all the information together and help our
+                family find a path forward, I decided to dedicate myself to
+                becoming that person.
+              </p>
+            </blockquote>
+            <div
+              class="absolute -bottom-4 -right-4 text-6xl text-indigo-200 opacity-50"
+            >
+              "
+            </div>
+          </figure>
+        </div>
       </div>
     </section>
 
-    <section class="grid grid-cols-1 md:grid-cols-2 gap-6 mb-8">
-      <div>
-        <h1>What is Neuropsychology?</h1>
-        <p>A neuropsychologist is an expert in the impact of atypical development (e.g., ASD, learning disorders, spina bifida), injury (e.g., Traumatic Brain Injury, birth trauma), disease (e.g., tumor, meningitis), and decline on the brain.</p>
+    <HeroSection
+      title="What is Neuropsychology?"
+      description="A neuropsychologist is an expert in the impact of atypical development (e.g., ASD, learning disorders, spina bifida), injury (e.g., traumatic brain injury, birth trauma), disease (e.g., tumor, meningitis), and decline on the brain. Patients can present with a number of complex conditions that, as they grow and mature, impact how they think, learn, and behave. A neuropsychologist helps patients, parents, and teachers to understand a person's brain and the way they function best."
+      image="/img/we-all-have-our-different-needs.png"
+      imageAlt="Woman holding two cardboard cutouts representing differences in a person."
+      reverse={true}
+    />
 
-        <p>Patients can present with a number of complex conditions that, as they grow and mature, impact how they think, learn, and behave. A neuropsychologist helps patients, parents, and teachers to understand a person's brain and the way they function best, in case of:</p>
+    <FeatureList
+      title="Conditions We Address"
+      items={[
+        "Attention-Deficit Hyperactivity Disorder",
+        "Autism Spectrum Disorder (ASD)",
+        "Epilepsy",
+        "Genetic/Chromosomal Disorders",
+        "Hearing Loss",
+        "History of Brain Tumor",
+        "History of Neurologic Infections",
+        "Hydrocephalus",
+        "Metabolic Disorders",
+        "Neurodevelopmental Disorders",
+        "Oxygen Deprivation",
+        "Specific Learning Disorders",
+        "Structural Abnormalities of the Brain",
+        "Toxic Encephalopathy",
+        "Traumatic Brain Injury (TBI)",
+        "Vascular Events/Conditions",
+      ]}
+    />
 
-        <ul class="mt-4 space-y-1 list-disc pl-5">
-          <li>Attention-Deficit Hyperactivity Disorder</li>
-          <li>Autism Spectrum Disorder (ASD)</li>
-          <li>Epilepsy</li>
-          <li>Genetic/Chromosomal Disorders</li>
-          <li>Hearing Loss</li>
-          <li>History of Brain Tumor</li>
-          <li>History of Neurologic Infections</li>
-          <li>Hydrocephalus</li>
-          <li>Metabolic Disorders</li>
-          <li>Neurodevelopmental Disorders</li>
-          <li>Oxygen Deprivation</li>
-          <li>Specific Learning Disorders</li>
-          <li>Structural Abnormalities of the Brain</li>
-          <li>Toxic Encephalopathy</li>
-          <li>Traumatic Brain Injury (TBI)</li>
-          <li>Vascular Events/Conditions</li>
-        </ul>
-      </div>
-      <div class="text-center">
-        <img class="mx-auto" src="/img/we-all-have-our-different-needs.png" alt="Different needs" />
+    <section class="mb-16">
+      <h2 class="text-3xl font-bold text-gray-900 text-center mb-12">
+        How to Get Started
+      </h2>
+      <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+        <div
+          class="bg-white rounded-xl p-8 shadow-lg hover:shadow-xl transition-all duration-300 hover:scale-105 border border-gray-100 text-center group"
+        >
+          <div
+            class="w-20 h-20 bg-gradient-to-br from-blue-500 to-indigo-600 rounded-full flex items-center justify-center text-white text-3xl font-bold mx-auto mb-6 group-hover:scale-110 transition-transform duration-300"
+          >
+            <svg
+              class="w-10 h-10"
+              fill="none"
+              stroke="currentColor"
+              viewBox="0 0 24 24"
+            >
+              <path
+                stroke-linecap="round"
+                stroke-linejoin="round"
+                stroke-width="2"
+                d="M3 5a2 2 0 012-2h3.28a1 1 0 01.948.684l1.498 4.493a1 1 0 01-.502 1.21l-2.257 1.13a11.042 11.042 0 005.516 5.516l1.13-2.257a1 1 0 011.21-.502l4.493 1.498a1 1 0 01.684.949V19a2 2 0 01-2 2h-1C9.716 21 3 14.284 3 6V5z"
+              ></path>
+            </svg>
+          </div>
+          <h3 class="text-xl font-semibold mb-4 text-gray-900">Contact Us</h3>
+          <p class="text-gray-600 leading-relaxed">
+            Reach out for a free consultation to discuss your needs.
+          </p>
+        </div>
+        <div
+          class="bg-white rounded-xl p-8 shadow-lg hover:shadow-xl transition-all duration-300 hover:scale-105 border border-gray-100 text-center group"
+        >
+          <div
+            class="w-20 h-20 bg-gradient-to-br from-green-500 to-teal-600 rounded-full flex items-center justify-center text-white text-3xl font-bold mx-auto mb-6 group-hover:scale-110 transition-transform duration-300"
+          >
+            <svg
+              class="w-10 h-10"
+              fill="none"
+              stroke="currentColor"
+              viewBox="0 0 24 24"
+            >
+              <path
+                stroke-linecap="round"
+                stroke-linejoin="round"
+                stroke-width="2"
+                d="M9 12h6m-6 4h6m2 5H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z"
+              ></path>
+            </svg>
+          </div>
+          <h3 class="text-xl font-semibold mb-4 text-gray-900">Evaluation</h3>
+          <p class="text-gray-600 leading-relaxed">
+            Comprehensive assessment tailored to your child's needs.
+          </p>
+        </div>
+        <div
+          class="bg-white rounded-xl p-8 shadow-lg hover:shadow-xl transition-all duration-300 hover:scale-105 border border-gray-100 text-center group"
+        >
+          <div
+            class="w-20 h-20 bg-gradient-to-br from-purple-500 to-pink-600 rounded-full flex items-center justify-center text-white text-3xl font-bold mx-auto mb-6 group-hover:scale-110 transition-transform duration-300"
+          >
+            <svg
+              class="w-10 h-10"
+              fill="none"
+              stroke="currentColor"
+              viewBox="0 0 24 24"
+            >
+              <path
+                stroke-linecap="round"
+                stroke-linejoin="round"
+                stroke-width="2"
+                d="M9 19v-6a2 2 0 00-2-2H5a2 2 0 00-2 2v6a2 2 0 002 2h2a2 2 0 002-2zm0 0V9a2 2 0 012-2h2a2 2 0 012 2v10m-6 0a2 2 0 002 2h2a2 2 0 002-2m0 0V5a2 2 0 012-2h2a2 2 0 012 2v14a2 2 0 01-2 2h-2a2 2 0 01-2-2z"
+              ></path>
+            </svg>
+          </div>
+          <h3 class="text-xl font-semibold mb-4 text-gray-900">
+            Results & Support
+          </h3>
+          <p class="text-gray-600 leading-relaxed">
+            Receive detailed findings and recommendations for next steps.
+          </p>
+        </div>
       </div>
     </section>
 
-    <section class="text-center">
-      <img class="mx-auto" src="/img/dot-divider.svg" width="150" alt="divider" />
-      <h1 class="mt-6">Ready to explore your full potential?</h1>
-      <p class="max-w-md mx-auto mt-4">Contact Dr. Barnard for a free phone or e-mail consultation to determine whether the practice is a good fit for your child.</p>
-    </section>
+    <ContactCTA />
   </main>
 </BaseLayout>

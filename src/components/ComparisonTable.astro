@@ -1,0 +1,79 @@
+---
+export interface Feature {
+  name: string;
+  educational: boolean;
+  psychological: boolean;
+  neuropsychological: boolean;
+}
+
+export interface Props {
+  features: Feature[];
+}
+
+const { features } = Astro.props;
+---
+
+<div
+  class="overflow-x-auto bg-white rounded-xl shadow-lg border border-gray-200"
+>
+  <table class="min-w-full text-left divide-y divide-gray-200">
+    <thead class="bg-gradient-to-r from-gray-50 to-gray-100">
+      <tr>
+        <th
+          class="px-8 py-4 text-sm font-semibold text-gray-800 uppercase tracking-wider"
+          >Feature</th
+        >
+        <th
+          class="px-8 py-4 text-sm font-semibold text-gray-800 uppercase tracking-wider"
+          >Educational</th
+        >
+        <th
+          class="px-8 py-4 text-sm font-semibold text-gray-800 uppercase tracking-wider"
+          >Psychological</th
+        >
+        <th
+          class="px-8 py-4 text-sm font-semibold text-gray-800 uppercase tracking-wider"
+          >Neuropsychological</th
+        >
+      </tr>
+    </thead>
+    <tbody class="bg-white divide-y divide-gray-100">
+      {
+        features.map((feature) => (
+          <tr class="hover:bg-gray-50 transition-colors duration-200">
+            <td class="px-8 py-4 text-sm font-medium text-gray-900">
+              {feature.name}
+            </td>
+            <td class="px-8 py-4 text-center">
+              {feature.educational && (
+                <img
+                  class="inline-block w-5 h-5"
+                  src="/img/checkmark.svg"
+                  alt="yes"
+                />
+              )}
+            </td>
+            <td class="px-8 py-4 text-center">
+              {feature.psychological && (
+                <img
+                  class="inline-block w-5 h-5"
+                  src="/img/checkmark.svg"
+                  alt="yes"
+                />
+              )}
+            </td>
+            <td class="px-8 py-4 text-center">
+              {feature.neuropsychological && (
+                <img
+                  class="inline-block w-5 h-5"
+                  src="/img/checkmark.svg"
+                  alt="yes"
+                />
+              )}
+            </td>
+          </tr>
+        ))
+      }
+    </tbody>
+  </table>
+</div>

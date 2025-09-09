@@ -1,0 +1,327 @@
+---
+import BaseLayout from "../layouts/BaseLayout.astro";
+import ContactCTA from "../components/ContactCTA.astro";
+import PageHeader from "../components/PageHeader.astro";
+import ProcessTimeline from "../components/ProcessTimeline.astro";
+import PreparationGuide from "../components/PreparationGuide.astro";
+import EvaluationFAQ from "../components/EvaluationFAQ.astro";
+import EvaluationBenefits from "../components/EvaluationBenefits.astro";
+---
+
+<BaseLayout>
+  <main class="max-w-4xl mx-auto px-8 py-16">
+    <PageHeader
+      title="Your Neuropsychological Evaluation Journey"
+      subtitle="A comprehensive, personalized assessment designed to unlock your child's full potential"
+    />
+
+    <div class="text-center mb-12">
+      <p class="text-xl text-gray-700 max-w-3xl mx-auto leading-relaxed mb-8">
+        Our evaluation process is carefully designed to provide you with clear
+        answers, actionable insights, and a roadmap for your child's success.
+        From initial consultation to final recommendations, we're here to guide
+        you every step of the way.
+      </p>
+
+      <!-- Trust indicators -->
+      <div class="flex flex-wrap justify-center gap-6 text-sm text-gray-600">
+        <div class="flex items-center gap-2">
+          <svg
+            class="w-5 h-5 text-green-500"
+            fill="currentColor"
+            viewBox="0 0 20 20"
+          >
+            <path
+              fill-rule="evenodd"
+              d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z"
+              clip-rule="evenodd"></path>
+          </svg>
+          <span>Board-Certified Neuropsychologist</span>
+        </div>
+        <div class="flex items-center gap-2">
+          <svg
+            class="w-5 h-5 text-green-500"
+            fill="currentColor"
+            viewBox="0 0 20 20"
+          >
+            <path
+              fill-rule="evenodd"
+              d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z"
+              clip-rule="evenodd"></path>
+          </svg>
+          <span>15+ Years Experience</span>
+        </div>
+        <div class="flex items-center gap-2">
+          <svg
+            class="w-5 h-5 text-green-500"
+            fill="currentColor"
+            viewBox="0 0 20 20"
+          >
+            <path
+              fill-rule="evenodd"
+              d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z"
+              clip-rule="evenodd"></path>
+          </svg>
+          <span>1000+ Evaluations Completed</span>
+        </div>
+      </div>
+    </div>
+
+    <!-- Progress Overview -->
+    <div class="bg-white rounded-xl shadow-lg p-8 mb-16 border border-gray-100">
+      <h3 class="text-2xl font-bold text-gray-900 text-center mb-8">
+        Evaluation Overview
+      </h3>
+      <div class="grid grid-cols-1 md:grid-cols-3 gap-6 text-center">
+        <div class="flex flex-col items-center">
+          <div
+            class="w-12 h-12 bg-purple-100 rounded-full flex items-center justify-center mb-4"
+          >
+            <span class="text-purple-600 font-bold text-lg">1</span>
+          </div>
+          <h4 class="font-semibold text-gray-900 mb-2">Consultation</h4>
+          <p class="text-gray-600 text-sm">60 minutes</p>
+        </div>
+        <div class="flex flex-col items-center">
+          <div
+            class="w-12 h-12 bg-purple-100 rounded-full flex items-center justify-center mb-4"
+          >
+            <span class="text-purple-600 font-bold text-lg">2</span>
+          </div>
+          <h4 class="font-semibold text-gray-900 mb-2">Assessment</h4>
+          <p class="text-gray-600 text-sm">4-8 hours</p>
+        </div>
+        <div class="flex flex-col items-center">
+          <div
+            class="w-12 h-12 bg-purple-100 rounded-full flex items-center justify-center mb-4"
+          >
+            <span class="text-purple-600 font-bold text-lg">3</span>
+          </div>
+          <h4 class="font-semibold text-gray-900 mb-2">Feedback</h4>
+          <p class="text-gray-600 text-sm">60 minutes</p>
+        </div>
+      </div>
+      <div class="text-center mt-6">
+        <p class="text-gray-600">
+          <strong>Total Time:</strong> 6-10 hours • <strong
+            >Report Delivery:</strong
+          > 2-3 weeks
+        </p>
+      </div>
+    </div>
+
+    <ProcessTimeline
+      steps={[
+        {
+          number: 1,
+          title: "Initial Consultation",
+          duration: "1 hour",
+          icon: "chat",
+          description:
+            "We begin with a comprehensive discussion to understand your concerns, goals, and your child's unique needs. This helps us create a personalized evaluation plan.",
+          details: [
+            "Discuss developmental history and current concerns",
+            "Review previous evaluations or medical records",
+            "Determine the most appropriate testing approach",
+            "Answer questions and address any anxieties",
+            "Schedule the evaluation at your convenience",
+          ],
+        },
+        {
+          number: 2,
+          title: "Comprehensive Assessment",
+          duration: "4-8 hours",
+          icon: "clipboard",
+          description:
+            "Your child participates in a series of engaging, age-appropriate activities designed to assess cognitive abilities, academic skills, and social-emotional functioning.",
+          details: [
+            "Cognitive and intellectual testing",
+            "Academic achievement evaluation",
+            "Attention and executive function assessment",
+            "Social-emotional and behavioral evaluation",
+            "Motor and sensory processing assessment",
+            "Adaptive functioning and daily living skills",
+          ],
+        },
+        {
+          number: 3,
+          title: "Feedback & Recommendations",
+          duration: "1 hour",
+          icon: "presentation",
+          description:
+            "We review the results together, explain what they mean, and provide clear, actionable recommendations to support your child's development and success.",
+          details: [
+            "Detailed explanation of evaluation results",
+            "Clear diagnosis (if applicable) with easy-to-understand language",
+            "Specific, practical recommendations for home and school",
+            "Educational accommodations and support strategies",
+            "Referrals to specialists or additional services",
+            "Ongoing support and follow-up options",
+          ],
+        },
+      ]}
+    />
+
+    <PreparationGuide
+      prepItems={[
+        {
+          category: "Before Your Visit",
+          icon: "calendar",
+          items: [
+            "Complete intake paperwork sent via email",
+            "Gather school records, previous evaluations, and medical history",
+            "Prepare questions you'd like to discuss",
+            "Ensure your child gets a good night's sleep",
+            "Pack comfort items (favorite toy, blanket, or snack)",
+          ],
+        },
+        {
+          category: "During the Evaluation",
+          icon: "clock",
+          items: [
+            "Plan to stay with your child throughout the process",
+            "Testing takes place in a comfortable, child-friendly environment",
+            "Breaks are provided as needed, including lunch",
+            "Activities are designed to be engaging and age-appropriate",
+            "Parents can observe through a one-way mirror if preferred",
+          ],
+        },
+        {
+          category: "After the Evaluation",
+          icon: "check-circle",
+          items: [
+            "Receive comprehensive written report within 2-3 weeks",
+            "Schedule feedback session to discuss results and recommendations",
+            "Get clear answers to your questions and concerns",
+            "Receive specific strategies to support your child's success",
+            "Access to ongoing consultation and support",
+          ],
+        },
+      ]}
+    />
+
+    <EvaluationBenefits
+      benefits={[
+        {
+          title: "Clear Understanding",
+          description:
+            "Gain insight into your child's unique strengths, challenges, and learning style to better support their development.",
+        },
+        {
+          title: "Educational Support",
+          description:
+            "Receive specific recommendations for school accommodations, teaching strategies, and individualized education plans.",
+        },
+        {
+          title: "Targeted Interventions",
+          description:
+            "Identify the most effective therapies, interventions, and support services for your child's specific needs.",
+        },
+        {
+          title: "Family Guidance",
+          description:
+            "Learn practical strategies to support your child's development at home and strengthen family communication.",
+        },
+        {
+          title: "Advocacy Tools",
+          description:
+            "Get the documentation and recommendations needed to advocate effectively for your child's educational rights.",
+        },
+        {
+          title: "Peace of Mind",
+          description:
+            "Find answers to your questions and reduce uncertainty about your child's development and future success.",
+        },
+      ]}
+    />
+
+    <EvaluationFAQ
+      faqs={[
+        {
+          question: "How long does the evaluation take?",
+          answer:
+            "The complete evaluation process typically takes 6-10 hours spread across 1-2 days, plus the initial consultation and feedback session. We break testing into manageable sessions with breaks and lunch to keep your child comfortable and engaged.",
+        },
+        {
+          question: "Will my child be tired or frustrated during testing?",
+          answer:
+            "We design our evaluations to be engaging and age-appropriate, with frequent breaks and a variety of activities. Most children find the experience interesting and are able to complete testing successfully. We also provide comfort items and create a supportive environment.",
+        },
+        {
+          question: "What if my child has special needs or anxiety?",
+          answer:
+            "We work with children of all abilities and can modify our approach as needed. If your child has anxiety or special needs, please let us know in advance so we can prepare accordingly and create the most comfortable experience possible.",
+        },
+        {
+          question: "How soon will I get results?",
+          answer:
+            "You'll receive a comprehensive written report within 2-3 weeks of completing the evaluation. We also schedule a feedback session shortly after to discuss the results and answer your questions.",
+        },
+        {
+          question: "Does insurance cover neuropsychological evaluations?",
+          answer:
+            "Coverage varies by insurance plan. We can provide a superbill for you to submit to your insurance company for potential reimbursement. We also offer flexible payment options and can discuss costs during your initial consultation.",
+        },
+      ]}
+    />
+
+    <!-- Call to Action -->
+    <section
+      class="bg-gradient-to-br from-purple-600 via-purple-700 to-indigo-800 py-16 text-white"
+    >
+      <div class="max-w-6xl mx-auto text-center px-6">
+        <h2 class="text-3xl font-bold mb-6">Ready to Get Started?</h2>
+        <p class="text-xl mb-8 max-w-3xl mx-auto opacity-90">
+          Take the first step towards understanding your child's unique needs
+          and unlocking their full potential. Contact us today to schedule your
+          initial consultation.
+        </p>
+        <div
+          class="flex flex-col sm:flex-row gap-4 justify-center max-w-md mx-auto sm:max-w-none"
+        >
+          <a
+            href="/contact"
+            class="inline-flex items-center px-8 py-4 bg-white text-purple-700 font-semibold rounded-lg border border-purple-300 hover:bg-purple-50 transition-all duration-200 shadow-md hover:shadow-lg transform hover:-translate-y-0.5 focus:outline-none focus:ring-2 focus:ring-purple-500 focus:ring-offset-2"
+          >
+            <svg
+              class="w-5 h-5 mr-2 flex-shrink-0"
+              fill="none"
+              stroke="currentColor"
+              viewBox="0 0 24 24"
+            >
+              <path
+                stroke-linecap="round"
+                stroke-linejoin="round"
+                stroke-width="2"
+                d="M8 12h.01M12 12h.01M16 12h.01M21 12c0 4.418-4.03 8-9 8a9.863 9.863 0 01-4.255-.949L3 20l1.395-3.72C3.512 15.042 3 13.574 3 12c0-4.418 4.03-8 9-8s9 3.582 9 8z"
+              ></path>
+            </svg>
+            Schedule Consultation
+          </a>
+          <a
+            href="tel:+1234567890"
+            class="inline-flex items-center px-8 py-4 bg-transparent text-purple-700 font-semibold rounded-lg border-2 border-purple-600 hover:bg-purple-50 transition-all duration-200 shadow-md hover:shadow-lg transform hover:-translate-y-0.5 focus:outline-none focus:ring-2 focus:ring-purple-500 focus:ring-offset-2"
+          >
+            <svg
+              class="w-5 h-5 mr-2 flex-shrink-0"
+              fill="none"
+              stroke="currentColor"
+              viewBox="0 0 24 24"
+            >
+              <path
+                stroke-linecap="round"
+                stroke-linejoin="round"
+                stroke-width="2"
+                d="M3 5a2 2 0 012-2h3.28a1 1 0 01.948.684l1.498 4.493a1 1 0 01-.502 1.21l-2.257 1.13a11.042 11.042 0 005.516 5.516l1.13-2.257a1 1 0 011.21-.502l4.493 1.498a1 1 0 01.684.949V19a2 2 0 01-2 2h-1C9.716 21 3 14.284 3 6V5z"
+              ></path>
+            </svg>
+            Call Now
+          </a>
+        </div>
+        <p class="text-sm opacity-75 mt-6">
+          Initial consultation is complimentary • Flexible scheduling available
+        </p>
+      </div>
+    </section>
+  </main>
+</BaseLayout>

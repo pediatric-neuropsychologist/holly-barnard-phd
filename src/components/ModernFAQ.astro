@@ -1,0 +1,348 @@
+---
+// Modern FAQ Accordion Component for 2025
+export interface FAQItem {
+  id: string;
+  question: string;
+  answer: string;
+  category?: string;
+  icon?: string;
+}
+
+export interface Props {
+  faqs: FAQItem[];
+  showSearch?: boolean;
+  categories?: string[];
+}
+
+const { faqs, showSearch = true, categories } = Astro.props;
+---
+
+<div class="max-w-4xl mx-auto">
+  <!-- Search Bar -->
+  {
+    showSearch && (
+      <div class="mb-8">
+        <div class="relative max-w-md mx-auto">
+          <div class="absolute inset-y-0 left-0 pl-3 flex items-center pointer-events-none">
+            <svg
+              class="h-5 w-5 text-gray-400"
+              fill="none"
+              stroke="currentColor"
+              viewBox="0 0 24 24"
+            >
+              <path
+                stroke-linecap="round"
+                stroke-linejoin="round"
+                stroke-width="2"
+                d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z"
+              />
+            </svg>
+          </div>
+          <input
+            type="text"
+            id="faq-search"
+            placeholder="Search frequently asked questions..."
+            class="block w-full pl-10 pr-3 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-purple-500 focus:border-transparent bg-white shadow-sm"
+          />
+        </div>
+      </div>
+    )
+  }
+
+  <!-- FAQ Categories (if provided) -->
+  {
+    categories && categories.length > 0 && (
+      <div class="flex flex-wrap justify-center gap-2 mb-8">
+        <button
+          class="px-4 py-2 text-sm font-medium rounded-full bg-purple-100 text-purple-800 hover:bg-purple-200 transition-colors category-filter active"
+          data-category="all"
+        >
+          All Questions
+        </button>
+        {categories.map((category) => (
+          <button
+            class="px-4 py-2 text-sm font-medium rounded-full bg-gray-100 text-gray-700 hover:bg-gray-200 transition-colors category-filter"
+            data-category={category.toLowerCase().replace(/\s+/g, "-")}
+          >
+            {category}
+          </button>
+        ))}
+      </div>
+    )
+  }
+
+  <!-- FAQ Accordion -->
+  <div class="space-y-4" id="faq-accordion">
+    {
+      faqs.map((faq, index) => (
+        <div
+          class={`bg-white rounded-xl shadow-sm border border-gray-200 hover:shadow-md transition-all duration-200 faq-item ${faq.category ? `category-${faq.category.toLowerCase().replace(/\s+/g, "-")}` : ""}`}
+          data-category={
+            faq.category
+              ? faq.category.toLowerCase().replace(/\s+/g, "-")
+              : "all"
+          }
+        >
+          <button
+            class="w-full px-6 py-5 text-left flex items-center justify-between hover:bg-gray-50 rounded-xl transition-colors focus:outline-none focus:ring-2 focus:ring-purple-500 focus:ring-inset faq-toggle-btn"
+            data-faq-id={faq.id}
+            aria-expanded="false"
+            aria-controls={`faq-content-${faq.id}`}
+          >
+            <div class="flex items-center gap-4">
+              {faq.icon && (
+                <div class="flex-shrink-0 w-8 h-8 bg-purple-100 rounded-lg flex items-center justify-center">
+                  <svg
+                    class="w-4 h-4 text-purple-600"
+                    fill="none"
+                    stroke="currentColor"
+                    viewBox="0 0 24 24"
+                  >
+                    <path
+                      stroke-linecap="round"
+                      stroke-linejoin="round"
+                      stroke-width="2"
+                      d={faq.icon}
+                    />
+                  </svg>
+                </div>
+              )}
+              <h3 class="text-lg font-semibold text-gray-900 pr-4">
+                {faq.question}
+              </h3>
+            </div>
+            <div class="flex-shrink-0">
+              <svg
+                class="w-5 h-5 text-gray-500 transform transition-transform duration-200 faq-icon"
+                fill="none"
+                stroke="currentColor"
+                viewBox="0 0 24 24"
+              >
+                <path
+                  stroke-linecap="round"
+                  stroke-linejoin="round"
+                  stroke-width="2"
+                  d="M19 9l-7 7-7-7"
+                />
+              </svg>
+            </div>
+          </button>
+
+          <div
+            id={`faq-content-${faq.id}`}
+            class="hidden px-6 pb-5"
+            aria-labelledby={`faq-button-${faq.id}`}
+          >
+            <div class="pt-2 border-t border-gray-100">
+              <p class="text-gray-700 leading-relaxed">{faq.answer}</p>
+            </div>
+          </div>
+        </div>
+      ))
+    }
+  </div>
+
+  <!-- No Results Message -->
+  <div class="hidden text-center py-12" id="no-results">
+    <div class="max-w-md mx-auto">
+      <svg
+        class="mx-auto h-12 w-12 text-gray-400"
+        fill="none"
+        stroke="currentColor"
+        viewBox="0 0 24 24"
+      >
+        <path
+          stroke-linecap="round"
+          stroke-linejoin="round"
+          stroke-width="2"
+          d="M9.172 16.172a4 4 0 015.656 0M9 12h6m-6-4h6m2 5.291A7.962 7.962 0 0112 15c-2.34 0-4.29-.98-5.5-2.5"
+        ></path>
+      </svg>
+      <h3 class="mt-2 text-sm font-medium text-gray-900">No questions found</h3>
+      <p class="mt-1 text-sm text-gray-500">
+        Try adjusting your search terms or browse all questions.
+      </p>
+      <div class="mt-6">
+        <button
+          class="inline-flex items-center px-4 py-2 border border-transparent shadow-sm text-sm font-medium rounded-md text-white bg-purple-600 hover:bg-purple-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-purple-500 show-all-faqs-btn"
+        >
+          Show All Questions
+        </button>
+      </div>
+    </div>
+  </div>
+</div>
+
+<script>
+  // FAQ Accordion functionality
+  function toggleFAQ(faqId: string) {
+    const content = document.getElementById(
+      `faq-content-${faqId}`
+    ) as HTMLElement;
+    const button = document.querySelector(`[data-faq-id="${faqId}"]`) as HTMLElement;
+    const icon = button?.querySelector(".faq-icon") as HTMLElement;
+
+    if (!content || !button || !icon) return;
+
+    const isExpanded = button.getAttribute("aria-expanded") === "true";
+
+    // Close all other FAQs
+    document.querySelectorAll('[id^="faq-content-"]').forEach((el) => {
+      const element = el as HTMLElement;
+      if (element.id !== `faq-content-${faqId}`) {
+        element.classList.add("hidden");
+        const prevButton = element.previousElementSibling as HTMLElement;
+        if (prevButton) {
+          prevButton.setAttribute("aria-expanded", "false");
+          const prevIcon = prevButton.querySelector(".faq-icon") as HTMLElement;
+          if (prevIcon) prevIcon.classList.remove("rotate-180");
+        }
+      }
+    });
+
+    // Toggle current FAQ
+    if (isExpanded) {
+      content.classList.add("hidden");
+      button.setAttribute("aria-expanded", "false");
+      icon.classList.remove("rotate-180");
+    } else {
+      content.classList.remove("hidden");
+      button.setAttribute("aria-expanded", "true");
+      icon.classList.add("rotate-180");
+    }
+  }
+
+  // Initialize FAQ event listeners
+  document.addEventListener('DOMContentLoaded', function() {
+    const faqButtons = document.querySelectorAll('.faq-toggle-btn');
+    faqButtons.forEach(button => {
+      button.addEventListener('click', function() {
+        const faqId = this.getAttribute('data-faq-id');
+        if (faqId) {
+          toggleFAQ(faqId);
+        }
+      });
+    });
+
+    // Show all FAQs button
+    const showAllBtn = document.querySelector('.show-all-faqs-btn');
+    if (showAllBtn) {
+      showAllBtn.addEventListener('click', function() {
+        document.querySelectorAll('.faq-item').forEach(item => {
+          const element = item as HTMLElement;
+          element.style.display = 'block';
+        });
+        const noResults = document.getElementById('no-results');
+        if (noResults) {
+          noResults.classList.add('hidden');
+        }
+      });
+    }
+  });
+
+  // Search functionality
+  const searchInput = document.getElementById("faq-search") as HTMLInputElement;
+  if (searchInput) {
+    searchInput.addEventListener("input", function () {
+      const searchTerm = this.value.toLowerCase();
+      const faqItems = document.querySelectorAll(".faq-item");
+      const noResults = document.getElementById("no-results") as HTMLElement;
+      let visibleCount = 0;
+
+      faqItems.forEach((item) => {
+        const element = item as HTMLElement;
+        const question =
+          element.querySelector("h3")?.textContent?.toLowerCase() || "";
+        const answer =
+          element.querySelector("p")?.textContent?.toLowerCase() || "";
+
+        if (question.includes(searchTerm) || answer.includes(searchTerm)) {
+          element.style.display = "block";
+          visibleCount++;
+        } else {
+          element.style.display = "none";
+        }
+      });
+
+      if (visibleCount === 0 && noResults) {
+        noResults.classList.remove("hidden");
+      } else if (noResults) {
+        noResults.classList.add("hidden");
+      }
+    });
+  }
+
+  // Category filtering
+  const categoryButtons = document.querySelectorAll(".category-filter");
+  categoryButtons.forEach((button) => {
+    button.addEventListener("click", function () {
+      const category = this.getAttribute("data-category");
+
+      // Update active button
+      categoryButtons.forEach((btn) => {
+        const buttonElement = btn as HTMLElement;
+        buttonElement.classList.remove(
+          "active",
+          "bg-purple-100",
+          "text-purple-800"
+        );
+        buttonElement.classList.add("bg-gray-100", "text-gray-700");
+      });
+
+      const currentButton = this as HTMLElement;
+      currentButton.classList.add("active", "bg-purple-100", "text-purple-800");
+      currentButton.classList.remove("bg-gray-100", "text-gray-700");
+
+      // Filter FAQs
+      const faqItems = document.querySelectorAll(".faq-item");
+      const noResults = document.getElementById("no-results") as HTMLElement;
+      let visibleCount = 0;
+
+      faqItems.forEach((item) => {
+        const element = item as HTMLElement;
+        if (
+          category === "all" ||
+          element.getAttribute("data-category") === category
+        ) {
+          element.style.display = "block";
+          visibleCount++;
+        } else {
+          element.style.display = "none";
+        }
+      });
+
+      if (visibleCount === 0 && noResults) {
+        noResults.classList.remove("hidden");
+      } else if (noResults) {
+        noResults.classList.add("hidden");
+      }
+    });
+  });
+
+  // Keyboard navigation
+  document.addEventListener("keydown", function (e) {
+    if (e.key === "Enter" || e.key === " ") {
+      const focusedElement = document.activeElement as HTMLElement;
+      if (focusedElement && focusedElement.classList.contains("faq-toggle-btn")) {
+        e.preventDefault();
+        const faqId = focusedElement.getAttribute("data-faq-id");
+        if (faqId) toggleFAQ(faqId);
+      }
+    }
+  });
+</script>
+
+<style>
+  .faq-icon.rotate-180 {
+    transform: rotate(180deg);
+  }
+
+  .category-filter.active {
+    background-color: rgb(147 51 234 / 0.1);
+    color: rgb(147 51 234);
+  }
+
+  .category-filter.active:hover {
+    background-color: rgb(147 51 234 / 0.2);
+  }
+</style>

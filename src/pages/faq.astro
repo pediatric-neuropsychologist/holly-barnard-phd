@@ -1,0 +1,132 @@
+---
+import BaseLayout from "../layouts/BaseLayout.astro";
+import ContactCTA from "../components/ContactCTA.astro";
+import PageHeader from "../components/PageHeader.astro";
+import ModernFAQ from "../components/ModernFAQ.astro";
+---
+
+<BaseLayout>
+  <main class="max-w-6xl mx-auto px-8 py-16">
+    <PageHeader
+      title="Frequently Asked Questions"
+      subtitle="Find answers to common questions about our pediatric neuropsychological services"
+    />
+
+    <!-- Hero Section -->
+    <div class="text-center mb-12">
+      <p class="text-xl text-gray-600 max-w-3xl mx-auto leading-relaxed">
+        We've compiled the most frequently asked questions to help you
+        understand our services, process, and what to expect when working with
+        Dr. Barnard.
+      </p>
+    </div>
+
+    <!-- Modern FAQ Component -->
+    <ModernFAQ
+      showSearch={true}
+      categories={[
+        "Services",
+        "Appointments",
+        "Evaluation Process",
+        "Payment & Insurance",
+      ]}
+      faqs={[
+        {
+          id: "age-range",
+          question: "Do you only see kids?",
+          answer:
+            "Interestingly, any adults who are looking for assessments related to developmental issues (e.g., Autism Spectrum Disorders, Learning Disorders) would come to see a Pediatric Neuropsychologist to explore those questions. However, the typical patient Dr. Barnard would see ranges in age from 3 to 22 years old.",
+          category: "Services",
+          icon: "M12 4.354a4 4 0 110 5.292M15 21H3v-1a6 6 0 0112 0v1zm0 0h6v-1a6 6 0 00-9-5.197m13.5-9a2.5 2.5 0 11-5 0 2.5 2.5 0 015 0z",
+        },
+        {
+          id: "payment-plans",
+          question: "Do you offer payment plans?",
+          answer:
+            "Full payment is due at the time of service. Dr. Barnard does not bill insurance directly and is not on any insurance panels; however, she is able to provide a superbill which documents services rendered and can be used to obtain out-of-network benefits for psychological/neuropsychological testing from your insurance company. An initial deposit of $200 will be due at the time of the Diagnostic Interview. 50% of the remaining balance will be due on the day of Diagnostic Testing, and the final 50% will be due at the time of the Feedback Session. Additional services (e.g., IEP meeting attendance, consultation, therapy, etc.) will be billed at an hourly rate of $200. Dr. Barnard accepts Zelle, checks, and credit card payments. An additional fee will be assessed for credit card transactions.",
+          category: "Payment & Insurance",
+          icon: "M17 9V7a2 2 0 00-2-2H5a2 2 0 00-2 2v6a2 2 0 002 2h2m2 4h10a2 2 0 002-2v-6a2 2 0 00-2-2H9a2 2 0 00-2 2v6a2 2 0 002 2zm7-5a2 2 0 11-4 0 2 2 0 014 0z",
+        },
+        {
+          id: "referral-required",
+          question: "Do I need a referral to book an appointment?",
+          answer:
+            "Dr. Barnard does not require a referral to book an appointment, however a brief phone or e-mail consultation will be conducted prior to scheduling to determine if the practice is a good fit for your child. If you are planning to submit for out-of-network benefits to your insurance provider, please contact them to determine your coverage and whether a referral is necessary.",
+          category: "Appointments",
+          icon: "M9 12h6m-6 4h6m2 5H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z",
+        },
+        {
+          id: "evaluation-process",
+          question: "What can I expect during the evaluation?",
+          answer:
+            "The total evaluation process, including The Diagnostic Interview, Testing, and Feedback typically lasts between four (4) and eight (8) face-time hours (with additional hours billed behind the scenes for scoring, interpretation, and report writing), depending on the complexity of the presenting concerns. The Diagnostic Interview and Feedback are one hour each, and testing can last up to the length of a full school day (with an included lunch break). Patients and parents should expect to take time off from school/work, and parents are required to remain on site during testing. Testing is a personalized experience during which the patient and their family spend the day at Dr. Barnard's office, and testing is completed, scored, and interpreted by Dr. Barnard herself.",
+          category: "Evaluation Process",
+          icon: "M9 5H7a2 2 0 00-2 2v10a2 2 0 002 2h8a2 2 0 002-2V7a2 2 0 00-2-2h-2M9 5a2 2 0 002 2h2a2 2 0 002-2M9 5a2 2 0 012-2h2a2 2 0 012 2m-6 9l2 2 4-4",
+        },
+        {
+          id: "therapy-services",
+          question: "Do you take therapy patients?",
+          answer:
+            "Dr. Barnard is highly trained in a variety of child- and adolescent-focused therapy modalities; however, her practice is focused primarily on diagnostics and treatment planning. She will consider and possibly take on therapy patients for brief courses therapy on a case-by-case basis. If, following your evaluation, you wish to pursue treatment with Dr. Barnard, please feel free to discuss all of your treatment options at the Feedback Session.",
+          category: "Services",
+          icon: "M4.318 6.318a4.5 4.5 0 000 6.364L12 20.364l7.682-7.682a4.5 4.5 0 00-6.364-6.364L12 7.636l-1.318-1.318a4.5 4.5 0 00-6.364 0z",
+        },
+      ]}
+    />
+
+    <!-- Additional Resources Section -->
+    <div
+      class="mt-16 bg-gradient-to-r from-purple-50 to-indigo-50 rounded-2xl p-8 text-center"
+    >
+      <h3 class="text-2xl font-bold text-gray-900 mb-4">
+        Still have questions?
+      </h3>
+      <p class="text-gray-600 mb-6 max-w-2xl mx-auto">
+        We're here to help! Contact us for personalized answers to your specific
+        situation.
+      </p>
+      <div class="flex flex-col sm:flex-row gap-4 justify-center">
+        <a
+          href="tel:+1234567890"
+          class="inline-flex items-center px-6 py-3 bg-purple-600 text-white font-semibold rounded-lg border border-purple-600 hover:bg-purple-700 transition-all duration-200 shadow-md hover:shadow-lg transform hover:-translate-y-0.5 focus:outline-none focus:ring-2 focus:ring-purple-500 focus:ring-offset-2 !text-white"
+        >
+          <svg
+            class="w-5 h-5 mr-2 flex-shrink-0"
+            fill="none"
+            stroke="currentColor"
+            viewBox="0 0 24 24"
+          >
+            <path
+              stroke-linecap="round"
+              stroke-linejoin="round"
+              stroke-width="2"
+              d="M3 5a2 2 0 012-2h3.28a1 1 0 01.948.684l1.498 4.493a1 1 0 01-.502 1.21l-2.257 1.13a11.042 11.042 0 005.516 5.516l1.13-2.257a1 1 0 011.21-.502l4.493 1.498a1 1 0 01.684.949V19a2 2 0 01-2 2h-1C9.716 21 3 14.284 3 6V5z"
+            ></path>
+          </svg>
+          Call Us
+        </a>
+        <a
+          href="mailto:contact@hollybarnardphd.com"
+          class="inline-flex items-center px-6 py-3 bg-transparent text-purple-700 font-semibold rounded-lg border-2 border-purple-600 hover:bg-purple-50 transition-all duration-200 shadow-md hover:shadow-lg transform hover:-translate-y-0.5 focus:outline-none focus:ring-2 focus:ring-purple-500 focus:ring-offset-2"
+        >
+          <svg
+            class="w-5 h-5 mr-2 flex-shrink-0"
+            fill="none"
+            stroke="currentColor"
+            viewBox="0 0 24 24"
+          >
+            <path
+              stroke-linecap="round"
+              stroke-linejoin="round"
+              stroke-width="2"
+              d="M3 8l7.89 4.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z"
+            ></path>
+          </svg>
+          Email Us
+        </a>
+      </div>
+    </div>
+
+    <ContactCTA />
+  </main>
+</BaseLayout>
