@@ -52,6 +52,74 @@ import StatsCard from "../components/StatsCard.astro";
 
     <PublicationAndPresentations />
 
+    <FeatureList
+      title="Areas of Expertise"
+      items={[
+        "Autism Spectrum Disorder (ASD)",
+        "Attention & Executive Function Disorders",
+        "Traumatic Brain Injury",
+        "Hydrocephalus & Neurological Conditions",
+        "Hearing Loss & Communication",
+        "Specific Learning Disorders",
+      ]}
+    />
+
+    <!-- Publications & Presentations -->
+    <section class="mb-16">
+      <h2 class="text-3xl font-bold text-gray-900 text-center mb-12">
+        Research & Contributions
+      </h2>
+      <p class="text-lg text-gray-700 mb-6">
+        Dr. Barnard's research has been published in leading journals and
+        presented at international conferences, advancing our understanding of
+        neurodevelopmental disorders.
+      </p>
+      <div class="space-y-4">
+        <div
+          class="bg-white p-4 rounded-lg shadow-sm border-l-4 border-[#9d4ba2]"
+        >
+          <h3 class="font-semibold text-gray-900">Selected Publications</h3>
+          <ul class="mt-2 space-y-1 text-gray-700">
+            <li>
+              • Social Motor Synchronization and Autism (<em>Autism Research</em
+              >, 2017)
+            </li>
+            <li>
+              • Structural Connectivity in Pediatric Hydrocephalus (<em
+                >NeuroImage: Clinical</em
+              >, 2016)
+            </li>
+            <li>
+              • White Matter Changes Post-Occupational Therapy (<em
+                >Neuropediatrics</em
+              >, 2016)
+            </li>
+            <li>
+              • Gene-Environment Interactions in ADHD (<em
+                >Development and Psychopathology</em
+              >, 2009)
+            </li>
+          </ul>
+        </div>
+        <div
+          class="bg-white p-4 rounded-lg shadow-sm border-l-4 border-[#9d4ba2]"
+        >
+          <h3 class="font-semibold text-gray-900">Conference Presentations</h3>
+          <ul class="mt-2 space-y-1 text-gray-700">
+            <li>• IMFAR (International Meeting for Autism Research)</li>
+            <li>• American Society for Neuroradiology</li>
+            <li>• American Academy of Clinical Neuropsychology</li>
+          </ul>
+        </div>
+      </div>
+      <p class="mt-4 text-sm text-gray-600">
+        For a complete list, <a
+          class="text-[#9d4ba2] hover:underline"
+          href="mailto:contact@hollybarnardphd.com">request Dr. Barnard's CV</a
+        >.
+      </p>
+    </section>
+
     <ContactCTA />
   </main>
 </BaseLayout>
