@@ -1,11 +1,11 @@
 ---
 import BaseLayout from "../layouts/BaseLayout.astro";
-import ContactCTA from "../components/ContactCTA.astro";
-import PageHeader from "../components/PageHeader.astro";
-import ProcessTimeline from "../components/ProcessTimeline.astro";
-import PreparationGuide from "../components/PreparationGuide.astro";
-import EvaluationFAQ from "../components/EvaluationFAQ.astro";
 import EvaluationBenefits from "../components/EvaluationBenefits.astro";
+import EvaluationFAQ from "../components/EvaluationFAQ.astro";
+import HeroSection from "../components/HeroSection.astro";
+import PageHeader from "../components/PageHeader.astro";
+import PreparationGuide from "../components/PreparationGuide.astro";
+import ProcessTimeline from "../components/ProcessTimeline.astro";
 ---
 
 <BaseLayout>
@@ -13,6 +13,11 @@ import EvaluationBenefits from "../components/EvaluationBenefits.astro";
     <PageHeader
       title="Your Neuropsychological Evaluation Journey"
       subtitle="A comprehensive, personalized assessment designed to unlock your child's full potential"
+    />
+
+    <HeroSection
+      image="/img/diagnostic-testing.png"
+      imageAlt="Woman holding two cardboard cutouts representing differences in a person."
     />
 
     <div class="text-center mb-12">
