@@ -1,15 +1,21 @@
 ---
 import BaseLayout from "../layouts/BaseLayout.astro";
 import ContactCTA from "../components/ContactCTA.astro";
-import PageHeader from "../components/PageHeader.astro";
+import HeroSection from "../components/HeroSection.astro";
 import ModernFAQ from "../components/ModernFAQ.astro";
+import PageHeader from "../components/PageHeader.astro";
 ---
 
 <BaseLayout>
-  <main class="max-w-6xl mx-auto px-8 py-16">
+  <main class="max-w-4xl mx-auto px-8 py-16">
     <PageHeader
       title="Frequently Asked Questions"
       subtitle="Find answers to common questions about our pediatric neuropsychological services"
+    />
+
+    <HeroSection
+      image="/img/FAQ.png"
+      imageAlt="Woman holding two cardboard cutouts representing differences in a person."
     />
 
     <!-- Hero Section -->
