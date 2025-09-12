@@ -15,6 +15,18 @@ export interface Props {
 const { steps } = Astro.props;
 ---
 
+<style>
+  .timeline-step {
+    transition:
+      opacity 0.8s ease-out,
+      transform 0.8s ease-out;
+  }
+  .timeline-step.animate-in {
+    opacity: 1 !important;
+    transform: translateX(0) !important;
+  }
+</style>
+
 <section class="mb-16">
   <h2 class="text-3xl font-bold text-gray-900 text-center mb-12">
     Your Evaluation Journey
@@ -31,7 +43,8 @@ const { steps } = Astro.props;
       {
         steps.map((step, index) => (
           <div
-            class={`relative flex items-center ${index % 2 === 0 ? "md:flex-row" : "md:flex-row-reverse"}`}
+            class={`timeline-step relative flex items-center ${index % 2 === 0 ? "md:flex-row step-left" : "md:flex-row-reverse step-right"}`}
+            style={`opacity: 0; transform: translateX(${index % 2 === 0 ? "-100px" : "100px"});`}
           >
             {/* Timeline dot */}
             <div class="hidden md:flex absolute left-1/2 transform -translate-x-1/2 w-6 h-6 bg-gradient-to-br from-purple-500 to-purple-600 rounded-full border-4 border-white shadow-lg z-10 flex items-center justify-center">
@@ -77,3 +90,41 @@ const { steps } = Astro.props;
     </div>
   </div>
 </section>
+
+<script>
+  document.addEventListener("DOMContentLoaded", () => {
+    const steps = document.querySelectorAll(".timeline-step");
+
+    const animateStep = (element) => {
+      element.classList.add("animate-in");
+    };
+
+    const observer = new IntersectionObserver(
+      (entries) => {
+        entries.forEach((entry) => {
+          if (entry.isIntersecting) {
+            animateStep(entry.target);
+            observer.unobserve(entry.target);
+          }
+        });
+      },
+      {
+        threshold: 0.1,
+      }
+    );
+
+    steps.forEach((step) => {
+      // Check if step is already in view
+      const rect = step.getBoundingClientRect();
+      const isInView = rect.top < window.innerHeight && rect.bottom > 0;
+
+      if (isInView) {
+        // Animate immediately if already in view
+        setTimeout(() => animateStep(step), 100); // Small delay to ensure DOM is ready
+      } else {
+        // Otherwise, observe for intersection
+        observer.observe(step);
+      }
+    });
+  });
+</script>
