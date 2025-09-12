@@ -1,10 +1,15 @@
 ---
 import BaseLayout from "../layouts/BaseLayout.astro";
 import ContactCTA from "../components/ContactCTA.astro";
-import PageHeader from "../components/PageHeader.astro";
-import StatsCard from "../components/StatsCard.astro";
 import FeatureList from "../components/FeatureList.astro";
 import HeroSection from "../components/HeroSection.astro";
+import PageHeader from "../components/PageHeader.astro";
+import StatsCard from "../components/StatsCard.astro";
+
+import Accomplishments from "../components/Accomplishments.astro";
+import EducationAndTraining from "../components/EducationAndTraining.astro";
+import MyJourneyQuote from "../components/MyJourneyQuote.astro";
+import PublicationAndPresentations from "../components/PublicationAndPresentations.astro";
 ---
 
 <BaseLayout>
@@ -21,45 +26,6 @@ import HeroSection from "../components/HeroSection.astro";
       imageAlt="Profile of Holly Barnard Ph.D., ABPP-CN"
     />
 
-    <section class="mb-16">
-      <div
-        class="bg-gradient-to-br from-blue-50 to-indigo-100 rounded-2xl p-8 shadow-lg"
-      >
-        <div class="text-center">
-          <h2 class="text-3xl font-bold text-indigo-900 mb-6">
-            My Journey to Neuropsychology
-          </h2>
-          <figure class="relative">
-            <div
-              class="absolute -top-4 -left-4 text-6xl text-indigo-200 opacity-50"
-            >
-              "
-            </div>
-            <blockquote
-              class="blockquote text-xl text-gray-800 max-w-4xl mx-auto italic leading-relaxed"
-            >
-              <p class="mb-4">
-                I became a neuropsychologist because, like many others, I had a
-                loved one who suffered a brain injury due to medical
-                complications and later experienced developmental delays.
-              </p>
-              <p>
-                After watching my family members struggle to find a single
-                person who could bring all the information together and help our
-                family find a path forward, I decided to dedicate myself to
-                becoming that person.
-              </p>
-            </blockquote>
-            <div
-              class="absolute -bottom-4 -right-4 text-6xl text-indigo-200 opacity-50"
-            >
-              "
-            </div>
-          </figure>
-        </div>
-      </div>
-    </section>
-
     <!-- Key Stats -->
     <div class="grid grid-cols-1 sm:grid-cols-3 gap-4 mb-12">
       <StatsCard number="15+" label="Years of Experience" />
@@ -67,113 +33,7 @@ import HeroSection from "../components/HeroSection.astro";
       <StatsCard number="1000+" label="Evaluations Conducted" />
     </div>
 
-    <!-- Education & Training -->
-    <section class="mb-16">
-      <h2 class="text-3xl font-bold text-gray-900 text-center mb-12">
-        Education & Training
-      </h2>
-      <div class="space-y-6">
-        <div class="flex items-start gap-4">
-          <div
-            class="w-12 h-12 bg-[#9d4ba2] rounded-full flex items-center justify-center text-white font-bold"
-          >
-            1
-          </div>
-          <div>
-            <h3 class="text-xl font-semibold text-gray-900">
-              Bachelor's in Neuroscience
-            </h3>
-            <p class="text-gray-600">Amherst College, Amherst, MA</p>
-          </div>
-        </div>
-        <div class="flex items-start gap-4">
-          <div
-            class="w-12 h-12 bg-[#9d4ba2] rounded-full flex items-center justify-center text-white font-bold"
-          >
-            2
-          </div>
-          <div>
-            <h3 class="text-xl font-semibold text-gray-900">
-              Ph.D. in Clinical Psychology
-            </h3>
-            <p class="text-gray-600">
-              University of Denver, CO • NIMH Research Fellowship
-            </p>
-          </div>
-        </div>
-        <div class="flex items-start gap-4">
-          <div
-            class="w-12 h-12 bg-[#9d4ba2] rounded-full flex items-center justify-center text-white font-bold"
-          >
-            3
-          </div>
-          <div>
-            <h3 class="text-xl font-semibold text-gray-900">
-              Internship & Postdoctoral Fellowship
-            </h3>
-            <p class="text-gray-600">
-              University of Illinois Medical Center, Chicago, IL •
-              APPCN-Compliant Training
-            </p>
-          </div>
-        </div>
-      </div>
-    </section>
-
-    <!-- Accomplishments -->
-    <section class="mb-16">
-      <h2 class="text-3xl font-bold text-gray-900 text-center mb-12">
-        Professional Accomplishments
-      </h2>
-      <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
-        <div
-          class="bg-white p-6 rounded-lg shadow-md border-l-4 border-[#9d4ba2]"
-        >
-          <h3 class="text-xl font-semibold text-gray-900 mb-3">
-            Founded Developmental Neuropsychology Clinic
-          </h3>
-          <p class="text-gray-700">
-            As Director at Cincinnati Children's Hospital Medical Center, led a
-            doctoral-level training program evaluating hundreds of patients with
-            brain-based conditions.
-          </p>
-        </div>
-        <div
-          class="bg-white p-6 rounded-lg shadow-md border-l-4 border-[#9d4ba2]"
-        >
-          <h3 class="text-xl font-semibold text-gray-900 mb-3">
-            Research Leadership
-          </h3>
-          <p class="text-gray-700">
-            Contributed to groundbreaking studies on ASD, hydrocephalus, and
-            neurocognitive outcomes, published in top journals like Autism
-            Research and NeuroImage.
-          </p>
-        </div>
-        <div
-          class="bg-white p-6 rounded-lg shadow-md border-l-4 border-[#9d4ba2]"
-        >
-          <h3 class="text-xl font-semibold text-gray-900 mb-3">
-            Board Certification
-          </h3>
-          <p class="text-gray-700">
-            American Board of Professional Psychology - Clinical Neuropsychology
-            (ABPP-CN) Diplomate.
-          </p>
-        </div>
-        <div
-          class="bg-white p-6 rounded-lg shadow-md border-l-4 border-[#9d4ba2]"
-        >
-          <h3 class="text-xl font-semibold text-gray-900 mb-3">
-            Independent Practice
-          </h3>
-          <p class="text-gray-700">
-            Established private practice in 2014, returning to Texas in 2016 to
-            serve the local community.
-          </p>
-        </div>
-      </div>
-    </section>
+    <MyJourneyQuote />
 
     <FeatureList
       title="Areas of Expertise"
@@ -187,61 +47,11 @@ import HeroSection from "../components/HeroSection.astro";
       ]}
     />
 
-    <!-- Publications & Presentations -->
-    <section class="mb-16">
-      <h2 class="text-3xl font-bold text-gray-900 text-center mb-12">
-        Research & Contributions
-      </h2>
-      <p class="text-lg text-gray-700 mb-6">
-        Dr. Barnard's research has been published in leading journals and
-        presented at international conferences, advancing our understanding of
-        neurodevelopmental disorders.
-      </p>
-      <div class="space-y-4">
-        <div
-          class="bg-white p-4 rounded-lg shadow-sm border-l-4 border-[#9d4ba2]"
-        >
-          <h3 class="font-semibold text-gray-900">Selected Publications</h3>
-          <ul class="mt-2 space-y-1 text-gray-700">
-            <li>
-              • Social Motor Synchronization and Autism (<em>Autism Research</em
-              >, 2017)
-            </li>
-            <li>
-              • Structural Connectivity in Pediatric Hydrocephalus (<em
-                >NeuroImage: Clinical</em
-              >, 2016)
-            </li>
-            <li>
-              • White Matter Changes Post-Occupational Therapy (<em
-                >Neuropediatrics</em
-              >, 2016)
-            </li>
-            <li>
-              • Gene-Environment Interactions in ADHD (<em
-                >Development and Psychopathology</em
-              >, 2009)
-            </li>
-          </ul>
-        </div>
-        <div
-          class="bg-white p-4 rounded-lg shadow-sm border-l-4 border-[#9d4ba2]"
-        >
-          <h3 class="font-semibold text-gray-900">Conference Presentations</h3>
-          <ul class="mt-2 space-y-1 text-gray-700">
-            <li>• IMFAR (International Meeting for Autism Research)</li>
-            <li>• American Society for Neuroradiology</li>
-            <li>• American Academy of Clinical Neuropsychology</li>
-          </ul>
-        </div>
-      </div>
-      <p class="mt-4 text-sm text-gray-600">
-        For a complete list, <a
-          class="text-[#9d4ba2] hover:underline"
-          href="mailto:contact@hollybarnardphd.com">request Dr. Barnard's CV</a
-        >.
-      </p>
-    </section>
+    <EducationAndTraining />
+
+    <Accomplishments />
+
+    <PublicationAndPresentations />
 
     <ContactCTA />
   </main>
