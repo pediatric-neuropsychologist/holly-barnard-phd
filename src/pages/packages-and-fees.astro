@@ -2,9 +2,64 @@
 import BaseLayout from "../layouts/BaseLayout.astro";
 import ContactCTA from "../components/ContactCTA.astro";
 import PageHeader from "../components/PageHeader.astro";
+
+const breadcrumbJsonLd = {
+  "@context": "https://schema.org",
+  "@type": "BreadcrumbList",
+  "itemListElement": [
+    {
+      "@type": "ListItem",
+      "position": 1,
+      "name": "Home",
+      "item": "https://hollybarnardphd.com"
+    },
+    {
+      "@type": "ListItem",
+      "position": 2,
+      "name": "Packages and Fees",
+      "item": "https://hollybarnardphd.com/packages-and-fees"
+    }
+  ]
+};
 ---
 
-<BaseLayout>
+<BaseLayout
+  pageTitle="Neuropsychology Services & Pricing — Evaluations, Consultations, Forensic | Holly Barnard"
+  pageDescription="Pricing and service packages for pediatric neuropsychological evaluations, consultations, and forensic assessments. Clear pricing and flexible payment options; superbills available."
+  canonical="https://hollybarnardphd.com/packages-and-fees"
+>
+  <script type="application/ld+json" slot="head">{JSON.stringify(breadcrumbJsonLd)}</script>
+  <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "Service",
+      "name": "Comprehensive Neuropsychological Evaluations",
+      "description": "Full neuropsychological assessments for children and young adults including cognitive, academic, social-emotional, and neurological testing.",
+      "serviceType": "Neuropsychological Evaluation",
+      "provider": {
+        "@type": "MedicalBusiness",
+        "name": "Holly Barnard Ph.D., ABPP-CN"
+      },
+      "areaServed": {
+        "@type": "Place",
+        "address": {
+          "@type": "PostalAddress",
+          "addressLocality": "Allen",
+          "addressRegion": "TX"
+        }
+      },
+      "offers": {
+        "@type": "Offer",
+        "priceCurrency": "USD",
+        "priceSpecification": {
+          "@type": "PriceSpecification",
+          "priceCurrency": "USD",
+          "price": "200"
+        },
+        "price": "200"
+      }
+    }
+  </script>
   <main class="max-w-4xl mx-auto px-8 py-16">
     <PageHeader
       title="Services, Packages & Pricing"
@@ -97,8 +152,8 @@ import PageHeader from "../components/PageHeader.astro";
                 </div>
               </div>
               <a
-                href="mailto:contact@hollybarnardphd.com"
-                class="inline-flex items-center px-6 py-3 bg-indigo-600 text-white font-semibold rounded-lg hover:bg-indigo-700 transition-colors !text-white"
+                href="/contact"
+                class="inline-flex items-center px-6 py-3 bg-indigo-600 text-white font-semibold rounded-lg hover:bg-indigo-700 transition-colors"
               >
                 Schedule Consultation
                 <svg
@@ -172,8 +227,8 @@ import PageHeader from "../components/PageHeader.astro";
               </p>
             </div>
             <a
-              href="mailto:contact@hollybarnardphd.com"
-              class="inline-flex items-center px-6 py-3 bg-emerald-600 text-white font-semibold rounded-lg hover:bg-emerald-700 transition-colors !text-white"
+              href="/contact"
+              class="inline-flex items-center px-6 py-3 bg-emerald-600 text-white font-semibold rounded-lg hover:bg-emerald-700 transition-colors"
             >
               Start Evaluation
             </a>
@@ -225,8 +280,8 @@ import PageHeader from "../components/PageHeader.astro";
               </p>
             </div>
             <a
-              href="mailto:contact@hollybarnardphd.com"
-              class="inline-flex items-center px-6 py-3 bg-violet-600 text-white font-semibold rounded-lg hover:bg-violet-700 transition-colors !text-white"
+              href="/contact"
+              class="inline-flex items-center px-6 py-3 bg-violet-600 text-white font-semibold rounded-lg hover:bg-violet-700 transition-colors"
             >
               Contact for Details
             </a>
@@ -329,8 +384,8 @@ import PageHeader from "../components/PageHeader.astro";
               </li>
             </ul>
             <a
-              href="mailto:contact@hollybarnardphd.com"
-              class="block text-center px-6 py-3 bg-amber-600 text-white font-semibold rounded-lg hover:bg-amber-700 transition-colors !text-white"
+              href="/contact"
+              class="block text-center px-6 py-3 bg-amber-600 text-white font-semibold rounded-lg hover:bg-amber-700 transition-colors"
             >
               Book Evaluation
             </a>
@@ -419,8 +474,8 @@ import PageHeader from "../components/PageHeader.astro";
               </li>
             </ul>
             <a
-              href="mailto:contact@hollybarnardphd.com"
-              class="block text-center px-6 py-3 bg-rose-600 text-white font-semibold rounded-lg hover:bg-rose-700 transition-colors !text-white"
+              href="/contact"
+              class="block text-center px-6 py-3 bg-rose-600 text-white font-semibold rounded-lg hover:bg-rose-700 transition-colors"
             >
               Book Evaluation
             </a>
@@ -511,8 +566,8 @@ import PageHeader from "../components/PageHeader.astro";
               </li>
             </ul>
             <a
-              href="mailto:contact@hollybarnardphd.com"
-              class="block text-center px-6 py-3 bg-cyan-600 text-white font-semibold rounded-lg hover:bg-cyan-700 transition-colors !text-white"
+              href="/contact"
+              class="block text-center px-6 py-3 bg-cyan-600 text-white font-semibold rounded-lg hover:bg-cyan-700 transition-colors"
             >
               Book Evaluation
             </a>

@@ -56,7 +56,10 @@ const hasText =
           class={`rounded-2xl w-full max-w-md hover:scale-105 transition-transform duration-300 ${
             !hasText ? "mx-auto" : ""
           }`}
-          alt={imageAlt}
+          alt={
+            imageAlt ??
+            "Holly Barnard, board-certified pediatric neuropsychologist"
+          }
           src={image}
         />
       </div>

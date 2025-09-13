@@ -6,9 +6,35 @@ import HeroSection from "../components/HeroSection.astro";
 import PageHeader from "../components/PageHeader.astro";
 import PreparationGuide from "../components/PreparationGuide.astro";
 import ProcessTimeline from "../components/ProcessTimeline.astro";
+
+const breadcrumbJsonLd = {
+  "@context": "https://schema.org",
+  "@type": "BreadcrumbList",
+  "itemListElement": [
+    {
+      "@type": "ListItem",
+      "position": 1,
+      "name": "Home",
+      "item": "https://hollybarnardphd.com",
+    },
+    {
+      "@type": "ListItem",
+      "position": 2,
+      "name": "The Evaluation",
+      "item": "https://hollybarnardphd.com/the-evaluation",
+    },
+  ],
+};
 ---
 
-<BaseLayout>
+<BaseLayout
+  pageTitle="Neuropsychological Evaluation Process — Pediatric Testing & Feedback"
+  pageDescription="Learn what to expect during a pediatric neuropsychological evaluation: initial consultation, comprehensive testing, and feedback sessions. Typical testing 4-8 hours. Serving families in Allen, TX."
+  canonical="https://hollybarnardphd.com/the-evaluation"
+>
+  <script type="application/ld+json" slot="head">
+    {JSON.stringify(breadcrumbJsonLd)}
+  </script>
   <main class="max-w-4xl mx-auto px-8 py-16">
     <PageHeader
       title="Your Neuropsychological Evaluation Journey"
@@ -17,7 +43,7 @@ import ProcessTimeline from "../components/ProcessTimeline.astro";
 
     <HeroSection
       image="/img/diagnostic-testing.png"
-      imageAlt="Woman holding two cardboard cutouts representing differences in a person."
+      imageAlt="Diagnostic testing illustration representing pediatric neuropsychological evaluation"
     />
 
     <div class="text-center mb-12">

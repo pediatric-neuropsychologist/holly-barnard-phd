@@ -1,5 +1,44 @@
 ---
 import "../styles/global.css";
+
+const {
+  pageTitle = "Holly Barnard Ph.D., ABPP-CN",
+  pageDescription = "Pediatric & Developmental Neuropsychologist in Allen, TX. Board-certified, ABPP-CN. Comprehensive neuropsychological testing and recommendations for children and young adults.",
+  canonical = "",
+} = Astro.props;
+const siteUrl = "https://hollybarnardphd.com";
+const jsonLd = {
+  "@context": "https://schema.org",
+  "@graph": [
+    {
+      "@type": "MedicalBusiness",
+      "@id": "#medicalpractice",
+      "name": "Holly Barnard Ph.D., ABPP-CN",
+      "url": siteUrl,
+      "logo": `${siteUrl}/img/holly-barnard-phd-pediatric-developmental-psychologist-pllc.svg`,
+      "telephone": "(214) 271-8018",
+      "email": "contact@hollybarnardphd.com",
+      "address": {
+        "@type": "PostalAddress",
+        "streetAddress": "1506 N. Greenville Ave., Suite 210",
+        "addressLocality": "Allen",
+        "addressRegion": "TX",
+        "postalCode": "75002",
+        "addressCountry": "US"
+      },
+      "priceRange": "$$$",
+      "areaServed": ["Allen, TX","Plano, TX","Richardson, TX","Dallas, TX"]
+    },
+    {
+      "@type": "Person",
+      "@id": "#hollybarnard",
+      "name": "Holly Barnard, Ph.D., ABPP-CN",
+      "jobTitle": "Pediatric Neuropsychologist",
+      "worksFor": { "@id": "#medicalpractice" },
+      "sameAs": ["https://www.linkedin.com/in/hollybarnard/"]
+    }
+  ]
+};
 ---
 
 <!doctype html>
@@ -8,10 +47,21 @@ import "../styles/global.css";
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <slot name="head">
-      <title>Holly Barnard Ph.D., ABPP-CN</title>
+      <title>{pageTitle}</title>
+      <meta name="description" content={pageDescription} />
+      <!-- Open Graph defaults -->
+      <meta property="og:title" content={pageTitle} />
+      <meta property="og:description" content={pageDescription} />
+      <meta property="og:type" content="website" />
+      <meta property="og:url" content={siteUrl} />
+      <meta property="og:image" content="/img/about-me-seo.png" />
+      <meta name="twitter:card" content="summary_large_image" />
+      {canonical && <link rel="canonical" href={canonical} />}
     </slot>
+    <!-- JSON-LD: Organization/MedicalPractice + Person -->
+    <script type="application/ld+json">{JSON.stringify(jsonLd)}</script>
   </head>
-  <body class="body-font bg-white">
+  <body class="body-font bg-white min-h-screen flex flex-col">
     <header class="bg-gradient-to-r from-white to-gray-50 shadow-sm border-b">
       <nav
         class="max-w-5xl mx-auto px-4 py-4 flex items-center justify-between"
@@ -19,7 +69,7 @@ import "../styles/global.css";
         <a class="flex items-center gap-3" href="/">
           <img
             src="/img/holly-barnard-phd-pediatric-developmental-psychologist-pllc.svg"
-            alt="Logo"
+            alt="Holly Barnard Ph.D., ABPP-CN Pediatric Neuropsychologist Logo"
             width="60"
             height="56"
             class="flex-shrink-0"
@@ -89,6 +139,17 @@ import "../styles/global.css";
                   clip-rule="evenodd"></path></svg
               >
               FAQ
+            </a>
+          </li>
+          <li>
+            <a
+              href="/blog"
+              class="text-sm text-[#9d4ba2] hover:text-[#7a3a7a] focus:outline-none focus:ring-2 focus:ring-[#f3d9f3] rounded px-2 py-1 transition-all duration-150 flex items-center gap-1"
+            >
+              <svg class="w-4 h-4" fill="currentColor" viewBox="0 0 20 20"
+                ><path d="M4 3h12v2H4zM3 7h14v2H3zM4 11h12v2H4z"></path></svg
+              >
+              Blog
             </a>
           </li>
           <li>
@@ -191,6 +252,13 @@ import "../styles/global.css";
           </li>
           <li>
             <a
+              href="/blog"
+              class="block text-base text-[#9d4ba7] hover:text-[#7a3a7a] py-2 flex items-center gap-2"
+              >Blog</a
+            >
+          </li>
+          <li>
+            <a
               href="mailto:contact@hollybarnardphd.com"
               class="block text-base text-[#9d4ba2] font-medium hover:text-[#7a3a7a] py-2 flex items-center gap-2"
             >
@@ -216,133 +284,142 @@ import "../styles/global.css";
         }
       }
     </script>
-  </body>
-</html>
 
-<slot />
+    <main class="flex-grow">
+      <slot />
+    </main>
 
-<footer class="bg-gray-900 text-white py-12">
-  <div class="max-w-6xl mx-auto px-8">
-    <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
-      <!-- Contact Information -->
-      <div>
-        <h3 class="text-xl font-semibold mb-4 text-indigo-300">Contact Us</h3>
-        <div class="space-y-2">
-          <p class="flex items-center gap-2">
-            <svg
-              class="w-5 h-5 text-indigo-400"
-              fill="none"
-              stroke="currentColor"
-              viewBox="0 0 24 24"
-            >
-              <path
-                stroke-linecap="round"
-                stroke-linejoin="round"
-                stroke-width="2"
-                d="M3 8l7.89 4.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z"
-              ></path>
-            </svg>
-            <a
-              href="mailto:contact@hollybarnardphd.com"
-              class="hover:text-indigo-300 transition-colors"
-              >contact@hollybarnardphd.com</a
-            >
-          </p>
-          <p class="flex items-center gap-2">
-            <svg
-              class="w-5 h-5 text-indigo-400"
-              fill="none"
-              stroke="currentColor"
-              viewBox="0 0 24 24"
-            >
-              <path
-                stroke-linecap="round"
-                stroke-linejoin="round"
-                stroke-width="2"
-                d="M3 5a2 2 0 012-2h3.28a1 1 0 01.948.684l1.498 4.493a1 1 0 01-.502 1.21l-2.257 1.13a11.042 11.042 0 005.516 5.516l1.13-2.257a1 1 0 011.21-.502l4.493 1.498a1 1 0 01.684.949V19a2 2 0 01-2 2h-1C9.716 21 3 14.284 3 6V5z"
-              ></path>
-            </svg>
-            <a
-              href="tel:12142718018"
-              class="hover:text-indigo-300 transition-colors">(214) 271-8018</a
-            >
-          </p>
-        </div>
-      </div>
-
-      <!-- Address -->
-      <div>
-        <h3 class="text-xl font-semibold mb-4 text-indigo-300">Location</h3>
-        <div class="flex items-start gap-2">
-          <svg
-            class="w-5 h-5 text-indigo-400 mt-1"
-            fill="none"
-            stroke="currentColor"
-            viewBox="0 0 24 24"
-          >
-            <path
-              stroke-linecap="round"
-              stroke-linejoin="round"
-              stroke-width="2"
-              d="M17.657 16.657L13.414 20.9a1.998 1.998 0 01-2.827 0l-4.244-4.243a8 8 0 1111.314 0z"
-            ></path>
-            <path
-              stroke-linecap="round"
-              stroke-linejoin="round"
-              stroke-width="2"
-              d="M15 11a3 3 0 11-6 0 3 3 0 016 0z"></path>
-          </svg>
+    <footer class="bg-gray-900 text-white py-12">
+      <div class="max-w-6xl mx-auto px-8">
+        <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+          <!-- Contact Information -->
           <div>
-            <p>1506 N. Greenville Ave.</p>
-            <p>Suite 210</p>
-            <p>Allen, TX 75002</p>
+            <h3 class="text-xl font-semibold mb-4 text-indigo-300">Contact Us</h3>
+            <div class="space-y-2">
+              <p class="flex items-center gap-2">
+                <svg
+                  class="w-5 h-5 text-indigo-400"
+                  fill="none"
+                  stroke="currentColor"
+                  viewBox="0 0 24 24"
+                >
+                  <path
+                    stroke-linecap="round"
+                    stroke-linejoin="round"
+                    stroke-width="2"
+                    d="M3 8l7.89 4.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z"
+                  ></path>
+                </svg>
+                <a
+                  href="mailto:contact@hollybarnardphd.com"
+                  class="hover:text-indigo-300 transition-colors"
+                  >contact@hollybarnardphd.com</a
+                >
+              </p>
+              <p class="flex items-center gap-2">
+                <svg
+                  class="w-5 h-5 text-indigo-400"
+                  fill="none"
+                  stroke="currentColor"
+                  viewBox="0 0 24 24"
+                >
+                  <path
+                    stroke-linecap="round"
+                    stroke-linejoin="round"
+                    stroke-width="2"
+                    d="M3 5a2 2 0 012-2h3.28a1 1 0 01.948.684l1.498 4.493a1 1 0 01-.502 1.21l-2.257 1.13a11.042 11.042 0 005.516 5.516l1.13-2.257a1 1 0 011.21-.502l4.493 1.498a1 1 0 01.684.949V19a2 2 0 01-2 2h-1C9.716 21 3 14.284 3 6V5z"
+                  ></path>
+                </svg>
+                <a
+                  href="tel:12142718018"
+                  class="hover:text-indigo-300 transition-colors">(214) 271-8018</a
+                >
+              </p>
+            </div>
+          </div>
+
+          <!-- Address -->
+          <div>
+            <h3 class="text-xl font-semibold mb-4 text-indigo-300">Location</h3>
+            <div class="flex items-start gap-2">
+              <svg
+                class="w-5 h-5 text-indigo-400 mt-1"
+                fill="none"
+                stroke="currentColor"
+                viewBox="0 0 24 24"
+              >
+                <path
+                  stroke-linecap="round"
+                  stroke-linejoin="round"
+                  stroke-width="2"
+                  d="M17.657 16.657L13.414 20.9a1.998 1.998 0 01-2.827 0l-4.244-4.243a8 8 0 1111.314 0z"
+                ></path>
+                <path
+                  stroke-linecap="round"
+                  stroke-linejoin="round"
+                  stroke-width="2"
+                  d="M15 11a3 3 0 11-6 0 3 3 0 016 0z"></path>
+              </svg>
+              <div>
+                <p>1506 N. Greenville Ave.</p>
+                <p>Suite 210</p>
+                <p>Allen, TX 75002</p>
+              </div>
+            </div>
+          </div>
+
+          <!-- Quick Links -->
+          <div>
+            <h3 class="text-xl font-semibold mb-4 text-indigo-300">Quick Links</h3>
+            <ul class="space-y-2">
+              <li>
+                <a href="/about-me" class="hover:text-indigo-300 transition-colors"
+                  >About Dr. Barnard</a
+                >
+              </li>
+              <li>
+                <a
+                  href="/locations/allen"
+                  class="hover:text-indigo-300 transition-colors"
+                  >Allen, TX — Locations</a
+                >
+              </li>
+              <li>
+                <a
+                  href="/packages-and-fees"
+                  class="hover:text-indigo-300 transition-colors">Services & Fees</a
+                >
+              </li>
+              <li>
+                <a
+                  href="/the-evaluation"
+                  class="hover:text-indigo-300 transition-colors"
+                  >The Evaluation Process</a
+                >
+              </li>
+              <li>
+                <a href="/faq" class="hover:text-indigo-300 transition-colors"
+                  >FAQ</a
+                >
+              </li>
+            </ul>
+          </div>
+        </div>
+
+        <!-- Bottom Section -->
+        <div class="border-t border-gray-700 mt-8 pt-8 text-center">
+          <div class="flex flex-col md:flex-row justify-between items-center gap-4">
+            <div class="text-sm text-gray-400">
+              <p>&copy; 2025 Holly Barnard Ph.D., ABPP-CN. All rights reserved.</p>
+              <p class="mt-1">Pediatric & Developmental Neuropsychologist</p>
+            </div>
+            <div class="text-sm text-gray-400">
+              <p>Texas Licensed Psychologist</p>
+              <p>Board Certified in Clinical Neuropsychology</p>
+            </div>
           </div>
         </div>
       </div>
-
-      <!-- Quick Links -->
-      <div>
-        <h3 class="text-xl font-semibold mb-4 text-indigo-300">Quick Links</h3>
-        <ul class="space-y-2">
-          <li>
-            <a href="/about-me" class="hover:text-indigo-300 transition-colors"
-              >About Dr. Barnard</a
-            >
-          </li>
-          <li>
-            <a
-              href="/packages-and-fees"
-              class="hover:text-indigo-300 transition-colors">Services & Fees</a
-            >
-          </li>
-          <li>
-            <a
-              href="/the-evaluation"
-              class="hover:text-indigo-300 transition-colors"
-              >The Evaluation Process</a
-            >
-          </li>
-          <li>
-            <a href="/faq" class="hover:text-indigo-300 transition-colors"
-              >FAQ</a
-            >
-          </li>
-        </ul>
-      </div>
-    </div>
-
-    <!-- Bottom Section -->
-    <div class="border-t border-gray-700 mt-8 pt-8 text-center">
-      <div class="flex flex-col md:flex-row justify-between items-center gap-4">
-        <div class="text-sm text-gray-400">
-          <p>&copy; 2025 Holly Barnard Ph.D., ABPP-CN. All rights reserved.</p>
-          <p class="mt-1">Pediatric & Developmental Neuropsychologist</p>
-        </div>
-        <div class="text-sm text-gray-400">
-          <p>Texas Licensed Psychologist</p>
-          <p>Board Certified in Clinical Neuropsychology</p>
-        </div>
-      </div>
-    </div>
-  </div>
-</footer>
+    </footer>
+  </body>
+</html>

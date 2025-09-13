@@ -1,0 +1,106 @@
+---
+import BaseLayout from "../../layouts/BaseLayout.astro";
+
+const serviceJsonLd = {
+  "@context": "https://schema.org",
+  "@type": "Service",
+  "name": "Autism Spectrum Disorder (ASD) Assessment",
+  "description": "Comprehensive ASD evaluations for children and adolescents, including diagnostic clarification, standardized testing, and tailored recommendations for interventions and school supports.",
+  "provider": {
+    "@type": "MedicalBusiness",
+    "name": "Holly Barnard Ph.D., ABPP-CN",
+    "url": "https://hollybarnardphd.com"
+  },
+  "areaServed": ["Allen, TX", "Plano, TX", "Richardson, TX", "Dallas, TX"],
+  "serviceType": "Neuropsychological Evaluation"
+};
+---
+
+<BaseLayout
+  pageTitle="ASD Assessment — Services | Holly Barnard, Ph.D."
+  pageDescription="Autism Spectrum Disorder (ASD) assessments for children and adolescents, including diagnostic clarification and school planning recommendations."
+  canonical="https://hollybarnardphd.com/services/asd-assessment"
+>
+  <script type="application/ld+json" slot="head">{JSON.stringify(serviceJsonLd)}</script>
+  <main class="max-w-4xl mx-auto px-8 py-16">
+    <h1 class="text-3xl font-bold mb-4">
+      Autism Spectrum Disorder (ASD) Assessment
+    </h1>
+    <p class="mb-4">
+      Comprehensive ASD evaluations include caregiver interview, developmental
+      history, standardized assessment tools, and a tailored report with
+      recommendations for interventions and school supports.
+    </p>
+
+    <section class="mb-8">
+      <h2 class="text-2xl font-semibold mb-4">What is Autism Spectrum Disorder?</h2>
+      <p class="mb-4">
+        Autism Spectrum Disorder (ASD) is a neurodevelopmental condition characterized by differences in social communication, interaction, and restricted or repetitive behaviors. The spectrum nature means that symptoms and their severity can vary widely from person to person.
+      </p>
+      <p class="mb-4">
+        Early identification and intervention can significantly improve outcomes. Our comprehensive assessments help clarify diagnosis and provide the foundation for appropriate supports and interventions.
+      </p>
+    </section>
+
+    <section class="mb-8">
+      <h2 class="text-2xl font-semibold mb-4">Why Choose Our ASD Assessment?</h2>
+      <ul class="list-disc pl-5 mb-4">
+        <li>Board-certified pediatric neuropsychologist (ABPP-CN)</li>
+        <li>Comprehensive evaluation using gold-standard assessment tools</li>
+        <li>Detailed report with practical recommendations</li>
+        <li>School consultation and IEP support</li>
+        <li>Family-centered approach</li>
+      </ul>
+    </section>
+
+    <section class="mb-8">
+      <h2 class="text-2xl font-semibold mb-4">What to Expect During the Assessment</h2>
+      <p class="mb-4">
+        The evaluation process typically spans 4-6 hours and includes:
+      </p>
+      <ul class="list-disc pl-5 mb-4">
+        <li>Initial consultation with parents/caregivers</li>
+        <li>Developmental history review</li>
+        <li>Standardized testing of cognitive, language, and social skills</li>
+        <li>Behavioral observations</li>
+        <li>Feedback session to discuss results and recommendations</li>
+      </ul>
+    </section>
+
+    <section class="mb-8">
+      <h2 class="text-2xl font-semibold mb-4">Assessment Tools Used</h2>
+      <p class="mb-4">
+        We utilize evidence-based assessment tools including:
+      </p>
+      <ul class="list-disc pl-5 mb-4">
+        <li>ADOS-2 (Autism Diagnostic Observation Schedule)</li>
+        <li>ADI-R (Autism Diagnostic Interview-Revised)</li>
+        <li>Cognitive assessments (WISC-V, WPPSI-IV)</li>
+        <li>Language and communication evaluations</li>
+        <li>Adaptive behavior measures</li>
+      </ul>
+    </section>
+
+    <section class="mb-8">
+      <h2 class="text-2xl font-semibold mb-4">Related Services</h2>
+      <p class="mb-4">
+        In addition to ASD assessment, we offer comprehensive evaluations for co-occurring conditions:
+      </p>
+      <ul class="list-disc pl-5 mb-4">
+        <li><a href="/services/adhd-testing" class="text-purple-600 hover:underline">ADHD Testing</a></li>
+        <li><a href="/services/learning-disorders" class="text-purple-600 hover:underline">Learning Disorders Assessment</a></li>
+        <li><a href="/the-evaluation" class="text-purple-600 hover:underline">Complete Evaluation Process</a></li>
+      </ul>
+    </section>
+
+    <section class="mb-8">
+      <h2 class="text-2xl font-semibold mb-4">Contact Us</h2>
+      <p class="mb-4">
+        Ready to schedule an ASD assessment? Contact us to discuss your child's needs and begin the evaluation process.
+      </p>
+      <a href="/contact" class="inline-block bg-purple-600 text-white px-6 py-3 rounded-lg hover:bg-purple-700 transition-colors">
+        Contact Us to Schedule Assessment
+      </a>
+    </section>
+  </main>
+</BaseLayout>

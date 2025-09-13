@@ -1,0 +1,94 @@
+---
+import BaseLayout from "../layouts/BaseLayout.astro";
+import PageHeader from "../components/PageHeader.astro";
+---
+
+<BaseLayout
+  pageTitle="Contact Dr. Holly Barnard — Pediatric Neuropsychologist"
+  pageDescription="Contact information for Dr. Holly Barnard, pediatric neuropsychologist in Allen, TX. Schedule consultations and evaluations for ASD, ADHD, and learning disorders."
+  canonical="https://hollybarnardphd.com/contact"
+>
+  <main class="max-w-4xl mx-auto px-8 py-16">
+    <PageHeader
+      title="Contact Us"
+      subtitle="Get in touch to schedule your child's evaluation"
+    />
+
+    <section class="prose mb-8">
+      <p>
+        Ready to explore your full potential? Contact Dr. Barnard for a free
+        phone or email consultation to determine whether the practice is a good
+        fit for your child.
+      </p>
+    </section>
+
+    <section
+      class="bg-white rounded-xl p-8 shadow-lg border border-gray-200 mb-8"
+    >
+      <h2 class="text-2xl font-semibold mb-6">
+        Location & Contact Information
+      </h2>
+
+      <div class="grid md:grid-cols-2 gap-8">
+        <div>
+          <h3 class="text-xl font-semibold mb-4">Office Address</h3>
+          <p class="text-gray-700">
+            1506 N. Greenville Ave., Suite 210<br />
+            Allen, TX 75002
+          </p>
+        </div>
+
+        <div>
+          <h3 class="text-xl font-semibold mb-4">Contact Details</h3>
+          <p class="text-gray-700 mb-2">
+            <strong>Phone:</strong>
+            <a href="tel:12142718018" class="text-purple-600 hover:underline"
+              >(214) 271-8018</a
+            >
+          </p>
+          <p class="text-gray-700">
+            <strong>Email:</strong>
+            <a
+              href="mailto:contact@hollybarnardphd.com"
+              class="text-purple-600 hover:underline"
+              >contact@hollybarnardphd.com</a
+            >
+          </p>
+        </div>
+      </div>
+
+      <div class="mt-8">
+        <h3 class="text-xl font-semibold mb-4">Service Areas</h3>
+        <p class="text-gray-700">
+          We serve families in Allen, Plano, Richardson, and the surrounding
+          Dallas–Fort Worth area.
+        </p>
+      </div>
+    </section>
+
+    <section class="text-center">
+      <h2 class="text-2xl font-semibold mb-4">Schedule a Consultation</h2>
+      <p class="mb-6">
+        Contact us today to discuss your child's needs and determine the best
+        path forward.
+      </p>
+      <div class="flex flex-col sm:flex-row gap-4 justify-center">
+        <a
+          href="mailto:contact@hollybarnardphd.com"
+          class="bg-purple-600 text-white px-8 py-3 rounded-lg font-semibold hover:bg-purple-700 transition-colors"
+        >
+          Email Us
+        </a>
+        <a
+          href="tel:12142718018"
+          class="bg-transparent border-2 border-purple-600 text-purple-600 px-8 py-3 rounded-lg font-semibold hover:bg-purple-600 hover:text-white transition-all"
+        >
+          Call Now
+        </a>
+      </div>
+    </section>
+  </main>
+</BaseLayout>
+<parameter name="filePath"
+  >d:\holly-barnard-phd\src\pages\contact.astro</parameter
+>

@@ -1,0 +1,110 @@
+---
+import BaseLayout from "../../layouts/BaseLayout.astro";
+
+const serviceJsonLd = {
+  "@context": "https://schema.org",
+  "@type": "Service",
+  "name": "Learning Disorders Assessment",
+  "description": "Comprehensive evaluations for specific learning disorders in reading, math, and written expression, providing targeted intervention strategies and educational accommodations.",
+  "provider": {
+    "@type": "MedicalBusiness",
+    "name": "Holly Barnard Ph.D., ABPP-CN",
+    "url": "https://hollybarnardphd.com"
+  },
+  "areaServed": ["Allen, TX", "Plano, TX", "Richardson, TX", "Dallas, TX"],
+  "serviceType": "Neuropsychological Evaluation"
+};
+---
+
+<BaseLayout
+  pageTitle="Learning Disorders — Services | Holly Barnard, Ph.D."
+  pageDescription="Assessments for specific learning disorders in reading, math, and written expression with practical recommendations for school supports."
+  canonical="https://hollybarnardphd.com/services/learning-disorders"
+>
+  <script type="application/ld+json" slot="head">{JSON.stringify(serviceJsonLd)}</script>
+  <main class="max-w-4xl mx-auto px-8 py-16">
+    <h1 class="text-3xl font-bold mb-4">Specific Learning Disorders</h1>
+    <p class="mb-4">
+      Learning disorder assessments identify specific academic skill deficits in
+      reading, math, or written expression and provide targeted intervention
+      strategies and educational accommodations.
+    </p>
+
+    <section class="mb-8">
+      <h2 class="text-2xl font-semibold mb-4">Types of Learning Disorders</h2>
+      <p class="mb-4">
+        Specific learning disorders can affect different academic areas:
+      </p>
+      <ul class="list-disc pl-5 mb-4">
+        <li><strong>Dyslexia</strong>: Difficulties with reading and spelling</li>
+        <li><strong>Dyscalculia</strong>: Challenges with math concepts and calculations</li>
+        <li><strong>Dysgraphia</strong>: Problems with writing and fine motor skills</li>
+        <li><strong>Mixed learning disorders</strong>: Combination of difficulties</li>
+      </ul>
+    </section>
+
+    <section class="mb-8">
+      <h2 class="text-2xl font-semibold mb-4">Comprehensive Evaluation Process</h2>
+      <p class="mb-4">
+        Our learning disorder assessments include:
+      </p>
+      <ul class="list-disc pl-5 mb-4">
+        <li>Academic skill testing in reading, math, and writing</li>
+        <li>Cognitive ability assessment</li>
+        <li>Processing speed and memory evaluation</li>
+        <li>Review of educational history and progress</li>
+        <li>Observation of learning strategies</li>
+      </ul>
+    </section>
+
+    <section class="mb-8">
+      <h2 class="text-2xl font-semibold mb-4">What We Assess</h2>
+      <p class="mb-4">
+        The evaluation examines:
+      </p>
+      <ul class="list-disc pl-5 mb-4">
+        <li>Phonological processing and decoding skills</li>
+        <li>Reading comprehension and fluency</li>
+        <li>Mathematical reasoning and calculation abilities</li>
+        <li>Written expression and spelling</li>
+        <li>Executive functioning related to learning</li>
+      </ul>
+    </section>
+
+    <section class="mb-8">
+      <h2 class="text-2xl font-semibold mb-4">School Support and Accommodations</h2>
+      <p class="mb-4">
+        Our reports include specific recommendations for:
+      </p>
+      <ul class="list-disc pl-5 mb-4">
+        <li>Individualized Education Program (IEP) development</li>
+        <li>504 Plan accommodations</li>
+        <li>Evidence-based intervention strategies</li>
+        <li>Technology and assistive tools</li>
+        <li>Progress monitoring approaches</li>
+      </ul>
+    </section>
+
+    <section class="mb-8">
+      <h2 class="text-2xl font-semibold mb-4">Related Services</h2>
+      <p class="mb-4">
+        Learning disorders often co-occur with other conditions:
+      </p>
+      <ul class="list-disc pl-5 mb-4">
+        <li><a href="/services/adhd-testing" class="text-purple-600 hover:underline">ADHD Testing</a></li>
+        <li><a href="/services/asd-assessment" class="text-purple-600 hover:underline">ASD Assessment</a></li>
+        <li><a href="/the-evaluation" class="text-purple-600 hover:underline">Complete Evaluation Process</a></li>
+      </ul>
+    </section>
+
+    <section class="mb-8">
+      <h2 class="text-2xl font-semibold mb-4">Schedule Your Assessment</h2>
+      <p class="mb-4">
+        If your child is struggling academically despite effort, a learning disorder evaluation can provide clarity and direction. Contact us to discuss your concerns.
+      </p>
+      <a href="/contact" class="inline-block bg-purple-600 text-white px-6 py-3 rounded-lg hover:bg-purple-700 transition-colors">
+        Contact Us to Schedule Learning Assessment
+      </a>
+    </section>
+  </main>
+</BaseLayout>

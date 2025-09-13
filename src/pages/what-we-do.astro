@@ -7,9 +7,34 @@ import PageHeader from "../components/PageHeader.astro";
 import OurApproach from "../components/OurApproach.astro";
 import HowToGetStarted from "../components/HowToGetStarted.astro";
 import WhyChooseUs from "../components/WhyChooseUs.astro";
+
+const breadcrumbJsonLd = {
+  "@context": "https://schema.org",
+  "@type": "BreadcrumbList",
+  "itemListElement": [
+    {
+      "@type": "ListItem",
+      "position": 1,
+      "name": "Home",
+      "item": "https://hollybarnardphd.com"
+    },
+    {
+      "@type": "ListItem",
+      "position": 2,
+      "name": "What We Do",
+      "item": "https://hollybarnardphd.com/what-we-do"
+    }
+  ]
+};
 ---
 
-<BaseLayout>
+<BaseLayout
+  pageTitle="Pediatric & Developmental Neuropsychology — Services | Holly Barnard, Ph.D."
+  pageDescription="Comprehensive pediatric and developmental neuropsychology services including assessments for ASD, ADHD, learning disorders, TBI, and more. Serving Allen, TX and the Dallas-Fort Worth area."
+  canonical="https://hollybarnardphd.com/what-we-do"
+>
+  <script type="application/ld+json" slot="head">{JSON.stringify(breadcrumbJsonLd)}</script>
+
   <main class="max-w-4xl mx-auto px-8 py-16">
     <PageHeader title="Pediatric & Developmental Neuropsychology" />
 
@@ -17,38 +42,65 @@ import WhyChooseUs from "../components/WhyChooseUs.astro";
       title="What is Neuropsychology?"
       description="A neuropsychologist is an expert in the impact of atypical development (e.g., ASD, learning disorders, spina bifida), injury (e.g., traumatic brain injury, birth trauma), disease (e.g., tumor, meningitis), and decline on the brain. Patients can present with a number of complex conditions that, as they grow and mature, impact how they think, learn, and behave. A neuropsychologist helps patients, parents, and teachers to understand a person's brain and the way they function best."
       image="/img/we-all-have-our-different-needs.png"
-      imageAlt="Woman holding two cardboard cutouts representing differences in a person."
+      imageAlt="Illustration representing diverse developmental needs and pediatric neuropsychology"
       reverse={true}
     />
 
-    <OurApproach />
+    <OurApproach id="our-approach" />
 
-    <FeatureList
-      title="Conditions We Support"
-      items={[
-        "Attention-Deficit Hyperactivity Disorder",
-        "Autism Spectrum Disorder (ASD)",
-        "Epilepsy",
-        "Genetic/Chromosomal Disorders",
-        "Hearing Loss",
-        "History of Brain Tumor",
-        "History of Neurologic Infections",
-        "Hydrocephalus",
-        "Metabolic Disorders",
-        "Neurodevelopmental Disorders",
-        "Oxygen Deprivation",
-        "Specific Learning Disorders",
-        "Structural Abnormalities of the Brain",
-        "Toxic Encephalopathy",
-        "Traumatic Brain Injury (TBI)",
-        "Vascular Events/Conditions",
-      ]}
-    />
+    <!-- Table of Contents -->
+    <nav aria-label="On this page" class="mb-8 p-4 bg-gray-50 rounded">
+      <h2 class="text-xl font-semibold mb-2">On this page</h2>
+      <ul class="list-disc pl-5 space-y-1">
+        <li>
+          <a href="#our-approach" class="text-purple-600">Our approach</a>
+        </li>
+        <li>
+          <a href="#conditions" class="text-purple-600">Conditions we support</a
+          >
+        </li>
+        <li>
+          <a href="#how-to-get-started" class="text-purple-600"
+            >How to get started</a
+          >
+        </li>
+        <li><a href="#contact" class="text-purple-600">Contact</a></li>
+      </ul>
+    </nav>
+
+    <section id="conditions">
+      <FeatureList
+        title="Conditions We Support"
+        items={[
+          "Attention-Deficit Hyperactivity Disorder",
+          "Autism Spectrum Disorder (ASD)",
+          "Epilepsy",
+          "Genetic/Chromosomal Disorders",
+          "Hearing Loss",
+          "History of Brain Tumor",
+          "History of Neurologic Infections",
+          "Hydrocephalus",
+          "Metabolic Disorders",
+          "Neurodevelopmental Disorders",
+          "Oxygen Deprivation",
+          "Specific Learning Disorders",
+          "Structural Abnormalities of the Brain",
+          "Toxic Encephalopathy",
+          "Traumatic Brain Injury (TBI)",
+          "Vascular Events/Conditions",
+        ]}
+        slugs={{
+          "Attention-Deficit Hyperactivity Disorder": "/services/adhd-testing",
+          "Autism Spectrum Disorder (ASD)": "/services/asd-assessment",
+          "Specific Learning Disorders": "/services/learning-disorders",
+        }}
+      />
+    </section>
 
     <WhyChooseUs />
 
-    <HowToGetStarted />
+    <HowToGetStarted id="how-to-get-started" />
 
-    <ContactCTA />
+    <ContactCTA id="contact" />
   </main>
 </BaseLayout>
