@@ -4,6 +4,12 @@
 @tailwind components;
 @tailwind utilities;
 
+@layer utilities {
+  .list-disc-custom {
+    list-style-type: disc;
+  }
+}
+
 /* Typography from original site */
 
 h1 {
@@ -53,14 +59,16 @@ h1 .caption {
 
 a:link,
 a:visited {
-  color: #9d4ba2;
   text-decoration: none;
 }
 
 a:hover {
-  color: #9d4ba2;
   font-size: 18px; /* original increased slightly on hover */
   text-decoration: underline;
+}
+
+footer a {
+  color: white;
 }
 
 blockquote {

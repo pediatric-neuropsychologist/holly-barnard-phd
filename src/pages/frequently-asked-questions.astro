@@ -1,15 +1,15 @@
 ---
 import BaseLayout from "../layouts/BaseLayout.astro";
-import ContactCTA from "../components/ContactCTA.astro";
 import HeroSection from "../components/HeroSection.astro";
 import ModernFAQ from "../components/ModernFAQ.astro";
 import PageHeader from "../components/PageHeader.astro";
+import StillHaveQuestions from "../components/StillHaveQuestions.astro";
 ---
 
 <BaseLayout
   pageTitle="FAQ — Pediatric Neuropsychological Services"
   pageDescription="Frequently asked questions about pediatric neuropsychological evaluations, payments, scheduling, and what to expect."
-  canonical="https://hollybarnardphd.com/faq"
+  canonical="https://hollybarnardphd.com/frequently-asked-questions"
 >
   <main class="max-w-4xl mx-auto px-8 py-16">
     <PageHeader
@@ -149,59 +149,6 @@ import PageHeader from "../components/PageHeader.astro";
       }
     </script>
 
-    <!-- Additional Resources Section -->
-    <div
-      class="mt-16 bg-gradient-to-r from-purple-50 to-indigo-50 rounded-2xl p-8 text-center"
-    >
-      <h3 class="text-2xl font-bold text-gray-900 mb-4">
-        Still have questions?
-      </h3>
-      <p class="text-gray-600 mb-6 max-w-2xl mx-auto">
-        We're here to help! Contact us for personalized answers to your specific
-        situation.
-      </p>
-      <div class="flex flex-col sm:flex-row gap-4 justify-center">
-        <a
-          href="tel:+1234567890"
-          class="inline-flex items-center px-6 py-3 bg-purple-600 text-white font-semibold rounded-lg border border-purple-600 hover:bg-purple-700 transition-all duration-200 shadow-md hover:shadow-lg transform hover:-translate-y-0.5 focus:outline-none focus:ring-2 focus:ring-purple-500 focus:ring-offset-2"
-        >
-          <svg
-            class="w-5 h-5 mr-2 flex-shrink-0"
-            fill="none"
-            stroke="currentColor"
-            viewBox="0 0 24 24"
-          >
-            <path
-              stroke-linecap="round"
-              stroke-linejoin="round"
-              stroke-width="2"
-              d="M3 5a2 2 0 012-2h3.28a1 1 0 01.948.684l1.498 4.493a1 1 0 01-.502 1.21l-2.257 1.13a11.042 11.042 0 005.516 5.516l1.13-2.257a1 1 0 011.21-.502l4.493 1.498a1 1 0 01.684.949V19a2 2 0 01-2 2h-1C9.716 21 3 14.284 3 6V5z"
-            ></path>
-          </svg>
-          Call Us
-        </a>
-        <a
-          href="mailto:contact@hollybarnardphd.com"
-          class="inline-flex items-center px-6 py-3 bg-transparent text-purple-700 font-semibold rounded-lg border-2 border-purple-600 hover:bg-purple-50 transition-all duration-200 shadow-md hover:shadow-lg transform hover:-translate-y-0.5 focus:outline-none focus:ring-2 focus:ring-purple-500 focus:ring-offset-2"
-        >
-          <svg
-            class="w-5 h-5 mr-2 flex-shrink-0"
-            fill="none"
-            stroke="currentColor"
-            viewBox="0 0 24 24"
-          >
-            <path
-              stroke-linecap="round"
-              stroke-linejoin="round"
-              stroke-width="2"
-              d="M3 8l7.89 4.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z"
-            ></path>
-          </svg>
-          Email Us
-        </a>
-      </div>
-    </div>
-
-    <ContactCTA />
+    <StillHaveQuestions />
   </main>
 </BaseLayout>

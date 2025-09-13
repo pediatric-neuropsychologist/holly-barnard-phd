@@ -1,5 +1,6 @@
 ---
 import BaseLayout from "../layouts/BaseLayout.astro";
+import HeroSection from "../components/HeroSection.astro";
 import PageHeader from "../components/PageHeader.astro";
 ---
 
@@ -14,36 +15,95 @@ import PageHeader from "../components/PageHeader.astro";
       subtitle="Get in touch to schedule your child's evaluation"
     />
 
-    <section class="prose mb-8">
-      <p>
+    <section
+      class="mb-16 bg-gradient-to-r from-purple-50 to-indigo-50 rounded-2xl p-8 text-center"
+    >
+      <h3 class="text-2xl font-bold text-gray-900 mb-4">
+        Schedule a Consultation
+      </h3>
+      <p class="text-gray-600 mb-6 max-w-2xl mx-auto">
         Ready to explore your full potential? Contact Dr. Barnard for a free
         phone or email consultation to determine whether the practice is a good
         fit for your child.
       </p>
+      <div class="flex flex-col sm:flex-row gap-4 justify-center">
+        <a
+          href="tel:+1234567890"
+          class="inline-flex items-center px-6 py-3 bg-purple-600 text-white font-semibold rounded-lg border border-purple-600 hover:bg-purple-700 transition-all duration-200 shadow-md hover:shadow-lg transform hover:-translate-y-0.5 focus:outline-none focus:ring-2 focus:ring-purple-500 focus:ring-offset-2"
+        >
+          <svg
+            class="w-5 h-5 mr-2 flex-shrink-0"
+            fill="none"
+            stroke="currentColor"
+            viewBox="0 0 24 24"
+          >
+            <path
+              stroke-linecap="round"
+              stroke-linejoin="round"
+              stroke-width="2"
+              d="M3 5a2 2 0 012-2h3.28a1 1 0 01.948.684l1.498 4.493a1 1 0 01-.502 1.21l-2.257 1.13a11.042 11.042 0 005.516 5.516l1.13-2.257a1 1 0 011.21-.502l4.493 1.498a1 1 0 01.684.949V19a2 2 0 01-2 2h-1C9.716 21 3 14.284 3 6V5z"
+            ></path>
+          </svg>
+          Call Us
+        </a>
+        <a
+          href="mailto:contact@hollybarnardphd.com"
+          class="inline-flex items-center px-6 py-3 bg-transparent text-purple-700 font-semibold rounded-lg border-2 border-purple-600 hover:bg-purple-50 transition-all duration-200 shadow-md hover:shadow-lg transform hover:-translate-y-0.5 focus:outline-none focus:ring-2 focus:ring-purple-500 focus:ring-offset-2"
+        >
+          <svg
+            class="w-5 h-5 mr-2 flex-shrink-0"
+            fill="none"
+            stroke="currentColor"
+            viewBox="0 0 24 24"
+          >
+            <path
+              stroke-linecap="round"
+              stroke-linejoin="round"
+              stroke-width="2"
+              d="M3 8l7.89 4.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z"
+            ></path>
+          </svg>
+          Email Us
+        </a>
+      </div>
     </section>
 
     <section
       class="bg-white rounded-xl p-8 shadow-lg border border-gray-200 mb-8"
+      itemscope
+      itemtype="https://schema.org/MedicalBusiness"
     >
-      <h2 class="text-2xl font-semibold mb-6">
+      <h2 class="text-2xl text-center font-semibold mb-6">
         Location & Contact Information
       </h2>
 
       <div class="grid md:grid-cols-2 gap-8">
         <div>
           <h3 class="text-xl font-semibold mb-4">Office Address</h3>
-          <p class="text-gray-700">
-            1506 N. Greenville Ave., Suite 210<br />
-            Allen, TX 75002
-          </p>
+          <div
+            class="text-gray-700"
+            itemprop="address"
+            itemscope
+            itemtype="https://schema.org/PostalAddress"
+          >
+            <span itemprop="streetAddress"
+              >1506 N. Greenville Ave., Suite 210</span
+            ><br />
+            <span itemprop="addressLocality">Allen</span>, <span
+              itemprop="addressRegion">TX</span
+            >
+            <span itemprop="postalCode">75002</span>
+          </div>
         </div>
 
         <div>
           <h3 class="text-xl font-semibold mb-4">Contact Details</h3>
           <p class="text-gray-700 mb-2">
             <strong>Phone:</strong>
-            <a href="tel:12142718018" class="text-purple-600 hover:underline"
-              >(214) 271-8018</a
+            <a
+              href="tel:12142718018"
+              class="text-purple-600 hover:underline"
+              itemprop="telephone">(214) 271-8018</a
             >
           </p>
           <p class="text-gray-700">
@@ -51,7 +111,7 @@ import PageHeader from "../components/PageHeader.astro";
             <a
               href="mailto:contact@hollybarnardphd.com"
               class="text-purple-600 hover:underline"
-              >contact@hollybarnardphd.com</a
+              itemprop="email">contact@hollybarnardphd.com</a
             >
           </p>
         </div>
@@ -59,32 +119,10 @@ import PageHeader from "../components/PageHeader.astro";
 
       <div class="mt-8">
         <h3 class="text-xl font-semibold mb-4">Service Areas</h3>
-        <p class="text-gray-700">
+        <p class="text-gray-700" itemprop="areaServed">
           We serve families in Allen, Plano, Richardson, and the surrounding
           Dallas–Fort Worth area.
         </p>
-      </div>
-    </section>
-
-    <section class="text-center">
-      <h2 class="text-2xl font-semibold mb-4">Schedule a Consultation</h2>
-      <p class="mb-6">
-        Contact us today to discuss your child's needs and determine the best
-        path forward.
-      </p>
-      <div class="flex flex-col sm:flex-row gap-4 justify-center">
-        <a
-          href="mailto:contact@hollybarnardphd.com"
-          class="bg-purple-600 text-white px-8 py-3 rounded-lg font-semibold hover:bg-purple-700 transition-colors"
-        >
-          Email Us
-        </a>
-        <a
-          href="tel:12142718018"
-          class="bg-transparent border-2 border-purple-600 text-purple-600 px-8 py-3 rounded-lg font-semibold hover:bg-purple-600 hover:text-white transition-all"
-        >
-          Call Now
-        </a>
       </div>
     </section>
   </main>

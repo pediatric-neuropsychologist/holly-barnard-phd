@@ -27,7 +27,16 @@ const jsonLd = {
         "addressCountry": "US"
       },
       "priceRange": "$$$",
-      "areaServed": ["Allen, TX","Plano, TX","Richardson, TX","Dallas, TX"]
+      "areaServed": ["Allen, TX","Plano, TX","Richardson, TX","Dallas, TX"],
+      "medicalSpecialty": "Pediatric Neuropsychology",
+      "availableService": [
+        {
+          "@type": "MedicalTest",
+          "name": "Neuropsychological Evaluation",
+          "description": "Comprehensive testing for ASD, ADHD, learning disorders, and other neurodevelopmental conditions"
+        }
+      ],
+      "openingHours": "Mo-Fr 09:00-17:00"
     },
     {
       "@type": "Person",
@@ -90,8 +99,8 @@ const jsonLd = {
         <ul class="hidden md:flex items-center gap-2 whitespace-nowrap">
           <li>
             <a
-              href="/what-we-do"
-              class="text-sm text-[#9d4ba2] hover:text-[#7a3a7a] focus:outline-none focus:ring-2 focus:ring-[#f3d9f3] rounded px-2 py-1 transition-all duration-150 flex items-center gap-1"
+              href="/our-approach"
+              class="text-sm text-purple-400 hover:text-purple-500 focus:outline-none focus:ring-2 focus:ring-purple-200 rounded px-2 py-1 transition-all duration-150 flex items-center gap-1"
             >
               <svg class="w-4 h-4" fill="currentColor" viewBox="0 0 20 20"
                 ><path
@@ -99,13 +108,13 @@ const jsonLd = {
                   d="M10 9a3 3 0 100-6 3 3 0 000 6zm-7 9a7 7 0 1114 0H3z"
                   clip-rule="evenodd"></path></svg
               >
-              What I Do
+              Our Approach
             </a>
           </li>
           <li>
             <a
               href="/the-evaluation"
-              class="text-sm text-[#9d4ba2] hover:text-[#7a3a7a] focus:outline-none focus:ring-2 focus:ring-[#f3d9f3] rounded px-2 py-1 transition-all duration-150 flex items-center gap-1"
+              class="text-sm text-purple-400 hover:text-purple-500 focus:outline-none focus:ring-2 focus:ring-purple-200 rounded px-2 py-1 transition-all duration-150 flex items-center gap-1"
             >
               <svg class="w-4 h-4" fill="currentColor" viewBox="0 0 20 20"
                 ><path d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z"
@@ -117,7 +126,7 @@ const jsonLd = {
           <li>
             <a
               href="/packages-and-fees"
-              class="text-sm text-[#9d4ba2] hover:text-[#7a3a7a] focus:outline-none focus:ring-2 focus:ring-[#f3d9f3] rounded px-2 py-1 transition-all duration-150 flex items-center gap-1"
+              class="text-sm text-purple-400 hover:text-purple-500 focus:outline-none focus:ring-2 focus:ring-purple-200 rounded px-2 py-1 transition-all duration-150 flex items-center gap-1"
             >
               <svg class="w-4 h-4" fill="currentColor" viewBox="0 0 20 20"
                 ><path
@@ -129,8 +138,8 @@ const jsonLd = {
           </li>
           <li>
             <a
-              href="/faq"
-              class="text-sm text-[#9d4ba2] hover:text-[#7a3a7a] focus:outline-none focus:ring-2 focus:ring-[#f3d9f3] rounded px-2 py-1 transition-all duration-150 flex items-center gap-1"
+              href="/frequently-asked-questions"
+              class="text-sm text-purple-400 hover:text-purple-500 focus:outline-none focus:ring-2 focus:ring-purple-200 rounded px-2 py-1 transition-all duration-150 flex items-center gap-1"
             >
               <svg class="w-4 h-4" fill="currentColor" viewBox="0 0 20 20"
                 ><path
@@ -143,19 +152,8 @@ const jsonLd = {
           </li>
           <li>
             <a
-              href="/blog"
-              class="text-sm text-[#9d4ba2] hover:text-[#7a3a7a] focus:outline-none focus:ring-2 focus:ring-[#f3d9f3] rounded px-2 py-1 transition-all duration-150 flex items-center gap-1"
-            >
-              <svg class="w-4 h-4" fill="currentColor" viewBox="0 0 20 20"
-                ><path d="M4 3h12v2H4zM3 7h14v2H3zM4 11h12v2H4z"></path></svg
-              >
-              Blog
-            </a>
-          </li>
-          <li>
-            <a
-              href="mailto:contact@hollybarnardphd.com"
-              class="text-sm text-[#9d4ba2] font-medium hover:text-[#7a3a7a] focus:outline-none focus:ring-2 focus:ring-[#f3d9f3] rounded px-2 py-1 transition-all duration-150 flex items-center gap-1"
+              href="/contact"
+              class="text-sm text-purple-400 font-medium hover:text-purple-500 focus:outline-none focus:ring-2 focus:ring-purple-200 rounded px-2 py-1 transition-all duration-150 flex items-center gap-1"
             >
               <svg class="w-4 h-4" fill="currentColor" viewBox="0 0 20 20"
                 ><path
@@ -171,7 +169,7 @@ const jsonLd = {
 
         <!-- Mobile Menu Button -->
         <button
-          class="md:hidden text-[#9d4ba2] focus:outline-none p-2"
+          class="md:hidden text-purple-400 focus:outline-none p-2"
           type="button"
           aria-label="Toggle navigation"
           onclick="toggleMobileMenu()"
@@ -199,8 +197,8 @@ const jsonLd = {
         <ul class="px-6 py-4 space-y-3">
           <li>
             <a
-              href="/what-we-do"
-              class="block text-base text-[#9d4ba2] hover:text-[#7a3a7a] py-2 flex items-center gap-2"
+              href="/our-approach"
+              class="text-base text-purple-400 hover:text-purple-500 py-2 flex items-center gap-2"
             >
               <svg class="w-5 h-5" fill="currentColor" viewBox="0 0 20 20"
                 ><path
@@ -208,13 +206,13 @@ const jsonLd = {
                   d="M10 9a3 3 0 100-6 3 3 0 000 6zm-7 9a7 7 0 1114 0H3z"
                   clip-rule="evenodd"></path></svg
               >
-              What I Do
+              Our Approach
             </a>
           </li>
           <li>
             <a
               href="/the-evaluation"
-              class="block text-base text-[#9d4ba2] hover:text-[#7a3a7a] py-2 flex items-center gap-2"
+              class="text-base text-purple-400 hover:text-purple-500 py-2 flex items-center gap-2"
             >
               <svg class="w-5 h-5" fill="currentColor" viewBox="0 0 20 20"
                 ><path d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z"
@@ -226,7 +224,7 @@ const jsonLd = {
           <li>
             <a
               href="/packages-and-fees"
-              class="block text-base text-[#9d4ba2] hover:text-[#7a3a7a] py-2 flex items-center gap-2"
+              class="text-base text-purple-400 hover:text-purple-500 py-2 flex items-center gap-2"
             >
               <svg class="w-5 h-5" fill="currentColor" viewBox="0 0 20 20"
                 ><path
@@ -238,8 +236,8 @@ const jsonLd = {
           </li>
           <li>
             <a
-              href="/faq"
-              class="block text-base text-[#9d4ba2] hover:text-[#7a3a7a] py-2 flex items-center gap-2"
+              href="/frequently-asked-questions"
+              class="text-base text-purple-400 hover:text-purple-500 py-2 flex items-center gap-2"
             >
               <svg class="w-5 h-5" fill="currentColor" viewBox="0 0 20 20"
                 ><path
@@ -252,15 +250,8 @@ const jsonLd = {
           </li>
           <li>
             <a
-              href="/blog"
-              class="block text-base text-[#9d4ba7] hover:text-[#7a3a7a] py-2 flex items-center gap-2"
-              >Blog</a
-            >
-          </li>
-          <li>
-            <a
-              href="mailto:contact@hollybarnardphd.com"
-              class="block text-base text-[#9d4ba2] font-medium hover:text-[#7a3a7a] py-2 flex items-center gap-2"
+              href="/contact"
+              class="text-base text-purple-400 font-medium hover:text-purple-500 py-2 flex items-center gap-2"
             >
               <svg class="w-5 h-5" fill="currentColor" viewBox="0 0 20 20"
                 ><path
@@ -373,21 +364,8 @@ const jsonLd = {
             <h3 class="text-xl font-semibold mb-4 text-indigo-300">Quick Links</h3>
             <ul class="space-y-2">
               <li>
-                <a href="/about-me" class="hover:text-indigo-300 transition-colors"
-                  >About Dr. Barnard</a
-                >
-              </li>
-              <li>
-                <a
-                  href="/locations/allen"
-                  class="hover:text-indigo-300 transition-colors"
-                  >Allen, TX — Locations</a
-                >
-              </li>
-              <li>
-                <a
-                  href="/packages-and-fees"
-                  class="hover:text-indigo-300 transition-colors">Services & Fees</a
+                <a href="/our-approach" class="hover:text-indigo-300 transition-colors"
+                  >Our Approach</a
                 >
               </li>
               <li>
@@ -398,10 +376,24 @@ const jsonLd = {
                 >
               </li>
               <li>
-                <a href="/faq" class="hover:text-indigo-300 transition-colors"
+                <a
+                  href="/packages-and-fees"
+                  class="hover:text-indigo-300 transition-colors">Services & Fees</a
+                >
+              </li>
+              <li>
+                <a href="/frequently-asked-questions" class="hover:text-indigo-300 transition-colors"
                   >FAQ</a
                 >
               </li>
+              <li>
+                <a
+                  href="/contact"
+                  class="hover:text-indigo-300 transition-colors"
+                  >Contact</a
+                >
+              </li>
+
             </ul>
           </div>
         </div>
