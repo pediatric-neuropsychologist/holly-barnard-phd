@@ -1,4 +1,4 @@
-@import url("https://fonts.googleapis.com/css2?family=Inter:wght@300;400;700&family=Playfair+Display:ital,wght@0,400..900;1,400..900&family=Satisfy&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=Lato:wght@300;400;700&family=Satisfy&display=swap");
 
 @tailwind base;
 @tailwind components;
@@ -10,7 +10,7 @@
   }
 }
 
-/* Typography from original site */
+/* Typography - Elegant Script & Clean Sans-Serif Pairing */
 
 h1 {
   font-family: "Satisfy", cursive;
@@ -21,40 +21,21 @@ h2,
 h3,
 h4,
 h5 {
-  font-family: "Inter", sans-serif;
-  font-weight: 400;
-}
-
-h1 .caption {
-  font-family: "Inter", sans-serif;
-  font-weight: 300;
-  font-size: 16px;
+  font-family: "Lato", sans-serif;
+  font-weight: 700;
 }
 
 .body-font {
-  font-family: "Playfair Display", serif;
-  font-optical-sizing: auto;
+  font-family: "Lato", sans-serif;
   font-weight: 400;
 }
 
-.inline-block {
-  display: inline-block;
+.font-heading {
+  font-family: "Satisfy", cursive;
 }
 
-.flamenco-light {
-  font-family: "Flamenco", system-ui, sans-serif;
-  font-weight: 300;
-}
-
-.flamenco-regular {
-  font-family: "Flamenco", system-ui, sans-serif;
-  font-weight: 400;
-}
-
-.jura {
-  font-family: "Jura", sans-serif;
-  font-optical-sizing: auto;
-  font-weight: 400;
+.font-body {
+  font-family: "Lato", sans-serif;
 }
 
 a:link,
