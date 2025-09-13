@@ -6,7 +6,11 @@ import ModernFAQ from "../components/ModernFAQ.astro";
 import PageHeader from "../components/PageHeader.astro";
 ---
 
-<BaseLayout>
+<BaseLayout
+  pageTitle="FAQ — Pediatric Neuropsychological Services"
+  pageDescription="Frequently asked questions about pediatric neuropsychological evaluations, payments, scheduling, and what to expect."
+  canonical="https://hollybarnardphd.com/faq"
+>
   <main class="max-w-4xl mx-auto px-8 py-16">
     <PageHeader
       title="Frequently Asked Questions"
@@ -14,8 +18,8 @@ import PageHeader from "../components/PageHeader.astro";
     />
 
     <HeroSection
-      image="/img/FAQ.png"
-      imageAlt="Woman holding two cardboard cutouts representing differences in a person."
+      image="/img/frequently-asked-questions.png"
+      imageAlt="Frequently asked questions about pediatric neuropsychological services"
     />
 
     <!-- Hero Section -->
@@ -80,6 +84,71 @@ import PageHeader from "../components/PageHeader.astro";
       ]}
     />
 
+    <script type="application/ld+json">
+      {
+        "@context": "https://schema.org",
+        "@type": "FAQPage",
+        "mainEntity": [
+          {
+            "@type": "Question",
+            "name": "Do you only see kids?",
+            "acceptedAnswer": {
+              "@type": "Answer",
+              "text": "Interestingly, any adults who are looking for assessments related to developmental issues (e.g., Autism Spectrum Disorders, Learning Disorders) would come to see a Pediatric Neuropsychologist to explore those questions. However, the typical patient Dr. Barnard would see ranges in age from 3 to 22 years old."
+            }
+          },
+          {
+            "@type": "Question",
+            "name": "Do you offer payment plans?",
+            "acceptedAnswer": {
+              "@type": "Answer",
+              "text": "Full payment is due at the time of service. Dr. Barnard does not bill insurance directly and is not on any insurance panels; however, she is able to provide a superbill which documents services rendered and can be used to obtain out-of-network benefits for psychological/neuropsychological testing from your insurance company. An initial deposit of $200 will be due at the time of the Diagnostic Interview. 50% of the remaining balance will be due on the day of Diagnostic Testing, and the final 50% will be due at the time of the Feedback Session. Additional services (e.g., IEP meeting attendance, consultation, therapy, etc.) will be billed at an hourly rate of $200. Dr. Barnard accepts Zelle, checks, and credit card payments. An additional fee will be assessed for credit card transactions."
+            }
+          },
+          {
+            "@type": "Question",
+            "name": "Do I need a referral to book an appointment?",
+            "acceptedAnswer": {
+              "@type": "Answer",
+              "text": "Dr. Barnard does not require a referral to book an appointment, however a brief phone or e-mail consultation will be conducted prior to scheduling to determine if the practice is a good fit for your child. If you are planning to submit for out-of-network benefits to your insurance provider, please contact them to determine your coverage and whether a referral is necessary."
+            }
+          },
+          {
+            "@type": "Question",
+            "name": "What can I expect during the evaluation?",
+            "acceptedAnswer": {
+              "@type": "Answer",
+              "text": "The total evaluation process, including The Diagnostic Interview, Testing, and Feedback typically lasts between four (4) and eight (8) face-time hours (with additional hours billed behind the scenes for scoring, interpretation, and report writing), depending on the complexity of the presenting concerns. The Diagnostic Interview and Feedback are one hour each, and testing can last up to the length of a full school day (with an included lunch break). Patients and parents should expect to take time off from school/work, and parents are required to remain on site during testing. Testing is a personalized experience during which the patient and their family spend the day at Dr. Barnard's office, and testing is completed, scored, and interpreted by Dr. Barnard herself."
+            }
+          },
+          {
+            "@type": "Question",
+            "name": "Do you take therapy patients?",
+            "acceptedAnswer": {
+              "@type": "Answer",
+              "text": "Dr. Barnard is highly trained in a variety of child- and adolescent-focused therapy modalities; however, her practice is focused primarily on diagnostics and treatment planning. She will consider and possibly take on therapy patients for brief courses therapy on a case-by-case basis. If, following your evaluation, you wish to pursue treatment with Dr. Barnard, please feel free to discuss all of your treatment options at the Feedback Session."
+            }
+          },
+          {
+            "@type": "Question",
+            "name": "How long does the evaluation take?",
+            "acceptedAnswer": {
+              "@type": "Answer",
+              "text": "The complete evaluation process typically takes 6-10 hours spread across 1-2 days, plus the initial consultation and feedback session."
+            }
+          },
+          {
+            "@type": "Question",
+            "name": "Does insurance cover neuropsychological evaluations?",
+            "acceptedAnswer": {
+              "@type": "Answer",
+              "text": "Coverage varies by insurance plan. We can provide a superbill for reimbursement and discuss payment options during consultation."
+            }
+          }
+        ]
+      }
+    </script>
+
     <!-- Additional Resources Section -->
     <div
       class="mt-16 bg-gradient-to-r from-purple-50 to-indigo-50 rounded-2xl p-8 text-center"
@@ -94,7 +163,7 @@ import PageHeader from "../components/PageHeader.astro";
       <div class="flex flex-col sm:flex-row gap-4 justify-center">
         <a
           href="tel:+1234567890"
-          class="inline-flex items-center px-6 py-3 bg-purple-600 text-white font-semibold rounded-lg border border-purple-600 hover:bg-purple-700 transition-all duration-200 shadow-md hover:shadow-lg transform hover:-translate-y-0.5 focus:outline-none focus:ring-2 focus:ring-purple-500 focus:ring-offset-2 !text-white"
+          class="inline-flex items-center px-6 py-3 bg-purple-600 text-white font-semibold rounded-lg border border-purple-600 hover:bg-purple-700 transition-all duration-200 shadow-md hover:shadow-lg transform hover:-translate-y-0.5 focus:outline-none focus:ring-2 focus:ring-purple-500 focus:ring-offset-2"
         >
           <svg
             class="w-5 h-5 mr-2 flex-shrink-0"
