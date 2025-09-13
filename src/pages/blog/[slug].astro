@@ -1,0 +1,49 @@
+---
+// Content Collections-based renderer. This file requires @astro/content to be
+// installed and will not work until `npm install -D @astro/content` succeeds.
+import BaseLayout from "../../layouts/BaseLayout.astro";
+import { getCollection, render } from "../../lib/content";
+
+const { slug } = Astro.params;
+
+export async function getStaticPaths() {
+  const posts = await getCollection("posts");
+  return posts.map((p) => ({ params: { slug: p.slug } }));
+}
+
+const posts = await getCollection("posts");
+const post = posts.find((p) => p.slug === slug);
+if (!post) {
+  throw new Error(`Post not found: ${slug}`);
+}
+
+const frontmatter = post.data;
+const { html: compiledHtml, headings } = await render(post);
+---
+
+<BaseLayout
+  pageTitle={`${frontmatter?.title || "Article"} — Holly Barnard, Ph.D.`}
+  pageDescription={frontmatter?.description || ""}
+>
+  <main class="max-w-4xl mx-auto px-8 py-16">
+    <article>
+      <h1 class="text-3xl font-bold mb-4">{frontmatter?.title}</h1>
+      {
+        frontmatter?.date ? (
+          <p class="text-sm text-gray-500 mb-6">{frontmatter.date}</p>
+        ) : null
+      }
+      <div class="prose max-w-none">
+        {
+          compiledHtml ? (
+            <div set:html={String(compiledHtml)} />
+          ) : frontmatter?.description ? (
+            <p>{frontmatter.description}</p>
+          ) : (
+            <p>No content available.</p>
+          )
+        }
+      </div>
+    </article>
+  </main>
+</BaseLayout>

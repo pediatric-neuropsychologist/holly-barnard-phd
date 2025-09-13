@@ -1,0 +1,29 @@
+---
+export interface Props {
+  title: string;
+  subtitle?: string;
+  image?: string;
+  imageAlt?: string;
+}
+
+const { title, subtitle, image, imageAlt } = Astro.props;
+---
+
+<section class="text-center mb-12 py-12">
+  <h1
+    class="text-4xl md:text-5xl font-extrabold bg-gradient-to-r from-indigo-600 via-purple-600 to-blue-600 bg-clip-text text-transparent mb-6"
+  >
+    {title}
+  </h1>
+  {
+    subtitle && (
+      <p class="text-xl text-gray-600 mt-6 max-w-2xl mx-auto">{subtitle}</p>
+    )
+  }
+  <img
+    class="mx-auto mt-8"
+    src={image ?? "/img/dot-divider.svg"}
+    width="200"
+    alt={imageAlt ?? "section divider"}
+  />
+</section>

@@ -1,0 +1,57 @@
+---
+import BaseLayout from "../layouts/BaseLayout.astro";
+import Accomplishments from "../components/Accomplishments.astro";
+import ContactCTA from "../components/ContactCTA.astro";
+import EducationAndTraining from "../components/EducationAndTraining.astro";
+import FeatureList from "../components/FeatureList.astro";
+import HeroSection from "../components/HeroSection.astro";
+import MyJourneyQuote from "../components/MyJourneyQuote.astro";
+import PageHeader from "../components/PageHeader.astro";
+import PublicationAndPresentations from "../components/PublicationAndPresentations.astro";
+import StatsCard from "../components/StatsCard.astro";
+---
+
+<BaseLayout canonical="https://hollybarnardphd.com">
+  <main class="max-w-4xl mx-auto px-8 py-16">
+    <PageHeader
+      title="Holly Barnard, Ph.D., ABPP-CN"
+      subtitle="Pediatric & Developmental Neuropsychologist"
+    />
+
+    <HeroSection
+      title="Unlocking Potential Through Expertise"
+      description="With over 15 years of experience in pediatric neuropsychology, Dr. Holly Barnard is a leading expert in diagnosing and supporting children with neurodevelopmental and neurological conditions. Her work bridges cutting-edge research with compassionate, evidence-based care."
+      image="/img/holly-barnard-phd-pediatric-developmental-neuropsychologist.png"
+      imageAlt="Dr. Holly Barnard, board-certified pediatric neuropsychologist in Allen, TX"
+    />
+
+    <!-- Key Stats -->
+    <div class="grid grid-cols-1 sm:grid-cols-3 gap-4 mb-12">
+      <StatsCard number="15+" label="Years of Experience" />
+      <StatsCard number="ABPP-CN" label="Board Certified" />
+      <StatsCard number="1000+" label="Evaluations Conducted" />
+    </div>
+
+    <MyJourneyQuote />
+
+    <FeatureList
+      title="Areas of Expertise"
+      items={[
+        "Autism Spectrum Disorder (ASD)",
+        "Attention & Executive Function Disorders",
+        "Traumatic Brain Injury",
+        "Hydrocephalus & Neurological Conditions",
+        "Hearing Loss & Communication",
+        "Specific Learning Disorders",
+      ]}
+    />
+
+    <EducationAndTraining />
+
+    <Accomplishments />
+
+    <PublicationAndPresentations />
+
+    <ContactCTA />
+  </main>
+</BaseLayout>

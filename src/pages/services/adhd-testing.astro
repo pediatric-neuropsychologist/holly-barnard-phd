@@ -1,0 +1,101 @@
+---
+import BaseLayout from "../../layouts/BaseLayout.astro";
+
+const serviceJsonLd = {
+  "@context": "https://schema.org",
+  "@type": "Service",
+  "name": "ADHD Testing and Evaluation",
+  "description": "Comprehensive ADHD evaluations assessing attention, executive function, and processing speed to differentiate ADHD from other conditions and guide treatment recommendations.",
+  "provider": {
+    "@type": "MedicalBusiness",
+    "name": "Holly Barnard Ph.D., ABPP-CN",
+    "url": "https://hollybarnardphd.com"
+  },
+  "areaServed": ["Allen, TX", "Plano, TX", "Richardson, TX", "Dallas, TX"],
+  "serviceType": "Neuropsychological Evaluation"
+};
+---
+
+<BaseLayout
+  pageTitle="ADHD Testing — Services | Holly Barnard, Ph.D."
+  pageDescription="ADHD evaluations focused on attention, executive function, and differential diagnosis to guide treatment and educational supports."
+  canonical="https://hollybarnardphd.com/services/adhd-testing"
+>
+  <script type="application/ld+json" slot="head">{JSON.stringify(serviceJsonLd)}</script>
+  <main class="max-w-4xl mx-auto px-8 py-16">
+    <h1 class="text-3xl font-bold mb-4">ADHD Testing</h1>
+    <p class="mb-4">
+      ADHD evaluations assess attention, executive function, and processing to
+      differentiate ADHD from learning, mood, or sleep-related concerns and
+      guide individualized recommendations.
+    </p>
+
+    <section class="mb-8">
+      <h2 class="text-2xl font-semibold mb-4">Understanding ADHD</h2>
+      <p class="mb-4">
+        Attention-Deficit/Hyperactivity Disorder (ADHD) is a neurodevelopmental disorder characterized by persistent patterns of inattention, hyperactivity, and impulsivity that interfere with daily functioning. Our comprehensive evaluations help identify ADHD and distinguish it from other conditions with similar symptoms.
+      </p>
+    </section>
+
+    <section class="mb-8">
+      <h2 class="text-2xl font-semibold mb-4">Comprehensive ADHD Assessment</h2>
+      <ul class="list-disc pl-5 mb-4">
+        <li>Multi-method evaluation approach</li>
+        <li>Standardized rating scales from multiple informants</li>
+        <li>Cognitive and neuropsychological testing</li>
+        <li>Differential diagnosis from co-occurring conditions</li>
+        <li>Functional impact assessment</li>
+      </ul>
+    </section>
+
+    <section class="mb-8">
+      <h2 class="text-2xl font-semibold mb-4">What We Evaluate</h2>
+      <p class="mb-4">
+        Our ADHD assessments examine:
+      </p>
+      <ul class="list-disc pl-5 mb-4">
+        <li>Attention and concentration abilities</li>
+        <li>Executive functioning skills</li>
+        <li>Processing speed and working memory</li>
+        <li>Impulsivity and hyperactivity patterns</li>
+        <li>Academic and social functioning</li>
+      </ul>
+    </section>
+
+    <section class="mb-8">
+      <h2 class="text-2xl font-semibold mb-4">Assessment Process</h2>
+      <p class="mb-4">
+        The evaluation typically includes:
+      </p>
+      <ul class="list-disc pl-5 mb-4">
+        <li>Clinical interview with parents and child</li>
+        <li>Review of developmental and academic history</li>
+        <li>Standardized testing (3-4 hours)</li>
+        <li>Behavioral observations</li>
+        <li>Comprehensive written report with recommendations</li>
+      </ul>
+    </section>
+
+    <section class="mb-8">
+      <h2 class="text-2xl font-semibold mb-4">Related Services</h2>
+      <p class="mb-4">
+        We also provide assessments for conditions that often co-occur with ADHD:
+      </p>
+      <ul class="list-disc pl-5 mb-4">
+        <li><a href="/services/asd-assessment" class="text-purple-600 hover:underline">ASD Assessment</a></li>
+        <li><a href="/services/learning-disorders" class="text-purple-600 hover:underline">Learning Disorders Evaluation</a></li>
+        <li><a href="/the-evaluation" class="text-purple-600 hover:underline">Complete Evaluation Process</a></li>
+      </ul>
+    </section>
+
+    <section class="mb-8">
+      <h2 class="text-2xl font-semibold mb-4">Get Started</h2>
+      <p class="mb-4">
+        Ready to understand your child's attention and executive functioning strengths and challenges? Contact us to schedule an ADHD evaluation.
+      </p>
+      <a href="/contact" class="inline-block bg-purple-600 text-white px-6 py-3 rounded-lg hover:bg-purple-700 transition-colors">
+        Contact Us to Schedule ADHD Testing
+      </a>
+    </section>
+  </main>
+</BaseLayout>

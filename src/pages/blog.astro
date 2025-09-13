@@ -1,0 +1,25 @@
+---
+// Blog index using Astro Content Collections. Requires @astro/content to be installed.
+import BaseLayout from "../layouts/BaseLayout.astro";
+import { getCollection } from "../lib/content";
+
+const posts = await getCollection("posts");
+---
+
+<BaseLayout pageTitle="Blog" canonical="https://hollybarnardphd.com/blog">
+  <main class="max-w-4xl mx-auto px-8 py-16">
+    <h1 class="text-3xl font-bold mb-8">Blog</h1>
+    <ul class="space-y-4">
+      {
+        posts.map((p) => (
+          <li>
+            <a class="text-xl text-blue-700" href={`/blog/${p.slug}`}>
+              {p.data.title}
+            </a>
+            <div class="text-sm text-gray-500">{p.data.date}</div>
+          </li>
+        ))
+      }
+    </ul>
+  </main>
+</BaseLayout>

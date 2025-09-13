@@ -1,0 +1,15 @@
+---
+export interface Props {
+  number: string;
+  label: string;
+}
+
+const { number, label } = Astro.props;
+---
+
+<div
+  class="bg-gradient-to-r from-[#9d4ba2] to-[#b56db5] text-white p-6 rounded-lg shadow-md text-center"
+>
+  <div class="text-2xl font-bold">{number}</div>
+  <div class="text-sm">{label}</div>
+</div>

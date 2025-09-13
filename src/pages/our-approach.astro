@@ -1,0 +1,134 @@
+---
+import BaseLayout from "../layouts/BaseLayout.astro";
+import ContactCTA from "../components/ContactCTA.astro";
+import FeatureList from "../components/FeatureList.astro";
+import HeroSection from "../components/HeroSection.astro";
+import HowToGetStarted from "../components/HowToGetStarted.astro";
+import OurDiagnosticApproach from "../components/OurDiagnosticApproach.astro";
+import PageHeader from "../components/PageHeader.astro";
+import WhyChooseUs from "../components/WhyChooseUs.astro";
+
+const breadcrumbJsonLd = {
+  "@context": "https://schema.org",
+  "@type": "BreadcrumbList",
+  "itemListElement": [
+    {
+      "@type": "ListItem",
+      "position": 1,
+      "name": "Home",
+      "item": "https://hollybarnardphd.com"
+    },
+    {
+      "@type": "ListItem",
+      "position": 2,
+      "name": "What We Do",
+      "item": "https://hollybarnardphd.com/our-approach"
+    }
+  ]
+};
+---
+
+<BaseLayout
+  pageTitle="Pediatric & Developmental Neuropsychology — Services | Holly Barnard, Ph.D."
+  pageDescription="Comprehensive pediatric and developmental neuropsychology services including assessments for ASD, ADHD, learning disorders, TBI, and more. Serving Allen, TX and the Dallas-Fort Worth area."
+  canonical="https://hollybarnardphd.com/our-approach"
+>
+  <script type="application/ld+json" slot="head">{JSON.stringify(breadcrumbJsonLd)}</script>
+
+  <main class="max-w-4xl mx-auto px-8 py-16">
+    <PageHeader title="Pediatric & Developmental Neuropsychology" />
+
+    <HeroSection
+      title="What is Neuropsychology?"
+      description="A neuropsychologist is an expert in the impact of atypical development (e.g., ASD, learning disorders, spina bifida), injury (e.g., traumatic brain injury, birth trauma), disease (e.g., tumor, meningitis), and decline on the brain. Patients can present with a number of complex conditions that, as they grow and mature, impact how they think, learn, and behave. A neuropsychologist helps patients, parents, and teachers to understand a person's brain and the way they function best."
+      image="/img/we-all-have-our-different-needs.png"
+      imageAlt="Illustration representing diverse developmental needs and pediatric neuropsychology"
+      reverse={true}
+    />
+
+    
+    <!-- Table of Contents -->
+    <div class="p-8 mb-8">
+      <div class="grid grid-cols-1 md:grid-cols-3 gap-4">
+        <a href="#our-diagnostic-approach" class="group h-full">
+          <div class="bg-gradient-to-br from-purple-50 to-indigo-100 p-6 rounded-xl hover:shadow-lg transition-all duration-300 hover:scale-105 border border-purple-200 hover:border-purple-300 h-full flex flex-col">
+            <div class="flex flex-col items-center text-center flex-grow">
+              <div class="w-12 h-12 bg-gradient-to-r from-[#9d4ba2] to-[#7c3aed] rounded-full flex items-center justify-center mb-4 group-hover:scale-110 transition-transform duration-300">
+                <svg class="w-6 h-6 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12h6m-6 4h6m2 5H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z"></path>
+                </svg>
+              </div>
+              <h3 class="text-lg font-semibold text-gray-900 group-hover:text-purple-900 transition-colors duration-300">Our Approach</h3>
+              <p class="text-sm text-gray-600 mt-2">Learn about our diagnostic process</p>
+            </div>
+          </div>
+        </a>
+
+        <a href="#conditions" class="group h-full">
+          <div class="bg-gradient-to-br from-blue-50 to-cyan-100 p-6 rounded-xl hover:shadow-lg transition-all duration-300 hover:scale-105 border border-blue-200 hover:border-blue-300 h-full flex flex-col">
+            <div class="flex flex-col items-center text-center flex-grow">
+              <div class="w-12 h-12 bg-gradient-to-r from-blue-500 to-cyan-600 rounded-full flex items-center justify-center mb-4 group-hover:scale-110 transition-transform duration-300">
+                <svg class="w-6 h-6 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4.318 6.318a4.5 4.5 0 000 6.364L12 20.364l7.682-7.682a4.5 4.5 0 00-6.364-6.364L12 7.636l-1.318-1.318a4.5 4.5 0 00-6.364 0z"></path>
+                </svg>
+              </div>
+              <h3 class="text-lg font-semibold text-gray-900 group-hover:text-blue-900 transition-colors duration-300">Conditions We Support</h3>
+              <p class="text-sm text-gray-600 mt-2">See what we can help with</p>
+            </div>
+          </div>
+        </a>
+
+        <a href="#how-to-get-started" class="group h-full">
+          <div class="bg-gradient-to-br from-green-50 to-emerald-100 p-6 rounded-xl hover:shadow-lg transition-all duration-300 hover:scale-105 border border-green-200 hover:border-green-300 h-full flex flex-col">
+            <div class="flex flex-col items-center text-center flex-grow">
+              <div class="w-12 h-12 bg-gradient-to-r from-green-500 to-emerald-600 rounded-full flex items-center justify-center mb-4 group-hover:scale-110 transition-transform duration-300">
+                <svg class="w-6 h-6 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 10V3L4 14h7v7l9-11h-7z"></path>
+                </svg>
+              </div>
+              <h3 class="text-lg font-semibold text-gray-900 group-hover:text-green-900 transition-colors duration-300">How to Get Started</h3>
+              <p class="text-sm text-gray-600 mt-2">Begin your journey with us</p>
+            </div>
+          </div>
+        </a>
+      </div>
+    </div>
+
+    <OurDiagnosticApproach />
+
+    <section id="conditions">
+      <FeatureList
+        title="Conditions We Support"
+        items={[
+          "Attention-Deficit Hyperactivity Disorder",
+          "Autism Spectrum Disorder (ASD)",
+          "Epilepsy",
+          "Genetic/Chromosomal Disorders",
+          "Hearing Loss",
+          "History of Brain Tumor",
+          "History of Neurologic Infections",
+          "Hydrocephalus",
+          "Metabolic Disorders",
+          "Neurodevelopmental Disorders",
+          "Oxygen Deprivation",
+          "Specific Learning Disorders",
+          "Structural Abnormalities of the Brain",
+          "Toxic Encephalopathy",
+          "Traumatic Brain Injury (TBI)",
+          "Vascular Events/Conditions",
+        ]}
+        slugs={{
+          "Attention-Deficit Hyperactivity Disorder": "/services/adhd-testing",
+          "Autism Spectrum Disorder (ASD)": "/services/asd-assessment",
+          "Specific Learning Disorders": "/services/learning-disorders",
+        }}
+      />
+    </section>
+
+    <WhyChooseUs />
+
+    <HowToGetStarted />
+
+    <ContactCTA />
+  </main>
+</BaseLayout>
