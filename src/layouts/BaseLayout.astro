@@ -5,48 +5,101 @@ const {
   pageTitle = "Holly Barnard Ph.D., ABPP-CN",
   pageDescription = "Pediatric & Developmental Neuropsychologist in Allen, TX. Board-certified, ABPP-CN. Comprehensive neuropsychological testing and recommendations for children and young adults.",
   canonical = "",
+  ogImage = "/img/holly-barnard-phd-pediatric-developmental-neuropsychologist-banner.png",
+  ogType = "",
+  noindex = false,
 } = Astro.props;
+
 const siteUrl = "https://hollybarnardphd.com";
+const currentPath = Astro.url.pathname;
+const currentUrl = canonical || new URL(currentPath, siteUrl).toString();
+const absoluteOgImage = ogImage.startsWith("http") ? ogImage : new URL(ogImage, siteUrl).toString();
+const pageTitleText = pageTitle
+  .replace(/&mdash;/g, "-")
+  .replace(/&ndash;/g, "-")
+  .replace(/&amp;/g, "&");
+const resolvedOgType = ogType || (currentPath.startsWith("/blog/") ? "article" : "website");
+const navigationItems = [
+  { href: "/services/", label: "Services" },
+  { href: "/evaluation-process", label: "Evaluation" },
+  { href: "/fees", label: "Fees" },
+  { href: "/faq", label: "FAQ" },
+  { href: "/contact", label: "Contact" },
+];
+
+const isNavActive = (href) => {
+  if (href === "/services/") {
+    return currentPath === "/services/" || currentPath.startsWith("/services/");
+  }
+
+  return currentPath === href;
+};
+
 const jsonLd = {
   "@context": "https://schema.org",
   "@graph": [
     {
+      "@type": "WebSite",
+      "@id": `${siteUrl}/#website`,
+      url: siteUrl,
+      name: "Holly Barnard Ph.D., ABPP-CN",
+      description: pageDescription,
+      inLanguage: "en-US",
+      publisher: { "@id": `${siteUrl}/#medicalpractice` },
+    },
+    {
       "@type": "MedicalBusiness",
-      "@id": "#medicalpractice",
-      "name": "Holly Barnard Ph.D., ABPP-CN",
-      "url": siteUrl,
-      "logo": `${siteUrl}/img/holly-barnard-phd-pediatric-developmental-psychologist-pllc.svg`,
-      "telephone": "(214) 271-8018",
-      "email": "contact@hollybarnardphd.com",
-      "address": {
+      "@id": `${siteUrl}/#medicalpractice`,
+      name: "Holly Barnard Ph.D., ABPP-CN",
+      url: siteUrl,
+      logo: `${siteUrl}/img/holly-barnard-phd-pediatric-developmental-psychologist-pllc.svg`,
+      image: absoluteOgImage,
+      telephone: "(214) 271-8018",
+      email: "contact@hollybarnardphd.com",
+      address: {
         "@type": "PostalAddress",
-        "streetAddress": "1506 N. Greenville Ave., Suite 210",
-        "addressLocality": "Allen",
-        "addressRegion": "TX",
-        "postalCode": "75002",
-        "addressCountry": "US"
+        streetAddress: "1506 N. Greenville Ave., Suite 210",
+        addressLocality: "Allen",
+        addressRegion: "TX",
+        postalCode: "75002",
+        addressCountry: "US",
       },
-      "priceRange": "$$$",
-      "areaServed": ["Allen, TX","Plano, TX","Richardson, TX","Dallas, TX"],
-      "medicalSpecialty": "Pediatric Neuropsychology",
-      "availableService": [
+      areaServed: ["Allen, TX", "Plano, TX", "Richardson, TX", "Dallas, TX"],
+      priceRange: "$$$",
+      medicalSpecialty: "Pediatric Neuropsychology",
+      founder: { "@id": `${siteUrl}/#hollybarnard` },
+      availableService: [
         {
           "@type": "MedicalTest",
-          "name": "Neuropsychological Evaluation",
-          "description": "Comprehensive testing for ASD, ADHD, learning disorders, and other neurodevelopmental conditions"
-        }
+          name: "Neuropsychological Evaluation",
+          description: "Comprehensive testing for ASD, ADHD, learning disorders, and other neurodevelopmental conditions",
+        },
       ],
-      "openingHours": "Mo-Fr 09:00-17:00"
+      openingHours: "Mo-Fr 09:00-17:00",
     },
     {
       "@type": "Person",
-      "@id": "#hollybarnard",
-      "name": "Holly Barnard, Ph.D., ABPP-CN",
-      "jobTitle": "Pediatric Neuropsychologist",
-      "worksFor": { "@id": "#medicalpractice" },
-      "sameAs": ["https://www.linkedin.com/in/hollybarnard/"]
-    }
-  ]
+      "@id": `${siteUrl}/#hollybarnard`,
+      name: "Holly Barnard, Ph.D., ABPP-CN",
+      jobTitle: "Pediatric Neuropsychologist",
+      worksFor: { "@id": `${siteUrl}/#medicalpractice` },
+      sameAs: ["https://www.linkedin.com/in/hollybarnard/"],
+    },
+    {
+      "@type": "WebPage",
+      "@id": `${currentUrl}#webpage`,
+      url: currentUrl,
+      name: pageTitleText,
+      description: pageDescription,
+      isPartOf: { "@id": `${siteUrl}/#website` },
+      about: { "@id": `${siteUrl}/#medicalpractice` },
+      primaryImageOfPage: {
+        "@type": "ImageObject",
+        url: absoluteOgImage,
+      },
+      inLanguage: "en-US",
+    },
+  ],
 };
 ---
 
@@ -55,412 +108,210 @@ const jsonLd = {
   <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
-    <slot name="head">
-      <title>{pageTitle}</title>
-      <meta name="description" content={pageDescription} />
-      <!-- Open Graph defaults -->
-      <meta property="og:title" content={pageTitle} />
-      <meta property="og:description" content={pageDescription} />
-      <meta property="og:type" content="website" />
-      <meta property="og:url" content={siteUrl} />
-      <meta property="og:image" content="/img/about-me-seo.png" />
-      <meta name="twitter:card" content="summary_large_image" />
-      {canonical && <link rel="canonical" href={canonical} />}
-    </slot>
-    <!-- JSON-LD: Organization/MedicalPractice + Person -->
-    <script type="application/ld+json">{JSON.stringify(jsonLd)}</script>
+    <title>{pageTitle}</title>
+    <meta name="description" content={pageDescription} />
+    <meta name="robots" content={noindex ? "noindex, nofollow" : "index, follow"} />
+    <meta name="author" content="Holly Barnard, Ph.D., ABPP-CN" />
+    <meta name="theme-color" content="#0f5145" />
+    <meta property="og:locale" content="en_US" />
+    <meta property="og:site_name" content="Holly Barnard Ph.D., ABPP-CN" />
+    <meta property="og:title" content={pageTitleText} />
+    <meta property="og:description" content={pageDescription} />
+    <meta property="og:type" content={resolvedOgType} />
+    <meta property="og:url" content={currentUrl} />
+    <meta property="og:image" content={absoluteOgImage} />
+    <meta property="og:image:secure_url" content={absoluteOgImage} />
+    <meta property="og:image:alt" content={pageTitleText} />
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:title" content={pageTitleText} />
+    <meta name="twitter:description" content={pageDescription} />
+    <meta name="twitter:image" content={absoluteOgImage} />
+    <meta name="twitter:image:alt" content={pageTitleText} />
+    <link rel="icon" href="/favicon.ico" sizes="any" />
+    <link rel="shortcut icon" href="/favicon.ico" />
+    <link rel="canonical" href={currentUrl} />
+    <slot name="head" />
+    <script type="application/ld+json" is:inline>{JSON.stringify(jsonLd)}</script>
 
-    <script>
-      // Wait for DOM to be ready
-      document.addEventListener("DOMContentLoaded", function() {
-        function toggleMobileMenu() {
-          const menu = document.getElementById("mobile-menu");
-          const button = document.getElementById("mobile-menu-button");
+    <script is:inline>
+      document.addEventListener("DOMContentLoaded", function () {
+        const menu = document.getElementById("mobile-menu");
+        const button = document.getElementById("mobile-menu-button");
 
-          if (menu) {
-            menu.classList.toggle("hidden");
-          }
-
-          if (button) {
-            const isExpanded = button.getAttribute("aria-expanded") === "true";
-            button.setAttribute("aria-expanded", isExpanded ? "false" : "true");
-          }
+        if (!menu || !button) {
+          return;
         }
 
-        // Attach event listener to mobile menu button
-        const mobileMenuButton = document.getElementById("mobile-menu-button");
-        if (mobileMenuButton) {
-          mobileMenuButton.addEventListener("click", toggleMobileMenu);
+        function closeMenu() {
+          menu.classList.add("hidden");
+          button.setAttribute("aria-expanded", "false");
         }
 
-        // Close mobile menu when clicking outside
-        document.addEventListener("click", function(event) {
-          const menu = document.getElementById("mobile-menu");
-          const button = document.getElementById("mobile-menu-button");
+        function openMenu() {
+          menu.classList.remove("hidden");
+          button.setAttribute("aria-expanded", "true");
+        }
 
-          if (menu && button && !menu.classList.contains("hidden") && event.target) {
-            const isClickInsideMenu = menu.contains(event.target as Node);
-            const isClickOnButton = button.contains(event.target as Node);
-
-            if (!isClickInsideMenu && !isClickOnButton) {
-              menu.classList.add("hidden");
-              button.setAttribute("aria-expanded", "false");
-            }
+        button.addEventListener("click", function () {
+          const expanded = button.getAttribute("aria-expanded") === "true";
+          if (expanded) {
+            closeMenu();
+          } else {
+            openMenu();
           }
         });
 
-        // Close mobile menu when a link is clicked
-        const menuLinks = document.querySelectorAll("#mobile-menu a");
-        menuLinks.forEach(link => {
-          link.addEventListener("click", function() {
-            const menu = document.getElementById("mobile-menu");
-            const button = document.getElementById("mobile-menu-button");
+        document.addEventListener("click", function (event) {
+          if (!(event.target instanceof Node)) {
+            return;
+          }
 
-            if (menu) {
-              menu.classList.add("hidden");
-            }
-            if (button) {
-              button.setAttribute("aria-expanded", "false");
-            }
-          });
+          if (!menu.classList.contains("hidden") && !menu.contains(event.target) && !button.contains(event.target)) {
+            closeMenu();
+          }
+        });
+
+        document.addEventListener("keydown", function (event) {
+          if (event.key === "Escape") {
+            closeMenu();
+          }
+        });
+
+        menu.querySelectorAll("a").forEach(function (link) {
+          link.addEventListener("click", closeMenu);
         });
       });
     </script>
   </head>
-  <body class="font-body bg-white min-h-screen flex flex-col">
-    <header class="bg-gradient-to-r from-white to-gray-50 shadow-sm border-b relative">
-      <nav
-        class="max-w-5xl mx-auto px-4 py-4 flex items-center justify-between"
-      >
-        <a class="flex items-center gap-3" href="/">
-          <img
-            src="/img/holly-barnard-phd-pediatric-developmental-psychologist-pllc.svg"
-            alt="Holly Barnard Ph.D., ABPP-CN Pediatric Neuropsychologist Logo"
-            width="60"
-            height="56"
-            class="flex-shrink-0"
-          />
-          <div>
-            <h1
-              class="font-heading text-xl md:text-2xl font-normal text-gray-900 leading-tight"
-            >
-              Holly Barnard Ph.D., ABPP-CN
-            </h1>
-            <p class="text-sm text-gray-600 hidden md:block">
-              Pediatric Neuropsychologist
-            </p>
-          </div>
-        </a>
+  <body class="font-body min-h-screen bg-white text-slate-900 antialiased">
+    <a class="skip-link" href="#main-content">Skip to main content</a>
 
-        <!-- Desktop Navigation -->
-        <ul class="hidden md:flex items-center gap-2 whitespace-nowrap">
-          <li>
-            <a
-              href="/our-approach"
-              class="text-sm text-purple-400 hover:text-purple-500 focus:outline-none focus:ring-2 focus:ring-purple-200 rounded px-2 py-1 transition-all duration-150 flex items-center gap-1"
-            >
-              <svg class="w-4 h-4" fill="currentColor" viewBox="0 0 20 20"
-                ><path
-                  fill-rule="evenodd"
-                  d="M10 9a3 3 0 100-6 3 3 0 000 6zm-7 9a7 7 0 1114 0H3z"
-                  clip-rule="evenodd"></path></svg
-              >
-              Our Approach
-            </a>
-          </li>
-          <li>
-            <a
-              href="/the-evaluation"
-              class="text-sm text-purple-400 hover:text-purple-500 focus:outline-none focus:ring-2 focus:ring-purple-200 rounded px-2 py-1 transition-all duration-150 flex items-center gap-1"
-            >
-              <svg class="w-4 h-4" fill="currentColor" viewBox="0 0 20 20"
-                ><path d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z"
-                ></path></svg
-              >
-              The Evaluation
-            </a>
-          </li>
-          <li>
-            <a
-              href="/packages-and-fees"
-              class="text-sm text-purple-400 hover:text-purple-500 focus:outline-none focus:ring-2 focus:ring-purple-200 rounded px-2 py-1 transition-all duration-150 flex items-center gap-1"
-            >
-              <svg class="w-4 h-4" fill="currentColor" viewBox="0 0 20 20"
-                ><path
-                  d="M4 4a2 2 0 00-2 2v4a2 2 0 002 2V6h10a2 2 0 00-2-2H4zm2 6a2 2 0 012-2h8a2 2 0 012 2v4a2 2 0 01-2 2H8a2 2 0 01-2-2v-4zm6 4a2 2 0 100-4 2 2 0 000 4z"
-                ></path></svg
-              >
-              Packages & Fees
-            </a>
-          </li>
-          <li>
-            <a
-              href="/frequently-asked-questions"
-              class="text-sm text-purple-400 hover:text-purple-500 focus:outline-none focus:ring-2 focus:ring-purple-200 rounded px-2 py-1 transition-all duration-150 flex items-center gap-1"
-            >
-              <svg class="w-4 h-4" fill="currentColor" viewBox="0 0 20 20"
-                ><path
-                  fill-rule="evenodd"
-                  d="M18 10a8 8 0 11-16 0 8 8 0 0116 0zm-8-3a1 1 0 00-.867.5 1 1 0 11-1.731-1A3 3 0 0113 8a3.001 3.001 0 01-2 2.83V11a1 1 0 11-2 0v-1a1 1 0 011-1 1 1 0 100-2zm0 8a1 1 0 100-2 1 1 0 000 2z"
-                  clip-rule="evenodd"></path></svg
-              >
-              FAQ
-            </a>
-          </li>
-          <li>
-            <a
-              href="/contact"
-              class="text-sm text-purple-400 font-medium hover:text-purple-500 focus:outline-none focus:ring-2 focus:ring-purple-200 rounded px-2 py-1 transition-all duration-150 flex items-center gap-1"
-            >
-              <svg class="w-4 h-4" fill="currentColor" viewBox="0 0 20 20"
-                ><path
-                  d="M2.003 5.884L10 9.882l7.997-3.998A2 2 0 0016 4H4a2 2 0 00-1.997 1.884z"
-                ></path><path
-                  d="M18 8.118l-8 4-8-4V14a2 2 0 002 2h12a2 2 0 002-2V8.118z"
-                ></path></svg
-              >
-              Contact
-            </a>
-          </li>
-        </ul>
-
-        <!-- Mobile Menu Button -->
-        <button
-          id="mobile-menu-button"
-          class="md:hidden text-purple-400 hover:text-purple-500 focus:outline-none p-2 rounded-md focus:ring-2 focus:ring-purple-200 transition-colors duration-200"
-          type="button"
-          aria-label="Toggle navigation"
-          aria-expanded="false"
-        >
-          <svg
-            class="w-6 h-6"
-            fill="none"
-            stroke="currentColor"
-            viewBox="0 0 24 24"
-          >
-            <path
-              stroke-linecap="round"
-              stroke-linejoin="round"
-              stroke-width="2"
-              d="M4 6h16M4 12h16M4 18h16"></path>
-          </svg>
-        </button>
-      </nav>
-
-      <!-- Mobile Navigation Menu -->
-      <div
-        id="mobile-menu"
-        class="md:hidden hidden bg-white border-t shadow-lg absolute top-full left-0 right-0 z-50"
-      >
-        <ul class="px-6 py-4 space-y-3">
-          <li>
-            <a
-              href="/our-approach"
-              class="text-base text-purple-400 hover:text-purple-500 py-2 flex items-center gap-2"
-            >
-              <svg class="w-5 h-5" fill="currentColor" viewBox="0 0 20 20"
-                ><path
-                  fill-rule="evenodd"
-                  d="M10 9a3 3 0 100-6 3 3 0 000 6zm-7 9a7 7 0 1114 0H3z"
-                  clip-rule="evenodd"></path></svg
-              >
-              Our Approach
-            </a>
-          </li>
-          <li>
-            <a
-              href="/the-evaluation"
-              class="text-base text-purple-400 hover:text-purple-500 py-2 flex items-center gap-2"
-            >
-              <svg class="w-5 h-5" fill="currentColor" viewBox="0 0 20 20"
-                ><path d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z"
-                ></path></svg
-              >
-              The Evaluation
-            </a>
-          </li>
-          <li>
-            <a
-              href="/packages-and-fees"
-              class="text-base text-purple-400 hover:text-purple-500 py-2 flex items-center gap-2"
-            >
-              <svg class="w-5 h-5" fill="currentColor" viewBox="0 0 20 20"
-                ><path
-                  d="M4 4a2 2 0 00-2 2v4a2 2 0 002 2V6h10a2 2 0 00-2-2H4zm2 6a2 2 0 012-2h8a2 2 0 012 2v4a2 2 0 01-2 2H8a2 2 0 01-2-2v-4zm6 4a2 2 0 100-4 2 2 0 000 4z"
-                ></path></svg
-              >
-              Packages & Fees
-            </a>
-          </li>
-          <li>
-            <a
-              href="/frequently-asked-questions"
-              class="text-base text-purple-400 hover:text-purple-500 py-2 flex items-center gap-2"
-            >
-              <svg class="w-5 h-5" fill="currentColor" viewBox="0 0 20 20"
-                ><path
-                  fill-rule="evenodd"
-                  d="M18 10a8 8 0 11-16 0 8 8 0 0116 0zm-8-3a1 1 0 00-.867.5 1 1 0 11-1.731-1A3 3 0 0113 8a3.001 3.001 0 01-2 2.83V11a1 1 0 11-2 0v-1a1 1 0 011-1 1 1 0 100-2zm0 8a1 1 0 100-2 1 1 0 000 2z"
-                  clip-rule="evenodd"></path></svg
-              >
-              FAQ
-            </a>
-          </li>
-          <li>
-            <a
-              href="/contact"
-              class="text-base text-purple-400 font-medium hover:text-purple-500 py-2 flex items-center gap-2"
-            >
-              <svg class="w-5 h-5" fill="currentColor" viewBox="0 0 20 20"
-                ><path
-                  d="M2.003 5.884L10 9.882l7.997-3.998A2 2 0 0016 4H4a2 2 0 00-1.997 1.884z"
-                ></path><path
-                  d="M18 8.118l-8 4-8-4V14a2 2 0 002 2h12a2 2 0 002-2V8.118z"
-                ></path></svg
-              >
-              Contact
-            </a>
-          </li>
-        </ul>
-      </div>
-    </header>
-
-    <main class="flex-grow">
-      <slot />
-    </main>
-
-    <footer class="bg-gray-900 text-white py-12">
-      <div class="max-w-6xl mx-auto px-8">
-        <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
-          <!-- Contact Information -->
-          <div>
-            <h3 class="text-xl font-semibold mb-4 text-indigo-300">Contact Us</h3>
-            <div class="space-y-2">
-              <p class="flex items-center gap-2">
-                <svg
-                  class="w-5 h-5 text-indigo-400"
-                  fill="none"
-                  stroke="currentColor"
-                  viewBox="0 0 24 24"
-                >
-                  <path
-                    stroke-linecap="round"
-                    stroke-linejoin="round"
-                    stroke-width="2"
-                    d="M3 8l7.89 4.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z"
-                  ></path>
-                </svg>
-                <a
-                  href="mailto:contact@hollybarnardphd.com"
-                  class="hover:text-indigo-300 transition-colors"
-                  >contact@hollybarnardphd.com</a
-                >
-              </p>
-              <p class="flex items-center gap-2">
-                <svg
-                  class="w-5 h-5 text-indigo-400"
-                  fill="none"
-                  stroke="currentColor"
-                  viewBox="0 0 24 24"
-                >
-                  <path
-                    stroke-linecap="round"
-                    stroke-linejoin="round"
-                    stroke-width="2"
-                    d="M3 5a2 2 0 012-2h3.28a1 1 0 01.948.684l1.498 4.493a1 1 0 01-.502 1.21l-2.257 1.13a11.042 11.042 0 005.516 5.516l1.13-2.257a1 1 0 011.21-.502l4.493 1.498a1 1 0 01.684.949V19a2 2 0 01-2 2h-1C9.716 21 3 14.284 3 6V5z"
-                  ></path>
-                </svg>
-                <a
-                  href="tel:12142718018"
-                  class="hover:text-indigo-300 transition-colors">(214) 271-8018</a
-                >
-              </p>
-            </div>
-          </div>
-
-          <!-- Address -->
-          <div>
-            <h3 class="text-xl font-semibold mb-4 text-indigo-300">Location</h3>
-            <div class="flex items-start gap-2">
-              <svg
-                class="w-5 h-5 text-indigo-400 mt-1"
-                fill="none"
-                stroke="currentColor"
-                viewBox="0 0 24 24"
-              >
-                <path
-                  stroke-linecap="round"
-                  stroke-linejoin="round"
-                  stroke-width="2"
-                  d="M17.657 16.657L13.414 20.9a1.998 1.998 0 01-2.827 0l-4.244-4.243a8 8 0 1111.314 0z"
-                ></path>
-                <path
-                  stroke-linecap="round"
-                  stroke-linejoin="round"
-                  stroke-width="2"
-                  d="M15 11a3 3 0 11-6 0 3 3 0 016 0z"></path>
-              </svg>
-              <div>
-                <p>1506 N. Greenville Ave.</p>
-                <p>Suite 210</p>
-                <p>Allen, TX 75002</p>
-              </div>
-            </div>
-          </div>
-
-          <!-- Quick Links -->
-          <div>
-            <h3 class="text-xl font-semibold mb-4 text-indigo-300">Quick Links</h3>
-            <ul class="space-y-2">
-              <li>
-                <a href="/our-approach" class="hover:text-indigo-300 transition-colors"
-                  >Our Approach</a
-                >
-              </li>
-              <li>
-                <a
-                  href="/the-evaluation"
-                  class="hover:text-indigo-300 transition-colors"
-                  >The Evaluation Process</a
-                >
-              </li>
-              <li>
-                <a
-                  href="/packages-and-fees"
-                  class="hover:text-indigo-300 transition-colors">Services & Fees</a
-                >
-              </li>
-              <li>
-                <a href="/frequently-asked-questions" class="hover:text-indigo-300 transition-colors"
-                  >FAQ</a
-                >
-              </li>
-              <li>
-                <a
-                  href="/contact"
-                  class="hover:text-indigo-300 transition-colors"
-                  >Contact</a
-                >
-              </li>
-
-            </ul>
+    <header class="site-header">
+      <div class="max-w-6xl mx-auto px-4 sm:px-6">
+        <div class="flex items-center justify-between gap-4 border-b border-slate-200/80 py-3 text-sm text-slate-700">
+          <p class="hidden md:block">Board-certified pediatric neuropsychology in Allen, Texas</p>
+          <div class="ml-auto flex items-center gap-3 md:gap-5">
+            <a class="utility-link" href="tel:12142718018">(214) 271-8018</a>
+            <a class="utility-link" href="mailto:contact@hollybarnardphd.com">contact@hollybarnardphd.com</a>
           </div>
         </div>
 
-        <!-- Bottom Section -->
-        <div class="border-t border-gray-700 mt-8 pt-8 text-center">
-          <div class="flex flex-col md:flex-row justify-between items-center gap-4">
-            <div class="text-sm text-gray-400">
-              <p>&copy; 2025 Holly Barnard Ph.D., ABPP-CN. All rights reserved.</p>
-              <p class="mt-1">Pediatric & Developmental Neuropsychologist</p>
+        <nav class="flex items-center justify-between gap-3 py-4 xl:gap-5" aria-label="Primary navigation">
+          <a class="flex min-w-0 items-center gap-3" href="/" aria-label="Holly Barnard Ph.D. home">
+            <img
+              src="/img/holly-barnard-phd-pediatric-developmental-psychologist-pllc.svg"
+              alt="Holly Barnard practice logo"
+              width="60"
+              height="56"
+              class="flex-shrink-0"
+            />
+            <div class="min-w-0">
+              <div class="site-brand text-lg sm:text-xl">Holly Barnard, Ph.D., ABPP-CN</div>
+              <p class="truncate text-sm text-slate-600">Pediatric & Developmental Neuropsychology</p>
             </div>
-            <div class="text-sm text-gray-400">
-              <p>Texas Licensed Psychologist</p>
-              <p>Board Certified in Clinical Neuropsychology</p>
-            </div>
+          </a>
+
+          <div class="hidden min-w-0 items-center gap-0.5 xl:flex">
+            {
+              navigationItems.map((item) => {
+                const isActive = isNavActive(item.href);
+                return (
+                  <a
+                    href={item.href}
+                    class={`nav-link ${isActive ? "nav-link-active" : ""}`}
+                    aria-current={isActive ? "page" : undefined}
+                  >
+                    {item.label}
+                  </a>
+                );
+              })
+            }
           </div>
+
+          <div class="hidden items-center xl:flex">
+            <a class="button-primary header-cta" href="/contact">Schedule Consultation</a>
+          </div>
+
+          <button
+            id="mobile-menu-button"
+            class="inline-flex items-center justify-center rounded-xl border border-slate-300 bg-white p-3 text-slate-800 shadow-sm xl:hidden"
+            type="button"
+            aria-label="Toggle navigation"
+            aria-expanded="false"
+            aria-controls="mobile-menu"
+          >
+            <svg class="h-6 w-6" fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden="true">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16"></path>
+            </svg>
+          </button>
+        </nav>
+      </div>
+
+      <div id="mobile-menu" class="hidden border-t border-slate-200 bg-white shadow-lg xl:hidden">
+        <div class="max-w-6xl mx-auto px-4 py-5 sm:px-6">
+          <div class="flex flex-col gap-2" aria-label="Mobile navigation">
+            {
+              navigationItems.map((item) => {
+                const isActive = isNavActive(item.href);
+                return (
+                  <a
+                    href={item.href}
+                    class={`mobile-nav-link ${isActive ? "mobile-nav-link-active" : ""}`}
+                    aria-current={isActive ? "page" : undefined}
+                  >
+                    {item.label}
+                  </a>
+                );
+              })
+            }
+          </div>
+
+          <div class="mt-5 flex flex-col gap-3 sm:flex-row">
+            <a class="button-primary text-center" href="/contact">Schedule consultation</a>
+          </div>
+        </div>
+      </div>
+    </header>
+
+    <main id="main-content" class="flex-grow" tabindex="-1">
+      <slot />
+    </main>
+
+    <footer class="border-t border-slate-200 bg-slate-950 text-slate-100">
+      <div class="max-w-6xl mx-auto px-6 py-12">
+        <div class="grid gap-10 md:grid-cols-[1.4fr_1fr_1fr]">
+          <section>
+            <h2 class="text-lg font-semibold text-white">Holly Barnard, Ph.D., ABPP-CN</h2>
+            <p class="mt-3 max-w-xl text-sm leading-7 text-slate-300">
+              Comprehensive pediatric and developmental neuropsychological evaluations for children and young adults,
+              with clear recommendations for families, schools, and medical teams.
+            </p>
+          </section>
+
+          <section>
+            <h2 class="text-lg font-semibold text-white">Contact</h2>
+            <ul class="mt-3 space-y-2 text-sm text-slate-300">
+              <li><a class="footer-link" href="mailto:contact@hollybarnardphd.com">contact@hollybarnardphd.com</a></li>
+              <li><a class="footer-link" href="tel:12142718018">(214) 271-8018</a></li>
+              <li>1506 N. Greenville Ave., Suite 210</li>
+              <li>Allen, TX 75002</li>
+            </ul>
+          </section>
+
+          <section>
+            <h2 class="text-lg font-semibold text-white">Explore</h2>
+            <ul class="mt-3 space-y-2 text-sm text-slate-300">
+              {navigationItems.map((item) => <li><a class="footer-link" href={item.href}>{item.label}</a></li>)}
+            </ul>
+          </section>
+        </div>
+
+        <div class="mt-10 flex flex-col gap-2 border-t border-slate-800 pt-6 text-sm text-slate-400 md:flex-row md:items-center md:justify-between">
+          <p>&copy; 2025 Holly Barnard Ph.D., ABPP-CN. All rights reserved.</p>
+          <p>Texas Licensed Psychologist. Board Certified in Clinical Neuropsychology.</p>
         </div>
       </div>
     </footer>
   </body>
 </html>
+

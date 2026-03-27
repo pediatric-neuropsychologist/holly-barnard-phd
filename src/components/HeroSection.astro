@@ -24,45 +24,31 @@ const hasText =
 ---
 
 <section
-  class={`grid grid-cols-1 ${hasText ? "md:grid-cols-2" : ""} gap-10 items-center mb-16 ${
-    reverse && hasText ? "md:grid-flow-col-dense" : ""
-  } ${!hasText ? "text-center" : ""}`}
+  class={`material-shell mb-16 p-6 md:p-10 ${hasText ? '' : 'text-center'}`}
 >
-  {
-    hasText && (
-      <div class={reverse ? "md:col-start-2" : ""}>
-        {title && title.trim() && (
-          <h2 class="text-3xl font-bold text-gray-900 mb-6 bg-clip-text">
-            {title}
-          </h2>
-        )}
-        {subtitle && subtitle.trim() && (
-          <p class="text-xl text-gray-600 mb-6">{subtitle}</p>
-        )}
-        {description && description.trim() && (
-          <p class="text-gray-700 leading-relaxed text-lg">{description}</p>
-        )}
-      </div>
-    )
-  }
-  {
-    image && (
-      <div
-        class={`${
-          !hasText ? "" : reverse ? "md:col-start-1" : ""
-        } ${!hasText ? "mx-auto" : "text-center"}`}
-      >
-        <img
-          class={`rounded-2xl w-full max-w-md hover:scale-105 transition-transform duration-300 ${
-            !hasText ? "mx-auto" : ""
-          }`}
-          alt={
-            imageAlt ??
-            "Holly Barnard, board-certified pediatric neuropsychologist"
-          }
-          src={image}
-        />
-      </div>
-    )
-  }
+  <div class={`material-grid grid grid-cols-1 items-center gap-10 ${hasText ? 'md:grid-cols-2' : ''} ${reverse && hasText ? 'md:grid-flow-col-dense' : ''}`}>
+    {
+      hasText && (
+        <div class={reverse ? 'md:col-start-2' : ''}>
+          {subtitle && subtitle.trim() && <p class="eyebrow mb-4">{subtitle}</p>}
+          {title && title.trim() && <h2 class="max-w-xl text-3xl text-slate-950 md:text-5xl">{title}</h2>}
+          {description && description.trim() && <p class="mt-5 max-w-2xl text-lg leading-8 text-slate-700">{description}</p>}
+          <div class="mt-8">
+            <slot />
+          </div>
+        </div>
+      )
+    }
+    {
+      image && (
+        <div class={`${!hasText ? 'flex justify-center' : reverse ? 'md:col-start-1 md:justify-self-start' : 'md:justify-self-end'}`}>
+          <img
+            class="w-full max-w-md"
+            alt={imageAlt ?? 'Holly Barnard, board-certified pediatric neuropsychologist'}
+            src={image}
+          />
+        </div>
+      )
+    }
+  </div>
 </section>

@@ -1,0 +1,22 @@
+---
+export interface FlowLink {
+  href: string;
+  label: string;
+}
+
+export interface Props {
+  title?: string;
+  links: FlowLink[];
+}
+
+const { title = "Next steps", links } = Astro.props;
+---
+
+<section class="page-flow-nav mb-12" aria-label={title}>
+  <div class="page-flow-nav-inner">
+    <p class="page-flow-title">{title}</p>
+    <div class="page-flow-links">
+      {links.map((link) => <a href={link.href} class="page-flow-link">{link.label}</a>)}
+    </div>
+  </div>
+</section>

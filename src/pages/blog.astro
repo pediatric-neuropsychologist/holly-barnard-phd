@@ -1,12 +1,48 @@
 ---
-// Blog index using Astro Content Collections. Requires @astro/content to be installed.
 import BaseLayout from "../layouts/BaseLayout.astro";
 import { getCollection } from "../lib/content";
 
 const posts = await getCollection("posts");
+const blogJsonLd = {
+  "@context": "https://schema.org",
+  "@graph": [
+    {
+      "@type": "CollectionPage",
+      "@id": "https://hollybarnardphd.com/blog#collectionpage",
+      url: "https://hollybarnardphd.com/blog",
+      name: "Blog | Holly Barnard, Ph.D.",
+      description: "Articles about pediatric neuropsychological evaluations, common referral questions, and what families can expect from the process.",
+      isPartOf: { "@id": "https://hollybarnardphd.com/#website" },
+      about: { "@id": "https://hollybarnardphd.com/#medicalpractice" },
+    },
+    {
+      "@type": "BreadcrumbList",
+      itemListElement: [
+        {
+          "@type": "ListItem",
+          position: 1,
+          name: "Home",
+          item: "https://hollybarnardphd.com",
+        },
+        {
+          "@type": "ListItem",
+          position: 2,
+          name: "Blog",
+          item: "https://hollybarnardphd.com/blog",
+        },
+      ],
+    },
+  ],
+};
 ---
 
-<BaseLayout pageTitle="Blog" canonical="https://hollybarnardphd.com/blog">
+<BaseLayout
+  pageTitle="Blog | Holly Barnard, Ph.D."
+  pageDescription="Articles about pediatric neuropsychological evaluations, common referral questions, and what families can expect from the process."
+  canonical="https://hollybarnardphd.com/blog"
+>
+  <script type="application/ld+json" is:inline slot="head">{JSON.stringify(blogJsonLd)}</script>
+
   <main class="max-w-4xl mx-auto px-8 py-16">
     <h1 class="text-3xl font-bold mb-8">Blog</h1>
     <ul class="space-y-4">

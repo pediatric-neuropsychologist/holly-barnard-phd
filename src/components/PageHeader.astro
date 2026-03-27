@@ -9,21 +9,46 @@ export interface Props {
 const { title, subtitle, image, imageAlt } = Astro.props;
 ---
 
-<section class="text-center mb-12 py-12">
-  <h1
-    class="text-4xl md:text-5xl font-extrabold bg-gradient-to-r from-indigo-600 via-purple-600 to-blue-600 bg-clip-text text-transparent mb-6"
-  >
-    {title}
-  </h1>
-  {
-    subtitle && (
-      <p class="text-xl text-gray-600 mt-6 max-w-2xl mx-auto">{subtitle}</p>
-    )
-  }
-  <img
-    class="mx-auto mt-8"
-    src={image ?? "/img/dot-divider.svg"}
-    width="200"
-    alt={imageAlt ?? "section divider"}
-  />
+<section class="page-masthead">
+  <div class="page-masthead-grid">
+    <div>
+      <div class="eyebrow mb-5 w-fit">Board-certified pediatric neuropsychology</div>
+      <h1 class="max-w-4xl text-4xl tracking-tight text-slate-950 md:text-6xl">
+        {title}
+      </h1>
+      {
+        subtitle && (
+          <p class="page-masthead-copy">{subtitle}</p>
+        )
+      }
+    </div>
+
+    <aside class="page-masthead-aside" aria-label="Practice highlights">
+      {
+        image && (
+          <div class="page-masthead-portrait-wrap">
+            <img
+              class="page-masthead-portrait"
+              src={image}
+              alt={imageAlt ?? "Dr. Holly Barnard, pediatric neuropsychologist"}
+            />
+          </div>
+        )
+      }
+      <div class="page-masthead-panel">
+        <span class="page-masthead-panel-label">Practice</span>
+        <span class="page-masthead-panel-value">Allen, Texas pediatric neuropsychology</span>
+      </div>
+      <div class="page-masthead-stats">
+        <div class="page-masthead-tile">
+          <strong>ABPP-CN</strong>
+          <span>Board-certified clinical neuropsychology</span>
+        </div>
+        <div class="page-masthead-tile">
+          <strong>Consult</strong>
+          <span>Free phone or e-mail consultation available</span>
+        </div>
+      </div>
+    </aside>
+  </div>
 </section>

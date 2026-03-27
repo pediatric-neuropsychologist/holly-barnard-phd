@@ -1,0 +1,167 @@
+---
+import BaseLayout from "../layouts/BaseLayout.astro";
+import Breadcrumbs from "../components/Breadcrumbs.astro";
+import ContactCTA from "../components/ContactCTA.astro";
+import HeroSection from "../components/HeroSection.astro";
+import PageFlowNav from "../components/PageFlowNav.astro";
+import PageHeader from "../components/PageHeader.astro";
+import ProcessTimeline from "../components/ProcessTimeline.astro";
+
+const breadcrumbJsonLd = {
+  "@context": "https://schema.org",
+  "@type": "BreadcrumbList",
+  itemListElement: [
+    {
+      "@type": "ListItem",
+      position: 1,
+      name: "Home",
+      item: "https://hollybarnardphd.com",
+    },
+    {
+      "@type": "ListItem",
+      position: 2,
+      name: "Evaluation Process",
+      item: "https://hollybarnardphd.com/evaluation-process",
+    },
+  ],
+};
+---
+
+<BaseLayout
+  pageTitle="Evaluation Process | Holly Barnard, Ph.D."
+  pageDescription="Learn what to expect during the diagnostic interview, testing day, and feedback session for a pediatric neuropsychological evaluation with Dr. Barnard in Allen, Texas."
+  canonical="https://hollybarnardphd.com/evaluation-process"
+>
+  <script type="application/ld+json" is:inline slot="head">
+    {JSON.stringify(breadcrumbJsonLd)}
+  </script>
+
+  <main class="page-shell">
+    <Breadcrumbs items={[{ href: "/", label: "Home" }, { label: "Evaluation" }]} />
+
+    <PageHeader
+      title="Evaluation Process"
+      subtitle="What families can expect from start to finish"
+    />
+
+    <PageFlowNav
+      title="Plan your next step"
+      links={[
+        { href: "/fees", label: "Review fees" },
+        { href: "/faq", label: "Read FAQs" },
+        { href: "/contact", label: "Request a consultation" },
+      ]}
+    />
+
+    <HeroSection
+      image="/img/diagnostic-testing.png"
+      imageAlt="Diagnostic testing illustration representing pediatric neuropsychological evaluation"
+      title="A personalized three-step process"
+      description="The total evaluation process, including the Diagnostic Interview, Testing, and Feedback, typically lasts between four and eight face-time hours, with additional time billed behind the scenes for scoring, interpretation, and report writing. The Diagnostic Interview and Feedback are one hour each, and testing can last up to the length of a full school day with an included lunch break."
+    >
+      <div class="flex flex-col gap-4 sm:flex-row sm:flex-wrap">
+        <a href="/fees" class="button-secondary">Review fees</a>
+        <a href="/contact" class="button-primary">Request a consultation</a>
+      </div>
+    </HeroSection>
+
+    <section class="material-shell mb-16 p-6 md:p-8" aria-labelledby="evaluation-overview">
+      <div class="material-grid">
+        <h2 id="evaluation-overview" class="text-2xl text-slate-950 md:text-3xl">Evaluation overview</h2>
+        <div class="mt-6 grid gap-4 md:grid-cols-3">
+          <div class="material-card-subtle p-5 text-center">
+            <div class="material-chip mx-auto mb-4 text-lg font-bold">1</div>
+            <h3 class="text-lg font-semibold text-slate-900">Diagnostic Interview</h3>
+            <p class="mt-2 text-sm text-slate-600">1 hour</p>
+          </div>
+          <div class="material-card-subtle p-5 text-center">
+            <div class="material-chip mx-auto mb-4 text-lg font-bold">2</div>
+            <h3 class="text-lg font-semibold text-slate-900">Testing</h3>
+            <p class="mt-2 text-sm text-slate-600">Up to a full school day</p>
+          </div>
+          <div class="material-card-subtle p-5 text-center">
+            <div class="material-chip mx-auto mb-4 text-lg font-bold">3</div>
+            <h3 class="text-lg font-semibold text-slate-900">Feedback</h3>
+            <p class="mt-2 text-sm text-slate-600">1 hour</p>
+          </div>
+        </div>
+        <p class="mt-6 text-base leading-7 text-slate-700">
+          Patients and parents should expect to take time off from school and work, and parents are required to remain on site during testing.
+          Testing is a personalized experience during which the patient and their family spend the day at Dr. Barnard's office, and testing is completed,
+          scored, and interpreted by Dr. Barnard herself.
+        </p>
+      </div>
+    </section>
+
+    <ProcessTimeline
+      steps={[
+        {
+          number: 1,
+          title: "Diagnostic Interview",
+          duration: "1 hour",
+          icon: "chat",
+          description:
+            "The Diagnostic Interview appointment is for parents or adult patients only. This appointment is conducted in person or via telehealth.",
+          details: [
+            "Review developmental, medical, school, and behavioral history",
+            "Discuss the main referral questions and current concerns",
+            "Determine whether the practice is the right fit for the child or case",
+            "Plan the most appropriate next diagnostic step",
+          ],
+        },
+        {
+          number: 2,
+          title: "Diagnostic Testing",
+          duration: "4-8 face-time hours",
+          icon: "clipboard",
+          description:
+            "Testing can last up to the length of a full school day, with a lunch break included. Dr. Barnard completes, scores, and interprets the testing herself.",
+          details: [
+            "The patient and family spend the testing day at Dr. Barnard's office",
+            "Parents remain on site during testing",
+            "Testing is personalized to the child's age and referral question",
+            "Scoring and interpretation continue behind the scenes after face-to-face testing ends",
+          ],
+        },
+        {
+          number: 3,
+          title: "Feedback",
+          duration: "1 hour",
+          icon: "presentation",
+          description:
+            "The Feedback appointment reviews results, answers questions, and explains the recommendations and next steps.",
+          details: [
+            "Discuss the meaning of the evaluation findings",
+            "Review diagnoses if applicable",
+            "Explain recommendations for home, school, and treatment planning",
+            "Clarify next steps after the report is complete",
+          ],
+        },
+      ]}
+    />
+
+    <section class="material-shell mb-16 p-6 md:p-8" aria-labelledby="what-to-bring">
+      <div class="material-grid grid gap-6 md:grid-cols-2">
+        <div class="material-card p-6">
+          <h2 id="what-to-bring" class="text-2xl text-slate-950">Before the appointment</h2>
+          <ul class="mt-4 list-disc-custom space-y-2 pl-5 text-slate-700">
+            <li>Gather any previous evaluations, school records, and relevant medical information.</li>
+            <li>Plan for a full testing day and time away from school or work.</li>
+            <li>Use the initial consultation to confirm whether the practice is a good fit.</li>
+          </ul>
+        </div>
+        <div class="material-card p-6">
+          <h2 class="text-2xl text-slate-950">After the evaluation</h2>
+          <ul class="mt-4 list-disc-custom space-y-2 pl-5 text-slate-700">
+            <li>Feedback is scheduled to review the results and recommendations in detail.</li>
+            <li>Dr. Barnard can provide a written report and billing documentation as applicable.</li>
+            <li>Recommendations are designed to guide home, school, and follow-up care.</li>
+          </ul>
+        </div>
+      </div>
+    </section>
+
+    <ContactCTA />
+  </main>
+</BaseLayout>
+

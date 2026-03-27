@@ -1,0 +1,146 @@
+---
+import BaseLayout from "../../layouts/BaseLayout.astro";
+import Breadcrumbs from "../../components/Breadcrumbs.astro";
+import PageFlowNav from "../../components/PageFlowNav.astro";
+import PageHeader from "../../components/PageHeader.astro";
+import { serviceConditions } from "../../data/service-conditions";
+
+export function getStaticPaths() {
+  return serviceConditions.map((condition) => ({
+    params: { condition: condition.slug },
+    props: { condition },
+  }));
+}
+
+const { condition } = Astro.props;
+
+const serviceJsonLd = {
+  "@context": "https://schema.org",
+  "@graph": [
+    {
+      "@type": "Service",
+      "@id": `https://hollybarnardphd.com/services/${condition.slug}#service`,
+      name: condition.title,
+      description: condition.pageDescription,
+      serviceType: "Pediatric Neuropsychological Evaluation",
+      provider: { "@id": "https://hollybarnardphd.com/#medicalpractice" },
+      areaServed: ["Allen, TX", "Plano, TX", "Richardson, TX", "Dallas, TX"],
+      audience: {
+        "@type": "PeopleAudience",
+        suggestedMinAge: 3,
+      },
+      url: `https://hollybarnardphd.com/services/${condition.slug}`,
+    },
+    {
+      "@type": "MedicalWebPage",
+      "@id": `https://hollybarnardphd.com/services/${condition.slug}#medicalwebpage`,
+      url: `https://hollybarnardphd.com/services/${condition.slug}`,
+      name: condition.pageTitle,
+      about: { "@id": `https://hollybarnardphd.com/services/${condition.slug}#service` },
+      mainEntity: { "@id": `https://hollybarnardphd.com/services/${condition.slug}#service` },
+    },
+  ],
+};
+---
+
+<BaseLayout
+  pageTitle={condition.pageTitle}
+  pageDescription={condition.pageDescription}
+  canonical={`https://hollybarnardphd.com/services/${condition.slug}`}
+>
+  <script type="application/ld+json" is:inline slot="head">{JSON.stringify(serviceJsonLd)}</script>
+
+  <main class="page-shell">
+    <Breadcrumbs
+      items={[
+        { href: "/", label: "Home" },
+        { href: "/services/", label: "Services" },
+        { label: condition.breadcrumb },
+      ]}
+    />
+
+    <PageHeader
+      title={condition.title}
+      subtitle={condition.pageDescription}
+    />
+
+    <PageFlowNav
+      title="Helpful next steps"
+      links={[
+        { href: "/evaluation-process", label: "See the evaluation process" },
+        { href: "/fees", label: "Review fees" },
+        { href: "/contact", label: "Contact Dr. Barnard" },
+      ]}
+    />
+
+    <article class="service-stack">
+      <section class="material-shell service-section">
+        <div class="material-grid">
+          <span class="eyebrow mb-4 w-fit">{condition.eyebrow}</span>
+          <p class="section-intro">
+            {condition.intro}
+          </p>
+        </div>
+      </section>
+
+      <section class="material-shell service-section">
+        <div class="material-grid">
+          <h2 class="service-heading">{condition.overviewTitle}</h2>
+          {condition.overview.map((paragraph) => <p class="service-copy">{paragraph}</p>)}
+        </div>
+      </section>
+
+      <div class="service-grid">
+        <section class="material-card service-section">
+          <h2 class="service-heading">{condition.reasonsTitle}</h2>
+          <ul class="service-list">
+            {condition.reasons.map((item) => <li>{item}</li>)}
+          </ul>
+        </section>
+
+        <section class="material-card service-section">
+          <h2 class="service-heading">{condition.evaluatesTitle}</h2>
+          <p class="service-copy">{condition.evaluatesIntro}</p>
+          <ul class="service-list">
+            {condition.evaluates.map((item) => <li>{item}</li>)}
+          </ul>
+        </section>
+      </div>
+
+      <section class="material-shell service-section">
+        <div class="material-grid">
+          <h2 class="service-heading">{condition.outcomesTitle}</h2>
+          <p class="service-copy">{condition.outcomesIntro}</p>
+          <ul class="service-list">
+            {condition.outcomes.map((item) => <li>{item}</li>)}
+          </ul>
+        </div>
+      </section>
+
+      <nav class="material-shell service-section" aria-label="Related services">
+        <div class="material-grid">
+          <h2 class="service-heading">Related services</h2>
+          <p class="service-copy">Families often compare concerns across overlapping developmental, neurologic, and learning questions.</p>
+          <div class="service-link-list">
+            <a class="page-flow-link" href="/services/adhd-testing">ADHD Testing</a>
+            <a class="page-flow-link" href="/services/asd-assessment">ASD Assessment</a>
+            <a class="page-flow-link" href="/services/learning-disorders">Learning Disorders Evaluation</a>
+            <a class="page-flow-link" href="/evaluation-process">Complete Evaluation Process</a>
+          </div>
+        </div>
+      </nav>
+
+      <section class="material-shell service-section">
+        <div class="material-grid service-cta-row">
+          <div>
+            <h2 class="service-heading">Talk with Dr. Barnard</h2>
+            <p class="service-copy">
+              Contact Dr. Barnard to discuss these concerns and determine whether this type of evaluation is the right next step.
+            </p>
+          </div>
+          <a href="/contact" class="button-primary">Schedule a consultation</a>
+        </div>
+      </section>
+    </article>
+  </main>
+</BaseLayout>

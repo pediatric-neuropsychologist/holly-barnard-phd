@@ -1,0 +1,125 @@
+---
+import BaseLayout from "../../layouts/BaseLayout.astro";
+import Breadcrumbs from "../../components/Breadcrumbs.astro";
+import ContactCTA from "../../components/ContactCTA.astro";
+import FeatureList from "../../components/FeatureList.astro";
+import HeroSection from "../../components/HeroSection.astro";
+import PageFlowNav from "../../components/PageFlowNav.astro";
+import PageHeader from "../../components/PageHeader.astro";
+
+const breadcrumbJsonLd = {
+  "@context": "https://schema.org",
+  "@type": "BreadcrumbList",
+  itemListElement: [
+    {
+      "@type": "ListItem",
+      position: 1,
+      name: "Home",
+      item: "https://hollybarnardphd.com",
+    },
+    {
+      "@type": "ListItem",
+      position: 2,
+      name: "Services",
+      item: "https://hollybarnardphd.com/services/",
+    },
+  ],
+};
+---
+
+<BaseLayout
+  pageTitle="Pediatric Neuropsychology Services | Holly Barnard, Ph.D."
+  pageDescription="Learn about pediatric and developmental neuropsychology services with Dr. Barnard, including the conditions evaluated and the next steps for consultation, testing, and feedback."
+  canonical="https://hollybarnardphd.com/services/"
+>
+  <script type="application/ld+json" is:inline slot="head">{JSON.stringify(breadcrumbJsonLd)}</script>
+
+  <main class="page-shell">
+    <Breadcrumbs items={[{ href: "/", label: "Home" }, { label: "Services" }]} />
+
+    <PageHeader title="Pediatric Neuropsychology Services" subtitle="Conditions evaluated, how services work, and how to decide whether Dr. Barnard is the right fit for your child." />
+
+    <PageFlowNav
+      title="Continue to"
+      links={[
+        { href: "/evaluation-process", label: "See the evaluation process" },
+        { href: "/fees", label: "Review fees" },
+        { href: "/contact", label: "Contact Dr. Barnard" },
+      ]}
+    />
+
+    <HeroSection
+      title="What is Neuropsychology?"
+      description="A neuropsychologist is an expert in the impact of atypical development (e.g., ASD, learning disorders, spina bifida), injury (e.g., traumatic brain injury, birth trauma), disease (e.g., tumor, meningitis), and decline on the brain. Patients can present with a number of complex conditions that, as they grow and mature, impact how they think, learn, and behave. A neuropsychologist helps patients, parents, and teachers to understand a person's brain and the way they function best."
+      image="/img/we-all-have-our-different-needs.png"
+      imageAlt="Illustration representing diverse developmental needs and pediatric neuropsychology"
+      reverse={true}
+    />
+
+    <section class="material-shell mb-16 p-6 md:p-8">
+      <div class="material-grid grid gap-6 md:grid-cols-2">
+        <div class="material-card p-6">
+          <h2 class="text-2xl text-slate-950">What Dr. Barnard does</h2>
+          <p class="mt-4 leading-7 text-slate-700">
+            Dr. Barnard provides pediatric and developmental neuropsychology services for children and young adults. The work is focused on clarifying how developmental,
+            neurologic, medical, and learning factors affect thinking, learning, and behavior.
+          </p>
+        </div>
+        <div class="material-card p-6">
+          <h2 class="text-2xl text-slate-950">How to get started</h2>
+          <p class="mt-4 leading-7 text-slate-700">
+            Families can begin with a free phone or e-mail consultation, then move to the Diagnostic Interview, testing, and feedback if the practice is the right fit.
+          </p>
+          <div class="mt-6 flex flex-col gap-3 sm:flex-row sm:flex-wrap">
+            <a href="/contact" class="button-primary">Contact Dr. Barnard</a>
+            <a href="/evaluation-process" class="button-secondary">See the evaluation process</a>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section id="conditions">
+      <FeatureList
+        title="Common areas of evaluation"
+        items={[
+          { label: "Attention-Deficit Hyperactivity Disorder", description: "A neurodevelopmental condition involving persistent inattention, impulsivity, and hyperactivity that can affect learning, behavior, and daily functioning." },
+          { label: "Autism Spectrum Disorder (ASD)", description: "A developmental condition affecting social communication, sensory processing, and patterns of behavior, with needs that vary widely from child to child." },
+          { label: "Epilepsy", description: "A neurologic condition involving recurrent seizures that can also affect attention, memory, processing speed, and broader day-to-day functioning." },
+          { label: "Genetic/Chromosomal Disorders", description: "Differences in genes or chromosomes that can influence cognitive development, learning, behavior, medical needs, and adaptive functioning." },
+          { label: "Hearing Loss", description: "Reduced hearing that can affect language development, learning, communication, attention, and how a child accesses information across settings." },
+          { label: "History of Brain Tumor", description: "Past brain tumors and related treatment can affect memory, processing speed, attention, learning, and broader neurocognitive development." },
+          { label: "History of Neurologic Infections", description: "Prior infections such as meningitis or encephalitis can affect thinking, learning, behavior, and neurological recovery over time." },
+          { label: "Hydrocephalus", description: "A condition involving excess fluid in the brain that can affect attention, motor skills, visual-spatial reasoning, learning, and executive functioning." },
+          { label: "Metabolic Disorders", description: "Medical conditions that affect how the body processes energy or nutrients and may influence brain development, cognition, and behavior." },
+          { label: "Neurodevelopmental Disorders", description: "A broad group of developmental conditions that can affect attention, language, learning, motor development, behavior, and adaptive skills." },
+          { label: "Oxygen Deprivation", description: "Periods of reduced oxygen to the brain can affect memory, processing, motor abilities, learning, and overall developmental progress." },
+          { label: "Specific Learning Disorders", description: "Persistent difficulties in reading, writing, or math that are not explained by effort alone and often need targeted academic support." },
+          { label: "Structural Abnormalities of the Brain", description: "Differences in brain structure present from birth or acquired later that may affect development, learning, behavior, and neurological function." },
+          { label: "Toxic Encephalopathy", description: "Brain dysfunction caused by exposure to toxins or medical complications, sometimes affecting attention, memory, learning, and emotional regulation." },
+          { label: "Traumatic Brain Injury (TBI)", description: "An injury to the brain from an external force that can affect thinking, memory, behavior, emotional regulation, and school performance." },
+          { label: "Vascular Events/Conditions", description: "Stroke and other blood-flow-related brain events can affect cognition, motor abilities, language, learning, and recovery over time." },
+        ]}
+        slugs={{
+          "Attention-Deficit Hyperactivity Disorder": "/services/adhd-testing",
+          "Autism Spectrum Disorder (ASD)": "/services/asd-assessment",
+          "Epilepsy": "/services/epilepsy",
+          "Genetic/Chromosomal Disorders": "/services/genetic-chromosomal-disorders",
+          "Hearing Loss": "/services/hearing-loss",
+          "History of Brain Tumor": "/services/brain-tumor-history",
+          "History of Neurologic Infections": "/services/neurologic-infections-history",
+          "Hydrocephalus": "/services/hydrocephalus",
+          "Metabolic Disorders": "/services/metabolic-disorders",
+          "Neurodevelopmental Disorders": "/services/neurodevelopmental-disorders",
+          "Oxygen Deprivation": "/services/oxygen-deprivation",
+          "Specific Learning Disorders": "/services/learning-disorders",
+          "Structural Abnormalities of the Brain": "/services/structural-brain-abnormalities",
+          "Toxic Encephalopathy": "/services/toxic-encephalopathy",
+          "Traumatic Brain Injury (TBI)": "/services/traumatic-brain-injury",
+          "Vascular Events/Conditions": "/services/vascular-events-conditions",
+        }}
+      />
+    </section>
+
+    <ContactCTA />
+  </main>
+</BaseLayout>
