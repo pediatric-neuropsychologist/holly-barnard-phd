@@ -1,4 +1,5 @@
 User-agent: *
 Disallow:
 
-Sitemap: https://your-site-url.com/sitemap.xml
+Sitemap: https://hollybarnardphd.com/sitemap-index.xml
+
