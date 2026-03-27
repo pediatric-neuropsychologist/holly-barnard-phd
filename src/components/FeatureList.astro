@@ -1,0 +1,67 @@
+---
+export interface Props {
+  title: string;
+  items: Array<string | { label: string; description?: string }>;
+  slugs?: Record<string, string> | string[];
+}
+
+const { title, items, slugs = null } = Astro.props;
+---
+
+<section class="mb-16">
+  <div class="mx-auto mb-10 max-w-3xl text-center">
+    <h2 class="text-3xl text-slate-950 md:text-4xl">{title}</h2>
+    <p class="section-intro mx-auto mt-4">
+      Families often scan for the right evaluation fit quickly. These focus areas make the practice scope easy to review.
+    </p>
+  </div>
+  <div class="grid grid-cols-1 gap-5 sm:grid-cols-2">
+    {
+      items.map((item, idx) => {
+        const label = typeof item === "string" ? item : item.label;
+        const description = typeof item === "string" ? "" : item.description ?? "";
+        let slug: string | null = null;
+        if (Array.isArray(slugs)) {
+          slug = slugs[idx] || null;
+        } else if (slugs && typeof slugs === "object") {
+          slug = slugs[label] || null;
+        }
+
+        return slug ? (
+          <a href={slug} class="group material-card flex items-start gap-4 p-5 no-underline md:p-6">
+            <div class="material-chip mt-1 h-10 w-10 flex-shrink-0">
+              <svg class="h-5 w-5" fill="currentColor" viewBox="0 0 20 20" aria-hidden="true">
+                <path
+                  fill-rule="evenodd"
+                  d="M16.707 5.293a1 1 0 010 1.414L8.414 15l-4.121-4.121a1 1 0 011.414-1.414L8.414 12.172l7.879-7.879a1 1 0 011.414 0z"
+                  clip-rule="evenodd"
+                />
+              </svg>
+            </div>
+            <div>
+              <span class="text-lg font-semibold text-slate-900 transition-colors duration-150 group-hover:text-[#b23663]">{label}</span>
+              {description && <p class="mt-2 text-sm leading-6 text-slate-600">{description}</p>}
+            </div>
+          </a>
+        ) : (
+          <div class="material-card flex items-start gap-4 p-5 md:p-6">
+            <div class="material-chip mt-1 h-10 w-10 flex-shrink-0">
+              <svg class="h-5 w-5" fill="currentColor" viewBox="0 0 20 20" aria-hidden="true">
+                <path
+                  fill-rule="evenodd"
+                  d="M16.707 5.293a1 1 0 010 1.414L8.414 15l-4.121-4.121a1 1 0 011.414-1.414L8.414 12.172l7.879-7.879a1 1 0 011.414 0z"
+                  clip-rule="evenodd"
+                />
+              </svg>
+            </div>
+            <div>
+              <span class="text-lg font-semibold text-slate-900">{label}</span>
+              {description && <p class="mt-2 text-sm leading-6 text-slate-600">{description}</p>}
+            </div>
+          </div>
+        );
+      })
+    }
+  </div>
+</section>
+

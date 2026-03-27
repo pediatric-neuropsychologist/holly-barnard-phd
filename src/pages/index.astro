@@ -1,0 +1,222 @@
+---
+import BaseLayout from "../layouts/BaseLayout.astro";
+import ContactCTA from "../components/ContactCTA.astro";
+import PageFlowNav from "../components/PageFlowNav.astro";
+---
+
+<BaseLayout
+  pageTitle="Dr. Holly Barnard, Ph.D. | Pediatric Neuropsychology in Allen, Texas"
+  pageDescription="Dr. Holly Barnard provides pediatric and developmental neuropsychological evaluations in Allen, Texas, with clear recommendations for families seeking diagnostic clarity and next steps."
+  canonical="https://hollybarnardphd.com"
+>
+  <main class="page-shell">
+    <section class="page-masthead">
+      <div
+        class="page-masthead-grid lg:grid-cols-[minmax(0,1.35fr)_minmax(18rem,0.78fr)]"
+      >
+        <div class="material-grid">
+          <div class="eyebrow mb-5 w-fit">
+            Board-certified pediatric neuropsychology
+          </div>
+          <h1
+            class="max-w-4xl text-4xl tracking-tight text-slate-950 md:text-6xl"
+          >
+            Dr. Holly Barnard, Ph.D., ABPP-CN
+          </h1>
+          <p class="page-masthead-copy max-w-3xl">
+            Pediatric and developmental neuropsychological evaluations in Allen,
+            Texas, with clear diagnostic answers and practical recommendations
+            for families, schools, and care teams.
+          </p>
+
+          <div class="mt-8 flex flex-col gap-4 sm:flex-row sm:flex-wrap">
+            <a href="/contact" class="button-primary">Schedule consultation</a>
+            <a href="/services/" class="button-secondary">Explore services</a>
+            <a href="/evaluation-process" class="button-secondary"
+              >See the evaluation process</a
+            >
+          </div>
+
+          <div class="mt-8 grid gap-4 sm:grid-cols-3">
+            <div class="material-card-subtle p-4">
+              <p
+                class="text-sm font-semibold uppercase tracking-[0.14em] text-slate-500"
+              >
+                Practice
+              </p>
+              <p class="mt-2 text-base font-semibold text-slate-950">
+                Allen, Texas
+              </p>
+              <p class="mt-1 text-sm leading-6 text-slate-700">
+                Pediatric and developmental neuropsychology
+              </p>
+            </div>
+            <div class="material-card-subtle p-4">
+              <p
+                class="text-sm font-semibold uppercase tracking-[0.14em] text-slate-500"
+              >
+                Credential
+              </p>
+              <p class="mt-2 text-base font-semibold text-slate-950">ABPP-CN</p>
+              <p class="mt-1 text-sm leading-6 text-slate-700">
+                Board certified in clinical neuropsychology
+              </p>
+            </div>
+            <div class="material-card-subtle p-4">
+              <p
+                class="text-sm font-semibold uppercase tracking-[0.14em] text-slate-500"
+              >
+                First step
+              </p>
+              <p class="mt-2 text-base font-semibold text-slate-950">
+                Free consultation
+              </p>
+              <p class="mt-1 text-sm leading-6 text-slate-700">
+                Phone or e-mail consultation before scheduling
+              </p>
+            </div>
+          </div>
+        </div>
+
+        <aside
+          class="page-masthead-aside"
+          aria-label="Dr. Barnard portrait and practice snapshot"
+        >
+          <div class="page-masthead-portrait-wrap p-4">
+            <img
+              class="page-masthead-portrait"
+              src="/img/holly-barnard-phd-pediatric-developmental-neuropsychologist.png"
+              alt="Dr. Holly Barnard, board-certified pediatric neuropsychologist in Allen, Texas"
+            />
+          </div>
+          <div class="page-masthead-panel">
+            <span class="page-masthead-panel-label">How Dr. Barnard helps</span>
+            <span class="page-masthead-panel-value"
+              >Diagnostic clarity, individualized recommendations, and guidance
+              for next steps at home, school, and in treatment.</span
+            >
+          </div>
+        </aside>
+      </div>
+    </section>
+
+    <PageFlowNav
+      title="Start here"
+      links={[
+        { href: "/services/", label: "Common areas of evaluation" },
+        { href: "/evaluation-process", label: "What the evaluation includes" },
+        { href: "/fees", label: "Fees and payment" },
+        { href: "/contact", label: "Contact Dr. Barnard" },
+      ]}
+    />
+
+    <section class="material-shell mb-16 p-6 md:p-8">
+      <div class="material-grid grid gap-6 lg:grid-cols-3">
+        <article class="material-card p-6">
+          <h2 class="text-2xl text-slate-950">What Dr. Barnard evaluates</h2>
+          <p class="mt-4 leading-7 text-slate-700">
+            Families often seek evaluation for ADHD, autism, learning disorders,
+            brain injury, epilepsy, hydrocephalus, and other developmental or
+            neurologic concerns.
+          </p>
+          <a
+            href="/services/"
+            class="mt-5 inline-flex text-sm font-semibold text-[#b23663] hover:underline"
+            >Review services and evaluation areas</a
+          >
+        </article>
+
+        <article class="material-card p-6">
+          <h2 class="text-2xl text-slate-950">How the process works</h2>
+          <p class="mt-4 leading-7 text-slate-700">
+            The evaluation process includes a diagnostic interview,
+            individualized testing, and a feedback session with clear
+            recommendations for next steps.
+          </p>
+          <a
+            href="/evaluation-process"
+            class="mt-5 inline-flex text-sm font-semibold text-[#b23663] hover:underline"
+            >See the evaluation process</a
+          >
+        </article>
+
+        <article class="material-card p-6">
+          <h2 class="text-2xl text-slate-950">How families get started</h2>
+          <p class="mt-4 leading-7 text-slate-700">
+            The first step is a free phone or e-mail consultation to determine
+            whether the practice is the right fit and what type of evaluation is
+            needed.
+          </p>
+          <a
+            href="/contact"
+            class="mt-5 inline-flex text-sm font-semibold text-[#b23663] hover:underline"
+            >Contact Dr. Barnard</a
+          >
+        </article>
+      </div>
+    </section>
+
+    <section class="material-shell mb-16 p-6 md:p-8">
+      <div
+        class="material-grid grid gap-6 lg:grid-cols-[1.1fr_0.9fr] lg:items-start"
+      >
+        <div>
+          <div class="eyebrow mb-4 w-fit">About the practice</div>
+          <h2 class="text-3xl text-slate-950 md:text-4xl">
+            Focused on helping families understand how a child learns, thinks,
+            and functions best
+          </h2>
+          <p class="mt-5 text-lg leading-8 text-slate-700">
+            A neuropsychologist specializes in the effects of atypical
+            development, injury, disease, and other brain-based conditions on
+            learning, behavior, and development. Dr. Barnard's role is to bring
+            those pieces together and translate them into useful
+            recommendations.
+          </p>
+          <p class="mt-4 text-lg leading-8 text-slate-700">
+            Dr. Barnard completed her bachelor's degree in neuroscience at
+            Amherst College, worked in neuropsychology at UT Southwestern
+            Medical Center, and earned her Ph.D. in Clinical Psychology at the
+            University of Denver, where she received a National Institute of
+            Mental Health research fellowship focused on ADHD.
+          </p>
+          <p class="mt-4 text-lg leading-8 text-slate-700">
+            She then completed internship and postdoctoral training in pediatric
+            neuropsychology at the University of Illinois Medical Center,
+            pursued specialty training in autism assessment, later founded the
+            Developmental Neuropsychology Clinic at Cincinnati Children's, and
+            returned to Texas in independent practice.
+          </p>
+        </div>
+
+        <div class="grid gap-4">
+          <div class="material-card p-6">
+            <h3 class="text-xl font-semibold text-slate-950">
+              Training and credentials
+            </h3>
+            <ul class="mt-4 list-disc pl-5 text-slate-700 space-y-2">
+              <li>Bachelor's in Neuroscience, Amherst College</li>
+              <li>Ph.D. in Clinical Psychology, University of Denver</li>
+              <li>NIMH fellowship studying ADHD</li>
+              <li>Internship and postdoctoral pediatric neuropsychology training at the University of Illinois Medical Center</li>
+              <li>Board Certified in Clinical Neuropsychology (ABPP-CN)</li>
+            </ul>
+          </div>
+          <div class="material-card p-6">
+            <h3 class="text-xl font-semibold text-slate-950">
+              Professional background
+            </h3>
+            <p class="mt-4 leading-7 text-slate-700">
+              Dr. Barnard served on faculty at Cincinnati Children's Hospital
+              Medical Center, where she founded and directed the Developmental
+              Neuropsychology Clinic and helped evaluate hundreds of patients
+              with brain-based conditions.
+            </p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <ContactCTA />
+  </main>
+</BaseLayout>

@@ -1,0 +1,48 @@
+---
+const publications = [
+  "Fitzpatrick, P., Romero, V., Amaral, J.L., Duncan, A., Barnard, H., Richardson, M.J., & Schmidt, R.C. (2017) Evaluating the Importance of Social Motor Synchronization and Motor Skill for Understanding Autism. Autism Research; 10(10), 1687-1699.",
+  "Fitzpatrick, P., Romero, V., Amaral, J.L., Duncan, A., Barnard, H., Richardson, M.J., & Schmidt, R.C. (2017) Social Motor Synchronization: Insights for Understanding Social Behavior in Autism. Journal of Autism and Developmental Disorders; 47(7), 2092-2107.",
+  "Yuan, W., Meller, A., Shimony, J.S., Nash, T., Jones, B.V., Holland, S.K., Altaye, M., Barnard, H., Phillips, J., Powell, S., McKinstry, R.C., Limbrick, D.D., Rajagopal, A., & Mangano, F.T. (2016) Left Hemisphere Structural Connectivity Abnormality in Pediatric Hydrocephalus Patients Following Surgery. NeuroImage: Clinical; 12, 631-639.",
+  "Barnard, H., Rao, R., Xu, Y., Froehlich, T., Epstein, J., Lanphear, B., & Yolton, K. (2015) Association of the Conners' Kiddie Continuous Performance Test (K-CPT) and Parent-Report Measures of Behavior and Executive Functioning. Journal of Attention Disorders (In Print Online).",
+  "Meinzen-Derr, J., Wiley, S., Grether, S., Phillips, J., Choo, D., Hibner, J., & Barnard, H. (2014) Functional Communication of Children Who are Deaf or Hard of Hearing. Journal of Developmental and Behavioral Pediatrics; 35, 197-206.",
+];
+
+const presentations = [
+  "Yuan, W., Harpster, K., Jones, B.V., Shimony, J.S., McKinstry, R.C., Weckherlin, N., Powell, S.S., Barnard, H.D., Engsberg, J., Kadis, D., Dodd, J., Altaye, M., Limbrick, D.D., Holland, S.K., Simpson, S.M., Bidwell, S., and Mangano, F.T. (2016) Detecting White Matter Alterations in Response to a 6-week Occupational Therapy Intervention in Children with Hydrocephalus: a Preliminary DTI Study. Poster submitted for presentation at the American Society for Neuroradiology, Boston, MA, May 2016.",
+  "Duncan, A., Will, M., Martin, K., Barnard, H., Thomas, C.L., & Adams, R.E. (2014) Microanalysis of Daily Living Skills in Adolescents with ASD. Poster submitted for presentation at the International Meeting for Autism Research (IMFAR), Atlanta, GA, May 2014.",
+  "Fitzpatrick, P., Romero, V., Amaral, J., Thomas, C., Duncan, A., Barnard, H., Coleman, C., Garry, A., Richardson, M., & Schmidt, R.C. (2014) Dynamics of Social Movement Coordination as a Pathway to Understanding ASD-Specific Social Deficits. Poster submitted for presentation at the International Meeting for Autism Research (IMFAR), Atlanta, GA, May 2014.",
+  "Amaral, J.L. & Barnard, H.D. (2013) An Example of Exceptional Brain Plasticity in a Severe Case of Occipital Encephalocele. Poster presented at the American Psychological Association conference; Honolulu, Hawaii; August 2013.",
+  "Barnard, H.D., Kelly, L.M., Sweeney, J.A., & Stanford, L.D. (2010) Novel Mutation in the JARID1C Gene Associated with Global Developmental Delay but Not Autism Spectrum Disorder. Poster presented at the American Academy of Clinical Neuropsychology, Chicago, IL, June 2010. The Clinical Neuropsychologist, 24, 545.",
+];
+---
+
+<section class="mb-16">
+  <h2 class="mb-12 text-center text-3xl font-bold text-gray-900">
+    Publications & Presentations
+  </h2>
+  <p class="mb-6 text-lg text-gray-700">
+    This section reflects selected publication and presentation entries listed on Dr. Barnard's original <a class="text-[#b23663] hover:underline" href="https://hollybarnardphd.com/about-me">About Me</a> page.
+  </p>
+  <div class="grid gap-4 md:grid-cols-2">
+    <div class="material-card material-accent-bar p-5 pl-8">
+      <h3 class="font-semibold text-gray-900">Selected Publications</h3>
+      <div class="material-divider my-4"></div>
+      <ul class="space-y-3 text-gray-700">
+        {publications.map((entry) => <li>{entry}</li>)}
+      </ul>
+    </div>
+    <div class="material-card material-accent-bar p-5 pl-8">
+      <h3 class="font-semibold text-gray-900">Selected Presentations</h3>
+      <div class="material-divider my-4"></div>
+      <ul class="space-y-3 text-gray-700">
+        {presentations.map((entry) => <li>{entry}</li>)}
+      </ul>
+    </div>
+  </div>
+  <p class="mt-4 text-sm text-gray-600">
+    For the full list,
+    <a class="text-[#b23663] hover:underline" href="https://hollybarnardphd.com/about-me">review the source biography page</a>
+    or
+    <a class="text-[#b23663] hover:underline" href="mailto:contact@hollybarnardphd.com">request Dr. Barnard's CV</a>.
+  </p>
+</section>

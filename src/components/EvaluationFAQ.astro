@@ -1,0 +1,89 @@
+---
+export interface FAQ {
+  question: string;
+  answer: string;
+}
+
+export interface Props {
+  faqs: FAQ[];
+}
+
+const { faqs } = Astro.props;
+---
+
+<section id="evaluation-frequently-asked-questions" class="mb-16">
+  <h2 class="mb-12 text-center text-3xl font-bold text-gray-900">
+    Evaluation FAQs
+  </h2>
+
+  <div class="mx-auto max-w-3xl space-y-4">
+    {
+      faqs.map((faq, index) => (
+        <div class="faq-item rounded-xl border border-gray-200 bg-white shadow-sm transition-all duration-200 hover:shadow-md">
+          <button
+            id={`evaluation-faq-button-${index}`}
+            class="faq-button faq-toggle-btn flex w-full items-center justify-between rounded-xl px-6 py-5 text-left transition-colors hover:bg-gray-50 focus:outline-none focus:ring-2 focus:ring-[#d94c7d] focus:ring-inset"
+            data-target={`evaluation-faq-${index}`}
+            aria-expanded="false"
+            aria-controls={`evaluation-faq-${index}`}
+          >
+            <h3 class="pr-4 text-lg font-semibold text-gray-900">
+              {faq.question}
+            </h3>
+            <svg
+              class="faq-icon h-5 w-5 flex-shrink-0 text-gray-500 transition-transform duration-200"
+              fill="none"
+              stroke="currentColor"
+              viewBox="0 0 24 24"
+            >
+              <path
+                stroke-linecap="round"
+                stroke-linejoin="round"
+                stroke-width="2"
+                d="M19 9l-7 7-7-7"
+              />
+            </svg>
+          </button>
+          <div
+            class="faq-content hidden px-6 pb-5"
+            id={`evaluation-faq-${index}`}
+            aria-labelledby={`evaluation-faq-button-${index}`}
+          >
+            <div class="border-t border-gray-100 pt-2">
+              <p class="leading-relaxed text-gray-700">{faq.answer}</p>
+            </div>
+          </div>
+        </div>
+      ))
+    }
+  </div>
+</section>
+
+<script>
+  document.addEventListener("DOMContentLoaded", function () {
+    const faqButtons = document.querySelectorAll("#evaluation-frequently-asked-questions .faq-button");
+
+    faqButtons.forEach((button) => {
+      button.addEventListener("click", function () {
+        const targetId = this.getAttribute("data-target");
+        const content = targetId ? document.getElementById(targetId) : null;
+        const icon = this.querySelector(".faq-icon");
+        const isExpanded = this.getAttribute("aria-expanded") === "true";
+
+        if (!content || !icon) {
+          return;
+        }
+
+        if (isExpanded) {
+          content.classList.add("hidden");
+          this.setAttribute("aria-expanded", "false");
+          icon.classList.remove("rotate-180");
+        } else {
+          content.classList.remove("hidden");
+          this.setAttribute("aria-expanded", "true");
+          icon.classList.add("rotate-180");
+        }
+      });
+    });
+  });
+</script>

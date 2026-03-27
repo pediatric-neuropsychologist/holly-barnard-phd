@@ -1,0 +1,34 @@
+---
+export interface Props {
+  href: string;
+  text: string;
+  variant?: "primary" | "secondary" | "outline";
+  size?: "sm" | "md" | "lg";
+  icon?: string;
+}
+
+const { href, text, variant = "primary", size = "md", icon } = Astro.props;
+
+const sizeClasses = {
+  sm: "px-4 py-2 text-sm",
+  md: "px-6 py-3 text-base",
+  lg: "px-8 py-4 text-lg",
+};
+
+const variantClasses = {
+  primary: "button-primary",
+  secondary: "button-secondary",
+  outline: "button-ghost",
+};
+---
+
+<a href={href} class={`${variantClasses[variant]} ${sizeClasses[size]}`}>
+  {
+    icon && (
+      <svg class="mr-2 h-5 w-5 flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d={icon} />
+      </svg>
+    )
+  }
+  {text}
+</a>

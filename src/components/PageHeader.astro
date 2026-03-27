@@ -1,0 +1,54 @@
+---
+export interface Props {
+  title: string;
+  subtitle?: string;
+  image?: string;
+  imageAlt?: string;
+}
+
+const { title, subtitle, image, imageAlt } = Astro.props;
+---
+
+<section class="page-masthead">
+  <div class="page-masthead-grid">
+    <div>
+      <div class="eyebrow mb-5 w-fit">Board-certified pediatric neuropsychology</div>
+      <h1 class="max-w-4xl text-4xl tracking-tight text-slate-950 md:text-6xl">
+        {title}
+      </h1>
+      {
+        subtitle && (
+          <p class="page-masthead-copy">{subtitle}</p>
+        )
+      }
+    </div>
+
+    <aside class="page-masthead-aside" aria-label="Practice highlights">
+      {
+        image && (
+          <div class="page-masthead-portrait-wrap">
+            <img
+              class="page-masthead-portrait"
+              src={image}
+              alt={imageAlt ?? "Dr. Holly Barnard, pediatric neuropsychologist"}
+            />
+          </div>
+        )
+      }
+      <div class="page-masthead-panel">
+        <span class="page-masthead-panel-label">Practice</span>
+        <span class="page-masthead-panel-value">Allen, Texas pediatric neuropsychology</span>
+      </div>
+      <div class="page-masthead-stats">
+        <div class="page-masthead-tile">
+          <strong>ABPP-CN</strong>
+          <span>Board-certified clinical neuropsychology</span>
+        </div>
+        <div class="page-masthead-tile">
+          <strong>Consult</strong>
+          <span>Free phone or e-mail consultation available</span>
+        </div>
+      </div>
+    </aside>
+  </div>
+</section>

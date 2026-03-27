@@ -1,0 +1,74 @@
+---
+export interface Props {
+  icon: string;
+  title: string;
+  ageRange: string;
+  price: string;
+  description: string;
+  buttonText: string;
+  gradientFrom: string;
+  gradientTo: string;
+  borderColor: string;
+  textColor: string;
+  buttonColor: string;
+  buttonHoverColor: string;
+  iconBgColor?: string;
+}
+
+const {
+  icon,
+  title,
+  ageRange,
+  price,
+  description,
+  buttonText,
+  gradientFrom,
+  gradientTo,
+  borderColor,
+  textColor,
+  buttonColor,
+  buttonHoverColor,
+  iconBgColor = "bg-slate-400",
+} = Astro.props;
+---
+
+<div
+  class={`relative p-8 rounded-xl shadow-lg bg-gradient-to-br ${gradientFrom} ${gradientTo} border ${borderColor} hover:shadow-xl transition-shadow duration-300`}
+>
+  <div class="flex items-center gap-3 mb-6">
+    <div
+      class={`w-12 h-12 ${iconBgColor} rounded-full flex items-center justify-center flex-shrink-0`}
+    >
+      <svg
+        class="w-6 h-6 text-white"
+        fill="none"
+        stroke="currentColor"
+        viewBox="0 0 24 24"
+      >
+        <path
+          stroke-linecap="round"
+          stroke-linejoin="round"
+          stroke-width="2"
+          d={icon}></path>
+      </svg>
+    </div>
+    <h4 class={`text-xl font-bold ${textColor}`}>{title}</h4>
+  </div>
+  <div class={`text-sm ${textColor.replace("-800", "-600")} mb-6`}>
+    {ageRange}
+  </div>
+  <div
+    class={`text-3xl font-extrabold ${textColor.replace("-800", "-900")} mb-6`}
+  >
+    {price}
+  </div>
+  <p class={`${textColor.replace("-800", "-700")} text-sm mb-8`}>
+    {description}
+  </p>
+  <a
+    href="mailto:contact@hollybarnardphd.com"
+    class={`block w-full ${buttonColor} text-white text-center py-2 px-4 rounded-lg ${buttonHoverColor} transition-colors duration-200 font-medium`}
+  >
+    {buttonText}
+  </a>
+</div>

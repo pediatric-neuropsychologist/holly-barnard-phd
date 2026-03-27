@@ -1,0 +1,317 @@
+---
+import "../styles/global.css";
+
+const {
+  pageTitle = "Holly Barnard Ph.D., ABPP-CN",
+  pageDescription = "Pediatric & Developmental Neuropsychologist in Allen, TX. Board-certified, ABPP-CN. Comprehensive neuropsychological testing and recommendations for children and young adults.",
+  canonical = "",
+  ogImage = "/img/holly-barnard-phd-pediatric-developmental-neuropsychologist-banner.png",
+  ogType = "",
+  noindex = false,
+} = Astro.props;
+
+const siteUrl = "https://hollybarnardphd.com";
+const currentPath = Astro.url.pathname;
+const currentUrl = canonical || new URL(currentPath, siteUrl).toString();
+const absoluteOgImage = ogImage.startsWith("http") ? ogImage : new URL(ogImage, siteUrl).toString();
+const pageTitleText = pageTitle
+  .replace(/&mdash;/g, "-")
+  .replace(/&ndash;/g, "-")
+  .replace(/&amp;/g, "&");
+const resolvedOgType = ogType || (currentPath.startsWith("/blog/") ? "article" : "website");
+const navigationItems = [
+  { href: "/services/", label: "Services" },
+  { href: "/evaluation-process", label: "Evaluation" },
+  { href: "/fees", label: "Fees" },
+  { href: "/faq", label: "FAQ" },
+  { href: "/contact", label: "Contact" },
+];
+
+const isNavActive = (href) => {
+  if (href === "/services/") {
+    return currentPath === "/services/" || currentPath.startsWith("/services/");
+  }
+
+  return currentPath === href;
+};
+
+const jsonLd = {
+  "@context": "https://schema.org",
+  "@graph": [
+    {
+      "@type": "WebSite",
+      "@id": `${siteUrl}/#website`,
+      url: siteUrl,
+      name: "Holly Barnard Ph.D., ABPP-CN",
+      description: pageDescription,
+      inLanguage: "en-US",
+      publisher: { "@id": `${siteUrl}/#medicalpractice` },
+    },
+    {
+      "@type": "MedicalBusiness",
+      "@id": `${siteUrl}/#medicalpractice`,
+      name: "Holly Barnard Ph.D., ABPP-CN",
+      url: siteUrl,
+      logo: `${siteUrl}/img/holly-barnard-phd-pediatric-developmental-psychologist-pllc.svg`,
+      image: absoluteOgImage,
+      telephone: "(214) 271-8018",
+      email: "contact@hollybarnardphd.com",
+      address: {
+        "@type": "PostalAddress",
+        streetAddress: "1506 N. Greenville Ave., Suite 210",
+        addressLocality: "Allen",
+        addressRegion: "TX",
+        postalCode: "75002",
+        addressCountry: "US",
+      },
+      areaServed: ["Allen, TX", "Plano, TX", "Richardson, TX", "Dallas, TX"],
+      priceRange: "$$$",
+      medicalSpecialty: "Pediatric Neuropsychology",
+      founder: { "@id": `${siteUrl}/#hollybarnard` },
+      availableService: [
+        {
+          "@type": "MedicalTest",
+          name: "Neuropsychological Evaluation",
+          description: "Comprehensive testing for ASD, ADHD, learning disorders, and other neurodevelopmental conditions",
+        },
+      ],
+      openingHours: "Mo-Fr 09:00-17:00",
+    },
+    {
+      "@type": "Person",
+      "@id": `${siteUrl}/#hollybarnard`,
+      name: "Holly Barnard, Ph.D., ABPP-CN",
+      jobTitle: "Pediatric Neuropsychologist",
+      worksFor: { "@id": `${siteUrl}/#medicalpractice` },
+      sameAs: ["https://www.linkedin.com/in/hollybarnard/"],
+    },
+    {
+      "@type": "WebPage",
+      "@id": `${currentUrl}#webpage`,
+      url: currentUrl,
+      name: pageTitleText,
+      description: pageDescription,
+      isPartOf: { "@id": `${siteUrl}/#website` },
+      about: { "@id": `${siteUrl}/#medicalpractice` },
+      primaryImageOfPage: {
+        "@type": "ImageObject",
+        url: absoluteOgImage,
+      },
+      inLanguage: "en-US",
+    },
+  ],
+};
+---
+
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>{pageTitle}</title>
+    <meta name="description" content={pageDescription} />
+    <meta name="robots" content={noindex ? "noindex, nofollow" : "index, follow"} />
+    <meta name="author" content="Holly Barnard, Ph.D., ABPP-CN" />
+    <meta name="theme-color" content="#0f5145" />
+    <meta property="og:locale" content="en_US" />
+    <meta property="og:site_name" content="Holly Barnard Ph.D., ABPP-CN" />
+    <meta property="og:title" content={pageTitleText} />
+    <meta property="og:description" content={pageDescription} />
+    <meta property="og:type" content={resolvedOgType} />
+    <meta property="og:url" content={currentUrl} />
+    <meta property="og:image" content={absoluteOgImage} />
+    <meta property="og:image:secure_url" content={absoluteOgImage} />
+    <meta property="og:image:alt" content={pageTitleText} />
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:title" content={pageTitleText} />
+    <meta name="twitter:description" content={pageDescription} />
+    <meta name="twitter:image" content={absoluteOgImage} />
+    <meta name="twitter:image:alt" content={pageTitleText} />
+    <link rel="icon" href="/favicon.ico" sizes="any" />
+    <link rel="shortcut icon" href="/favicon.ico" />
+    <link rel="canonical" href={currentUrl} />
+    <slot name="head" />
+    <script type="application/ld+json" is:inline>{JSON.stringify(jsonLd)}</script>
+
+    <script is:inline>
+      document.addEventListener("DOMContentLoaded", function () {
+        const menu = document.getElementById("mobile-menu");
+        const button = document.getElementById("mobile-menu-button");
+
+        if (!menu || !button) {
+          return;
+        }
+
+        function closeMenu() {
+          menu.classList.add("hidden");
+          button.setAttribute("aria-expanded", "false");
+        }
+
+        function openMenu() {
+          menu.classList.remove("hidden");
+          button.setAttribute("aria-expanded", "true");
+        }
+
+        button.addEventListener("click", function () {
+          const expanded = button.getAttribute("aria-expanded") === "true";
+          if (expanded) {
+            closeMenu();
+          } else {
+            openMenu();
+          }
+        });
+
+        document.addEventListener("click", function (event) {
+          if (!(event.target instanceof Node)) {
+            return;
+          }
+
+          if (!menu.classList.contains("hidden") && !menu.contains(event.target) && !button.contains(event.target)) {
+            closeMenu();
+          }
+        });
+
+        document.addEventListener("keydown", function (event) {
+          if (event.key === "Escape") {
+            closeMenu();
+          }
+        });
+
+        menu.querySelectorAll("a").forEach(function (link) {
+          link.addEventListener("click", closeMenu);
+        });
+      });
+    </script>
+  </head>
+  <body class="font-body min-h-screen bg-white text-slate-900 antialiased">
+    <a class="skip-link" href="#main-content">Skip to main content</a>
+
+    <header class="site-header">
+      <div class="max-w-6xl mx-auto px-4 sm:px-6">
+        <div class="flex items-center justify-between gap-4 border-b border-slate-200/80 py-3 text-sm text-slate-700">
+          <p class="hidden md:block">Board-certified pediatric neuropsychology in Allen, Texas</p>
+          <div class="ml-auto flex items-center gap-3 md:gap-5">
+            <a class="utility-link" href="tel:12142718018">(214) 271-8018</a>
+            <a class="utility-link" href="mailto:contact@hollybarnardphd.com">contact@hollybarnardphd.com</a>
+          </div>
+        </div>
+
+        <nav class="flex items-center justify-between gap-3 py-4 xl:gap-5" aria-label="Primary navigation">
+          <a class="flex min-w-0 items-center gap-3" href="/" aria-label="Holly Barnard Ph.D. home">
+            <img
+              src="/img/holly-barnard-phd-pediatric-developmental-psychologist-pllc.svg"
+              alt="Holly Barnard practice logo"
+              width="60"
+              height="56"
+              class="flex-shrink-0"
+            />
+            <div class="min-w-0">
+              <div class="site-brand text-lg sm:text-xl">Holly Barnard, Ph.D., ABPP-CN</div>
+              <p class="truncate text-sm text-slate-600">Pediatric & Developmental Neuropsychology</p>
+            </div>
+          </a>
+
+          <div class="hidden min-w-0 items-center gap-0.5 xl:flex">
+            {
+              navigationItems.map((item) => {
+                const isActive = isNavActive(item.href);
+                return (
+                  <a
+                    href={item.href}
+                    class={`nav-link ${isActive ? "nav-link-active" : ""}`}
+                    aria-current={isActive ? "page" : undefined}
+                  >
+                    {item.label}
+                  </a>
+                );
+              })
+            }
+          </div>
+
+          <div class="hidden items-center xl:flex">
+            <a class="button-primary header-cta" href="/contact">Schedule Consultation</a>
+          </div>
+
+          <button
+            id="mobile-menu-button"
+            class="inline-flex items-center justify-center rounded-xl border border-slate-300 bg-white p-3 text-slate-800 shadow-sm xl:hidden"
+            type="button"
+            aria-label="Toggle navigation"
+            aria-expanded="false"
+            aria-controls="mobile-menu"
+          >
+            <svg class="h-6 w-6" fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden="true">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16"></path>
+            </svg>
+          </button>
+        </nav>
+      </div>
+
+      <div id="mobile-menu" class="hidden border-t border-slate-200 bg-white shadow-lg xl:hidden">
+        <div class="max-w-6xl mx-auto px-4 py-5 sm:px-6">
+          <div class="flex flex-col gap-2" aria-label="Mobile navigation">
+            {
+              navigationItems.map((item) => {
+                const isActive = isNavActive(item.href);
+                return (
+                  <a
+                    href={item.href}
+                    class={`mobile-nav-link ${isActive ? "mobile-nav-link-active" : ""}`}
+                    aria-current={isActive ? "page" : undefined}
+                  >
+                    {item.label}
+                  </a>
+                );
+              })
+            }
+          </div>
+
+          <div class="mt-5 flex flex-col gap-3 sm:flex-row">
+            <a class="button-primary text-center" href="/contact">Schedule consultation</a>
+          </div>
+        </div>
+      </div>
+    </header>
+
+    <main id="main-content" class="flex-grow" tabindex="-1">
+      <slot />
+    </main>
+
+    <footer class="border-t border-slate-200 bg-slate-950 text-slate-100">
+      <div class="max-w-6xl mx-auto px-6 py-12">
+        <div class="grid gap-10 md:grid-cols-[1.4fr_1fr_1fr]">
+          <section>
+            <h2 class="text-lg font-semibold text-white">Holly Barnard, Ph.D., ABPP-CN</h2>
+            <p class="mt-3 max-w-xl text-sm leading-7 text-slate-300">
+              Comprehensive pediatric and developmental neuropsychological evaluations for children and young adults,
+              with clear recommendations for families, schools, and medical teams.
+            </p>
+          </section>
+
+          <section>
+            <h2 class="text-lg font-semibold text-white">Contact</h2>
+            <ul class="mt-3 space-y-2 text-sm text-slate-300">
+              <li><a class="footer-link" href="mailto:contact@hollybarnardphd.com">contact@hollybarnardphd.com</a></li>
+              <li><a class="footer-link" href="tel:12142718018">(214) 271-8018</a></li>
+              <li>1506 N. Greenville Ave., Suite 210</li>
+              <li>Allen, TX 75002</li>
+            </ul>
+          </section>
+
+          <section>
+            <h2 class="text-lg font-semibold text-white">Explore</h2>
+            <ul class="mt-3 space-y-2 text-sm text-slate-300">
+              {navigationItems.map((item) => <li><a class="footer-link" href={item.href}>{item.label}</a></li>)}
+            </ul>
+          </section>
+        </div>
+
+        <div class="mt-10 flex flex-col gap-2 border-t border-slate-800 pt-6 text-sm text-slate-400 md:flex-row md:items-center md:justify-between">
+          <p>&copy; 2025 Holly Barnard Ph.D., ABPP-CN. All rights reserved.</p>
+          <p>Texas Licensed Psychologist. Board Certified in Clinical Neuropsychology.</p>
+        </div>
+      </div>
+    </footer>
+  </body>
+</html>
+

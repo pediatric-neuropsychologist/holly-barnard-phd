@@ -1,0 +1,54 @@
+---
+export interface Props {
+  image?: string;
+  imageAlt?: string;
+  title?: string;
+  subtitle?: string;
+  description?: string;
+  reverse?: boolean;
+}
+
+const {
+  image,
+  imageAlt,
+  title,
+  subtitle,
+  description,
+  reverse = false,
+} = Astro.props;
+
+const hasText =
+  (title && title.trim()) ||
+  (subtitle && subtitle.trim()) ||
+  (description && description.trim());
+---
+
+<section
+  class={`material-shell mb-16 p-6 md:p-10 ${hasText ? '' : 'text-center'}`}
+>
+  <div class={`material-grid grid grid-cols-1 items-center gap-10 ${hasText ? 'md:grid-cols-2' : ''} ${reverse && hasText ? 'md:grid-flow-col-dense' : ''}`}>
+    {
+      hasText && (
+        <div class={reverse ? 'md:col-start-2' : ''}>
+          {subtitle && subtitle.trim() && <p class="eyebrow mb-4">{subtitle}</p>}
+          {title && title.trim() && <h2 class="max-w-xl text-3xl text-slate-950 md:text-5xl">{title}</h2>}
+          {description && description.trim() && <p class="mt-5 max-w-2xl text-lg leading-8 text-slate-700">{description}</p>}
+          <div class="mt-8">
+            <slot />
+          </div>
+        </div>
+      )
+    }
+    {
+      image && (
+        <div class={`${!hasText ? 'flex justify-center' : reverse ? 'md:col-start-1 md:justify-self-start' : 'md:justify-self-end'}`}>
+          <img
+            class="w-full max-w-md"
+            alt={imageAlt ?? 'Holly Barnard, board-certified pediatric neuropsychologist'}
+            src={image}
+          />
+        </div>
+      )
+    }
+  </div>
+</section>

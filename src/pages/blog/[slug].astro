@@ -1,0 +1,88 @@
+---
+import BaseLayout from "../../layouts/BaseLayout.astro";
+import { getCollection, render } from "../../lib/content";
+import { getPostSlug } from "../../lib/post-slug";
+
+export async function getStaticPaths() {
+  const posts = await getCollection("posts");
+  return posts.map((p) => ({
+    params: {
+      slug: getPostSlug(p),
+    },
+  }));
+}
+
+const siteUrl = "https://hollybarnardphd.com";
+const { slug } = Astro.params;
+const posts = await getCollection("posts");
+const post = posts.find((p) => getPostSlug(p) === slug);
+if (!post) {
+  throw new Error(`Post not found: ${slug}`);
+}
+
+const frontmatter = post.data;
+const { Content } = await render(post);
+const canonical = `${siteUrl}/blog/${slug}`;
+const articleJsonLd = {
+  "@context": "https://schema.org",
+  "@graph": [
+    {
+      "@type": "BlogPosting",
+      "@id": `${canonical}#blogposting`,
+      url: canonical,
+      headline: frontmatter?.title || "Article",
+      description: frontmatter?.description || "",
+      datePublished: frontmatter?.date || undefined,
+      author: { "@id": `${siteUrl}/#hollybarnard` },
+      publisher: { "@id": `${siteUrl}/#medicalpractice` },
+      mainEntityOfPage: { "@id": `${canonical}#webpage` },
+    },
+    {
+      "@type": "BreadcrumbList",
+      itemListElement: [
+        {
+          "@type": "ListItem",
+          position: 1,
+          name: "Home",
+          item: siteUrl,
+        },
+        {
+          "@type": "ListItem",
+          position: 2,
+          name: "Blog",
+          item: `${siteUrl}/blog`,
+        },
+        {
+          "@type": "ListItem",
+          position: 3,
+          name: frontmatter?.title || "Article",
+          item: canonical,
+        },
+      ],
+    },
+  ],
+};
+---
+
+<BaseLayout
+  pageTitle={`${frontmatter?.title || "Article"} | Holly Barnard, Ph.D.`}
+  pageDescription={frontmatter?.description || ""}
+  canonical={canonical}
+  ogType="article"
+>
+  <script type="application/ld+json" is:inline slot="head">{JSON.stringify(articleJsonLd)}</script>
+
+  <main class="max-w-4xl mx-auto px-8 py-16">
+    <article>
+      <h1 class="text-3xl font-bold mb-4">{frontmatter?.title}</h1>
+      {
+        frontmatter?.date ? (
+          <p class="text-sm text-gray-500 mb-6">{frontmatter.date}</p>
+        ) : null
+      }
+      <div class="prose max-w-none">
+        {Content ? <Content /> : frontmatter?.description ? <p>{frontmatter.description}</p> : <p>No content available.</p>}
+      </div>
+    </article>
+  </main>
+</BaseLayout>

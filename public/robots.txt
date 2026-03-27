@@ -1,0 +1,5 @@
+User-agent: *
+Disallow:
+
+Sitemap: https://hollybarnardphd.com/sitemap-index.xml
+

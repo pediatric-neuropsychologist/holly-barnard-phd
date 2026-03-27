@@ -1,0 +1,156 @@
+---
+import BaseLayout from "../../layouts/BaseLayout.astro";
+import Breadcrumbs from "../../components/Breadcrumbs.astro";
+import PageFlowNav from "../../components/PageFlowNav.astro";
+import PageHeader from "../../components/PageHeader.astro";
+
+const serviceJsonLd = {
+  "@context": "https://schema.org",
+  "@graph": [
+    {
+      "@type": "Service",
+      "@id": "https://hollybarnardphd.com/services/adhd-testing#service",
+      name: "ADHD Testing and Evaluation",
+      description: "Comprehensive ADHD evaluations assessing attention, executive function, and processing speed to differentiate ADHD from other conditions and guide treatment recommendations.",
+      serviceType: "Pediatric Neuropsychological Evaluation",
+      provider: { "@id": "https://hollybarnardphd.com/#medicalpractice" },
+      areaServed: ["Allen, TX", "Plano, TX", "Richardson, TX", "Dallas, TX"],
+      audience: {
+        "@type": "PeopleAudience",
+        suggestedMinAge: 3,
+      },
+      url: "https://hollybarnardphd.com/services/adhd-testing",
+    },
+    {
+      "@type": "MedicalWebPage",
+      "@id": "https://hollybarnardphd.com/services/adhd-testing#medicalwebpage",
+      url: "https://hollybarnardphd.com/services/adhd-testing",
+      name: "ADHD Testing Services | Holly Barnard, Ph.D.",
+      about: { "@id": "https://hollybarnardphd.com/services/adhd-testing#service" },
+      mainEntity: { "@id": "https://hollybarnardphd.com/services/adhd-testing#service" },
+    },
+  ],
+};
+---
+
+<BaseLayout
+  pageTitle="ADHD Testing Services | Holly Barnard, Ph.D."
+  pageDescription="ADHD evaluations focused on attention, executive function, and differential diagnosis to guide treatment and educational supports."
+  canonical="https://hollybarnardphd.com/services/adhd-testing"
+>
+  <script type="application/ld+json" is:inline slot="head">{JSON.stringify(serviceJsonLd)}</script>
+
+  <main class="page-shell">
+    <Breadcrumbs
+      items={[
+        { href: "/", label: "Home" },
+        { href: "/services/", label: "Services" },
+        { label: "ADHD Testing" },
+      ]}
+    />
+
+    <PageHeader
+      title="ADHD Testing"
+      subtitle="Comprehensive evaluation of attention, executive functioning, and processing differences to clarify diagnosis and guide school and treatment planning."
+    />
+
+    <PageFlowNav
+      title="Helpful next steps"
+      links={[
+        { href: "/evaluation-process", label: "See the evaluation process" },
+        { href: "/fees", label: "Review fees" },
+        { href: "/contact", label: "Contact Dr. Barnard" },
+      ]}
+    />
+
+    <article class="service-stack">
+      <section class="material-shell service-section">
+        <div class="material-grid">
+          <span class="eyebrow mb-4 w-fit">When attention and executive function are the main concerns</span>
+          <p class="section-intro">
+            ADHD evaluations assess attention, executive function, and processing to differentiate ADHD from learning, mood, or sleep-related concerns and guide individualized recommendations.
+          </p>
+        </div>
+      </section>
+
+      <section class="material-shell service-section">
+        <div class="material-grid">
+          <h2 class="service-heading">Understanding ADHD</h2>
+          <p class="service-copy">
+            Attention-Deficit/Hyperactivity Disorder (ADHD) is a neurodevelopmental disorder characterized by persistent patterns of inattention, hyperactivity, and impulsivity that interfere with daily functioning.
+          </p>
+          <p class="service-copy">
+            Dr. Barnard's comprehensive evaluations help identify ADHD and distinguish it from other conditions with similar symptoms.
+          </p>
+        </div>
+      </section>
+
+      <div class="service-grid">
+        <section class="material-card service-section">
+          <h2 class="service-heading">Comprehensive ADHD assessment</h2>
+          <ul class="service-list">
+            <li>Multi-method evaluation approach</li>
+            <li>Standardized rating scales from multiple informants</li>
+            <li>Cognitive and neuropsychological testing</li>
+            <li>Differential diagnosis from co-occurring conditions</li>
+            <li>Functional impact assessment</li>
+          </ul>
+        </section>
+
+        <section class="material-card service-section">
+          <h2 class="service-heading">What Dr. Barnard evaluates</h2>
+          <p class="service-copy">Dr. Barnard's ADHD assessments examine:</p>
+          <ul class="service-list">
+            <li>Attention and concentration abilities</li>
+            <li>Executive functioning skills</li>
+            <li>Processing speed and working memory</li>
+            <li>Impulsivity and hyperactivity patterns</li>
+            <li>Academic and social functioning</li>
+          </ul>
+        </section>
+      </div>
+
+      <section class="material-shell service-section">
+        <div class="material-grid">
+          <h2 class="service-heading">Assessment process</h2>
+          <p class="service-copy">The evaluation typically includes:</p>
+          <ul class="service-list">
+            <li>Clinical interview with parents and child</li>
+            <li>Review of developmental and academic history</li>
+            <li>Standardized testing</li>
+            <li>Behavioral observations</li>
+            <li>Comprehensive written report with recommendations</li>
+          </ul>
+        </div>
+      </section>
+
+      <nav class="material-shell service-section" aria-label="Related services">
+        <div class="material-grid">
+          <h2 class="service-heading">Related services</h2>
+          <p class="service-copy">Dr. Barnard also provides assessments for conditions that often co-occur with ADHD.</p>
+          <div class="service-link-list">
+            <a class="page-flow-link" href="/services/asd-assessment">ASD Assessment</a>
+            <a class="page-flow-link" href="/services/learning-disorders">Learning Disorders Evaluation</a>
+            <a class="page-flow-link" href="/evaluation-process">Complete Evaluation Process</a>
+          </div>
+        </div>
+      </nav>
+
+      <section class="material-shell service-section">
+        <div class="material-grid service-cta-row">
+          <div>
+            <h2 class="service-heading">Get started</h2>
+            <p class="service-copy">
+              Contact Dr. Barnard to discuss your child's attention and executive functioning concerns and determine whether an ADHD evaluation is the right next step.
+            </p>
+          </div>
+          <a href="/contact" class="button-primary">Schedule consultation</a>
+        </div>
+      </section>
+    </article>
+  </main>
+</BaseLayout>
+
+
+
+
