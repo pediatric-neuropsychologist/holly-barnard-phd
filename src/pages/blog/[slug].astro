@@ -1,12 +1,13 @@
 ---
 import BaseLayout from "../../layouts/BaseLayout.astro";
 import { getCollection, render } from "../../lib/content";
+import { getPostSlug } from "../../lib/post-slug";
 
 export async function getStaticPaths() {
   const posts = await getCollection("posts");
   return posts.map((p) => ({
     params: {
-      slug: p.id.replace("src/content/posts/", "").replace(".md", ""),
+      slug: getPostSlug(p),
     },
   }));
 }
@@ -14,15 +15,13 @@ export async function getStaticPaths() {
 const siteUrl = "https://hollybarnardphd.com";
 const { slug } = Astro.params;
 const posts = await getCollection("posts");
-const post = posts.find(
-  (p) => p.id.replace("src/content/posts/", "").replace(".md", "") === slug
-);
+const post = posts.find((p) => getPostSlug(p) === slug);
 if (!post) {
   throw new Error(`Post not found: ${slug}`);
 }
 
 const frontmatter = post.data;
-const { html: compiledHtml } = await render(post);
+const { Content } = await render(post);
 const canonical = `${siteUrl}/blog/${slug}`;
 const articleJsonLd = {
   "@context": "https://schema.org",
@@ -82,15 +81,7 @@ const articleJsonLd = {
         ) : null
       }
       <div class="prose max-w-none">
-        {
-          compiledHtml ? (
-            <div set:html={String(compiledHtml)} />
-          ) : frontmatter?.description ? (
-            <p>{frontmatter.description}</p>
-          ) : (
-            <p>No content available.</p>
-          )
-        }
+        {Content ? <Content /> : frontmatter?.description ? <p>{frontmatter.description}</p> : <p>No content available.</p>}
       </div>
     </article>
   </main>
