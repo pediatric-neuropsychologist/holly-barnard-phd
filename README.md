@@ -4,7 +4,7 @@ Marketing site for Dr. Holly Barnard's pediatric neuropsychology practice, built
 
 ## Requirements
 
-- Node.js `20.19.0` or newer
+- Node.js `22.12.0` or newer
 - npm
 
 ## Getting started
@@ -58,3 +58,4 @@ Before shipping changes, run:
 ```bash
 npm run verify
 ```
+
